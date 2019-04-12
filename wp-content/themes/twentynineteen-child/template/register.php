@@ -30,7 +30,7 @@ wp_head();
                 <input type="text" class="form-control" id="referral_id" name="referral_id" placeholder="Referral ID">
             </div>
             <div class="form-group">
-                <input type="text" class="form-control" id="head_id" name="head_id" placeholder="Head ID">
+                <input type="text" class="form-control" id="upline_id" name="upline_id" placeholder="Upline ID">
             </div>
             <div class="form-group">
                 <div class="input-group">
@@ -40,7 +40,7 @@ wp_head();
                     </select>
                 </div>
             </div>
-            <button type="button" class="btn form-submit btn-primary">Register</button>
+            <button type="button" class="btn form-reg-submit btn-primary">Register</button>
         </div>
     </div>
 </div>

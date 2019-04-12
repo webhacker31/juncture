@@ -1,12 +1,12 @@
 jQuery(document).ready(function ($) {
 
-    $('#register .register-form .form-submit').on('click', function () {
+    $('#register .register-form .form-reg-submit').on('click', function () {
 
         var username    = $('#register .register-form input[name="username"]').val(),
             password    = $('#register .register-form input[name="password"]').val(),
             role        = $('#register .register-form select[name="role"]').val(),
             referralID  = $('#register .register-form input[name="referral_id"]').val(),
-            headID      = $('#register .register-form input[name="head_id"]').val(),
+            uplineID      = $('#register .register-form input[name="upline_id"]').val(),
             position    = $('#register .register-form select[name="position"]').val();
 
         var regrequest = $.ajax({
@@ -17,7 +17,7 @@ jQuery(document).ready(function ($) {
                 password : password,
                 role : role,
                 referral_id : referralID,
-                head_id : headID,
+                upline_id : uplineID,
                 position : position
             },
             dataType: "JSON"
