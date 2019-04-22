@@ -6,7 +6,7 @@ jQuery(document).ready(function ($) {
             password    = $('#login .login-form input[name="password"]').val();
 
         var regrequest = $.ajax({
-            url: "/juncture/wp-content/themes/twentynineteen-child/response/login.php",
+            url: "/juncture/wp-content/themes/twentynineteen-child/request/login.php",
             method: "POST",
             data: {
                 username : username,

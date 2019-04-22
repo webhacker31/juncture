@@ -36,11 +36,14 @@ function _head_hook_cdn() {
 
     $style = '';
 
+    // Fontawesome CSS
+    $style .= '<link rel="stylesheet" id="fontawesome-core-css" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">';
+
     // Bootstrap Core CSS
     $style .= '<link rel="stylesheet" id="bootstrap-core-css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">';
 
-    // Fontawesome CSS
-    $style .= '<link rel="stylesheet" id="fontawesome-core-css" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">';
+    // Material Bootstrap Core CSS
+    $style .= '<link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.7.6/css/mdb.min.css" rel="stylesheet">';
 
     echo $style;
 
@@ -61,6 +64,9 @@ function _footer_hood_cdn() {
     // Bootstrap Core JS
     $script .= '<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>';
 
+    // Material Bootstrap Core JS
+    $script .= '<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.7.6/js/mdb.min.js"></script>';
+    
     echo $script;
 
 }

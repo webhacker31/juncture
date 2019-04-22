@@ -12,5 +12,14 @@
  Tags:         light, dark, two-columns, right-sidebar, responsive-layout, accessibility-ready
  Text Domain:  twenty-nineteen-child
 */
+#binary .binary_downlines .downline_user._user-empty {
+  color: #d2d2d2;
+}
+#binary .binary_downlines .downline_user._user-left {
+  margin-left: 20px;
+}
+#binary .binary_downlines .downline_user._user-right {
+  margin-right: 20px;
+}
 
 /*# sourceMappingURL=style.css.map */

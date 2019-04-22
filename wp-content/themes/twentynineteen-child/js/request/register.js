@@ -10,7 +10,7 @@ jQuery(document).ready(function ($) {
             position    = $('#register .register-form select[name="position"]').val();
 
         var regrequest = $.ajax({
-            url: "/juncture/wp-content/themes/twentynineteen-child/response/register.php",
+            url: "/juncture/wp-content/themes/twentynineteen-child/request/register.php",
             method: "POST",
             data: {
                 username : username,
