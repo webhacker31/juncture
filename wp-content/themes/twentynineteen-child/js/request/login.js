@@ -21,7 +21,7 @@ jQuery(document).ready(function ($) {
 
             if (report['status'] == 'success') {
 
-                window.location.href = '/juncture/dashboard/';
+                window.location.href = '/juncture/dashboard/?user_id=' + report['user_role'] + '&user_role=' + report['user_role'];
 
             } else if (report['status'] == 'failed') {
 

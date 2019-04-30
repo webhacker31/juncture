@@ -14,7 +14,8 @@ if ($_POST['request_type'] === 'Session') {
 
         $status = [
             'status' => 'success',
-            'message' => 'Session successfully set.'
+            'message' => 'Session successfully set.',
+            'user_role' => $_POST['user_role']
         ];
 
     } else {

@@ -1,7 +1,5 @@
 <?php
 
-require_once '../../../../wp-load.php';
-
 class User_Data {
 
     private $wpdb;
@@ -31,5 +29,3 @@ class User_Data {
 }
 
 $User_Data = new User_Data;
-
-var_dump( $User_Data->get_user_downline_by_id( '000001' ) );
