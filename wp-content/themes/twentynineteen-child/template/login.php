@@ -6,18 +6,22 @@
 
 wp_head();
 
+include_once( '_navbar.php' );
+
 ?>
 
-<div id="login" class="d-flex flex-column justify-content-center align-items-center bg-light w-100 h-100">
-    <div class="login-box bg-white p-5 rounded">
-        <div class="login-form">
-            <div class="form-group">
-                <input type="username" class="form-control" id="username" name="username" aria-describedby="emailHelp" placeholder="Username or ID">
+<div id="login" class="d-flex flex-column justify-content-center align-items-center w-100 h-100">
+    <div class="login_box p-5 rounded">
+        <div class="login_form">
+            <div class="md-form">
+                <input type="text" class="form-control" id="username" name="username">
+                <label for="username">Username or ID</label>
             </div>
-            <div class="form-group">
-                <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+            <div class="md-form">
+                <input type="password" class="form-control" id="password" name="password">
+                <label for="password">Password</label>
             </div>
-            <button type="submit" class="btn form-login-submit btn-primary">Login</button>
+            <button type="submit" class="btn form_login-submit btn-primary mx-0 mb-0 mt-5">Login</button>
         </div>
     </div>
 </div>

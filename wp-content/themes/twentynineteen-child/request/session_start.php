@@ -4,18 +4,18 @@ require_once '../../../../wp-load.php';
 
 $status = [];
 
-if ($_POST['request_type'] === 'Session') {
+if ( $_POST[ 'request_type' ] === 'Session' ) {
 
     delete_transient( 'user_id' ); // Just making sure ;)
 
-    $is_set_transient_success = set_transient( 'user_id', $_POST['user_id'] );
+    $is_set_transient_success = set_transient( 'user_id', $_POST[ 'user_id' ] );
 
     if ($is_set_transient_success) {
 
         $status = [
             'status' => 'success',
             'message' => 'Session successfully set.',
-            'user_role' => $_POST['user_role']
+            'user_role' => $_POST[ 'user_role' ]
         ];
 
     } else {
@@ -27,7 +27,7 @@ if ($_POST['request_type'] === 'Session') {
 
     }
 
-    echo json_encode($status);
+    echo json_encode( $status );
 
 }
 

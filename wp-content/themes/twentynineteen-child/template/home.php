@@ -6,46 +6,9 @@
 
 wp_head();
 
-?>
+include_once( '_navbar.php' );
 
-<nav class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar">
-    <div class="container">
-        <a class="navbar-brand" href="https://mdbootstrap.com/docs/jquery/" target="_blank">
-            <strong>Juncture</strong>
-        </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Home
-                        <span class="sr-only">(current)</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#" target="_blank">About Juncture</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#" target="_blank">Login</a>
-                </li>
-            </ul>
-            <ul class="navbar-nav nav-flex-icons">
-                <li class="nav-item">
-                    <a href="https://www.facebook.com/mdbootstrap" class="nav-link" target="_blank">
-                        <i class="fab fa-facebook-f"></i>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="https://twitter.com/MDBootstrap" class="nav-link" target="_blank">
-                        <i class="fab fa-twitter"></i>
-                    </a>
-                </li>
-            </ul>
-        </div>
-    </div>
-</nav>
+?>
 
 <div id="carousel-example-1z" class="carousel slide carousel-fade" data-ride="carousel">
     <ol class="carousel-indicators">
@@ -56,7 +19,7 @@ wp_head();
     <div class="carousel-inner" role="listbox">
         <div class="carousel-item active">
             <div class="view"
-                style="background-image: url('https://mdbootstrap.com/img/Photos/Others/images/77.jpg'); background-repeat: no-repeat; background-size: cover;">
+                style="background-image: url('wp-content/themes/twentynineteen-child/asset/images/bg-1.jpg'); background-repeat: no-repeat; background-size: cover;">
                 <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
                     <div class="text-center white-text mx-5 wow fadeIn">
                         <h1 class="mb-4">Welcome to Juncture</h1>
@@ -72,7 +35,7 @@ wp_head();
         </div>
         <div class="carousel-item">
             <div class="view"
-                style="background-image: url('https://mdbootstrap.com/img/Photos/Others/images/47.jpg'); background-repeat: no-repeat; background-size: cover;">
+                style="background-image: url('wp-content/themes/twentynineteen-child/asset/images/bg-2.jpg'); background-repeat: no-repeat; background-size: cover;">
                 <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
                     <div class="text-center white-text mx-5 wow fadeIn">
                         <h1 class="mb-4">Duis vitae facilisis sem</h1>
@@ -88,7 +51,7 @@ wp_head();
         </div>
         <div class="carousel-item">
             <div class="view"
-                style="background-image: url('https://mdbootstrap.com/img/Photos/Others/images/79.jpg'); background-repeat: no-repeat; background-size: cover;">
+                style="background-image: url('wp-content/themes/twentynineteen-child/asset/images/bg-3.jpg'); background-repeat: no-repeat; background-size: cover;">
                 <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
                     <div class="text-center white-text mx-5 wow fadeIn">
                         <h1 class="mb-4">Aenean dapibus</h1>
@@ -192,88 +155,51 @@ wp_head();
 </section>
 
 <section class="section">
-    <div class="container">
-        <div class="row">
-            <div id="carousel-example-2z" class="carousel slide carousel-fade" data-ride="carousel">
-                <ol class="carousel-indicators">
-                    <li data-target="#carousel-example-2z" data-slide-to="0" class="active"></li>
-                    <li data-target="#carousel-example-2z" data-slide-to="1"></li>
-                    <li data-target="#carousel-example-2z" data-slide-to="2"></li>
-                </ol>
-                <div class="carousel-inner" role="listbox">
-                    <div class="carousel-item active">
-                        <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(130).jpg"
-                            alt="First slide">
-                    </div>
-                    <div class="carousel-item">
-                        <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(129).jpg"
-                            alt="Second slide">
-                    </div>
-                    <div class="carousel-item">
-                        <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(70).jpg"
-                            alt="Third slide">
-                    </div>
+    <div class="product_showcase-list container">
+        <div class="row align-items-center mb-3">
+            <div class="col">
+                <div class="product_img-wrapper">
+                    <img class="img-fluid rounded" src="wp-content/themes/twentynineteen-child/asset/images/product-1.jpg" alt="Product #1">
                 </div>
-                <a class="carousel-control-prev" href="#carousel-example-2z" role="button" data-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Previous</span>
-                </a>
-                <a class="carousel-control-next" href="#carousel-example-2z" role="button" data-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Next</span>
-                </a>
+            </div>
+            <div class="col">
+                <p><strong><em>Lorem ipsum dolor sit amet</em></strong>, consectetur adipiscing elit. Fusce vestibulum imperdiet diam ut iaculis. Sed tempor consectetur sapien vel pulvinar. Curabitur eget viverra nibh, et suscipit lectus. Nam euismod elit et lorem pharetra placerat. Aliquam sit amet eros bibendum tellus efficitur laoreet eu in orci.</p>
+            </div>
+        </div>
+        <div class="row align-items-center mb-3">
+            <div class="col text-right">
+                <p><strong><em>Quisque elit magna</em></strong>, sagittis ut purus quis, ullamcorper posuere odio. In hac habitasse platea dictumst. Fusce bibendum tempor quam, in sollicitudin nisi. Etiam interdum arcu et urna bibendum pretium.</p>
+            </div>
+            <div class="col">
+                <div class="product_img-wrapper">
+                    <img class="img-fluid rounded" src="wp-content/themes/twentynineteen-child/asset/images/product-2.jpg" alt="Product #1">
+                </div>
+            </div>
+        </div>
+        <div class="row align-items-center mb-3">
+            <div class="col">
+                <div class="product_img-wrapper">
+                    <img class="img-fluid rounded" src="wp-content/themes/twentynineteen-child/asset/images/product-3.jpg" alt="Product #1">
+                </div>
+            </div>
+            <div class="col">
+                <p><strong><em>Phasellus nec lobortis tortor.</em></strong> Ut malesuada libero interdum dignissim molestie. Phasellus mattis convallis lacus, eget tincidunt justo congue sed. Vestibulum at auctor lacus, id imperdiet purus. Nunc volutpat est quis rutrum sollicitudin. Sed facilisis libero sed turpis placerat semper.</p>
+            </div>
+        </div>
+        <div class="row align-items-center">
+            <div class="col text-right">
+                <p><strong><em>Pellentesque nunc risus</em></strong>, commodo vitae bibendum sit amet, lobortis id libero. Ut sagittis sed nisl sit amet ultricies. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean venenatis risus quam, quis lacinia sem sollicitudin at. Phasellus non suscipit elit, eu imperdiet lacus.</p>
+            </div>
+            <div class="col">
+                <div class="product_img-wrapper">
+                    <img class="img-fluid rounded" src="wp-content/themes/twentynineteen-child/asset/images/product-4.jpg" alt="Product #1">
+                </div>
             </div>
         </div>
     </div>
 </section>
 
 <footer class="page-footer text-center font-small mt-4 wow fadeIn">
-    <div class="pt-4">
-        <a class="btn btn-outline-white" href="https://mdbootstrap.com/docs/jquery/getting-started/download/"
-            target="_blank" role="button">Download MDB
-            <i class="fas fa-download ml-2"></i>
-        </a>
-        <a class="btn btn-outline-white" href="https://mdbootstrap.com/education/bootstrap/" target="_blank"
-            role="button">Start
-            free tutorial
-            <i class="fas fa-graduation-cap ml-2"></i>
-        </a>
-    </div>
-
-    <hr class="my-4">
-    <div class="pb-4">
-        <a href="https://www.facebook.com/mdbootstrap" target="_blank">
-            <i class="fab fa-facebook-f mr-3"></i>
-        </a>
-
-        <a href="https://twitter.com/MDBootstrap" target="_blank">
-            <i class="fab fa-twitter mr-3"></i>
-        </a>
-
-        <a href="https://www.youtube.com/watch?v=7MUISDJ5ZZ4" target="_blank">
-            <i class="fab fa-youtube mr-3"></i>
-        </a>
-
-        <a href="https://plus.google.com/u/0/b/107863090883699620484" target="_blank">
-            <i class="fab fa-google-plus-g mr-3"></i>
-        </a>
-
-        <a href="https://dribbble.com/mdbootstrap" target="_blank">
-            <i class="fab fa-dribbble mr-3"></i>
-        </a>
-
-        <a href="https://pinterest.com/mdbootstrap" target="_blank">
-            <i class="fab fa-pinterest mr-3"></i>
-        </a>
-
-        <a href="https://github.com/mdbootstrap/bootstrap-material-design" target="_blank">
-            <i class="fab fa-github mr-3"></i>
-        </a>
-
-        <a href="http://codepen.io/mdbootstrap/" target="_blank">
-            <i class="fab fa-codepen mr-3"></i>
-        </a>
-    </div>
     <div class="footer-copyright py-3">
         © 2019 Copyright:
         <a href="#" target="_blank"> Juncture </a>
