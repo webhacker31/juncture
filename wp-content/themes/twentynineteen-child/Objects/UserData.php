@@ -11,6 +11,14 @@ class User_Data {
 
     }
 
+    public function get_user_info_by_id( $user_id ) {
+
+        $get_user_info = $this->wpdb->get_results( "SELECT * FROM j_users_info WHERE ID = '{$user_id}'" );
+
+        return $get_user_info;
+
+    }
+
     public function get_user_downline_by_id( $user_id ) {
 
         $user_queue = [];

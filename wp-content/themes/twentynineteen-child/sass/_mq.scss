@@ -9,3 +9,18 @@
         background: #1C2331 !important;
     }
 }
+
+@media (min-width: 1200px) {
+    #__admin .navbar,
+    #__admin main,
+    #__regular .navbar,
+    #__regular main {
+        padding-left: 270px;
+    }
+}
+
+@media (max-width: 1199.98px) {
+    .sidebar-fixed {
+        display: none;
+    }
+}
