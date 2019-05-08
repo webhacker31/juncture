@@ -1,4 +1,4 @@
-jQuery(document).ready(function ($) {
+$(document).ready(function ($) {
 
     $( '#login .login_form .form_login-submit' ).on('click', function () {
 
