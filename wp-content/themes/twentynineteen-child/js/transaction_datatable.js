@@ -25,7 +25,7 @@ $( document ).ready( function( $ ) {
     var myTable;
 
     // local URL's are not allowed
-    var url_ws_mock_get = '/juncture/wp-content/themes/twentynineteen-child/request/users.php';
+    var url_ws_mock_get = '/juncture/wp-content/themes/twentynineteen-child/request/admin_users.php';
     // var url_ws_mock_ok = 'https://raw.githubusercontent.com/luca-vercelli/DataTable-AltEditor/master/example/03_ajax_objects/mock_svc_ok.json';
 
     myTable = $('#_user-table-list').DataTable({
