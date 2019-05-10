@@ -22,4 +22,4 @@ if ( $user_role[0]->user_role == 'admin' ) {
 
 wp_footer();
 
-?> 
+?>

@@ -21,7 +21,7 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
 
     global $wpdb;
 
-    $is_referral_id_exist = $wpdb->get_var( 'SELECT COUNT(`ID`) FROM `j_users` WHERE `ID`=' . $referral_id . '' );
+    $is_referral_id_exist = $wpdb->get_var( 'SELECT COUNT(`user_id`) FROM `j_users` WHERE `user_id`=' . $referral_id . '' );
 
     /**
      * Check if referral id exist
@@ -30,7 +30,7 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
      */
     if ($is_referral_id_exist) {
 
-        $is_upline_id_exist = $wpdb->get_var( 'SELECT COUNT(`ID`) FROM `j_users` WHERE `ID`=' . $upline_id . '' );
+        $is_upline_id_exist = $wpdb->get_var( 'SELECT COUNT(`user_id`) FROM `j_users` WHERE `user_id`=' . $upline_id . '' );
 
         /**
          * Check if upline id exist
@@ -39,7 +39,7 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
          */
         if ($is_upline_id_exist) {
 
-            $is_username_exist = $wpdb->get_var( 'SELECT COUNT(`ID`) FROM `j_users_info` WHERE `user_username`=' . $username . '' );
+            $is_username_exist = $wpdb->get_var( 'SELECT COUNT(`user_info_id`) FROM `j_users_info` WHERE `user_username`=' . $username . '' );
 
             /**
              * Check if username exist
@@ -48,9 +48,9 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
              */
             if (!$is_username_exist) {
     
-                $wpdb->query( 'INSERT INTO `j_users` (`ID`) VALUES (NULL)' );
+                $wpdb->query( 'INSERT INTO `j_users` (`user_id`) VALUES (NULL)' );
     
-                $users_last_id = $wpdb->get_var( 'SELECT `ID` FROM `j_users` ORDER BY `ID` DESC LIMIT 1' );
+                $users_last_id = $wpdb->get_var( 'SELECT `user_id` FROM `j_users` ORDER BY `user_id` DESC LIMIT 1' );
     
                 $user_insert_data = $wpdb->insert(
                     'j_users_info',

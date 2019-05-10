@@ -17,7 +17,7 @@ if ( isset( $_POST[ 'username' ] ) && isset( $_POST[ 'password' ] ) ) {
 
     global $wpdb;
 
-    $user_information = $wpdb->get_row( "SELECT * FROM `j_users_info` WHERE `ID`='{$username}' OR `user_username`='{$username}' AND `user_password`='{$password}'" );
+    $user_information = $wpdb->get_row( "SELECT * FROM `j_users_info` WHERE `user_info_id`='{$username}' OR `user_username`='{$username}' AND `user_password`='{$password}'" );
 
     if ($user_information !== NULL) {
 
@@ -25,7 +25,7 @@ if ( isset( $_POST[ 'username' ] ) && isset( $_POST[ 'password' ] ) ) {
 
         $fields = [
             'request_type'      => 'Session',
-            'user_id'           => $user_information->ID,
+            'user_id'           => $user_information->user_info_id,
             'user_username'     => $user_information->user_username,
             'user_password'     => $user_information->user_password,
             'user_role'         => $user_information->user_role,

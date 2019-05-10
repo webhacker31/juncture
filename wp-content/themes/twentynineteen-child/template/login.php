@@ -29,3 +29,4 @@ include_once( '_navbar.php' );
 <?php wp_footer(); ?>
 
 <script src="/juncture/wp-content/themes/twentynineteen-child/js/request/login.js" type="text/javascript"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.7.6/js/mdb.min.js" type="text/javascript"></script>
