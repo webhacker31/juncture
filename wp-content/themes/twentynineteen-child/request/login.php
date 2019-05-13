@@ -6,7 +6,8 @@
  * 
  */
 
-require_once '../../../../wp-load.php';
+require_once ( '../../../../wp-load.php' );
+require_once ( '../Objects/UserData.php' );
 
 if ( isset( $_POST[ 'username' ] ) && isset( $_POST[ 'password' ] ) ) {
 
@@ -15,36 +16,34 @@ if ( isset( $_POST[ 'username' ] ) && isset( $_POST[ 'password' ] ) ) {
 
     $status = [];
 
-    global $wpdb;
+    $user_data_info = $User_Data->get_user_info_by_credentials( $username, $password );
 
-    $user_information = $wpdb->get_row( "SELECT * FROM `j_users_info` WHERE `user_info_id`='{$username}' OR `user_username`='{$username}' AND `user_password`='{$password}'" );
-
-    if ($user_information !== NULL) {
+    if ( $user_data_info !== NULL ) {
 
         $url = 'http://localhost/juncture/wp-content/themes/twentynineteen-child/request/session_start.php';
 
         $fields = [
-            'request_type'      => 'Session',
-            'user_id'           => $user_information->user_info_id,
-            'user_username'     => $user_information->user_username,
-            'user_password'     => $user_information->user_password,
-            'user_role'         => $user_information->user_role,
-            'user_referral_id'  => $user_information->user_referral_id,
-            'user_upline_id'    => $user_information->user_upline_id,
-            'user_position'     => $user_information->user_position
+            'request_type'      => 'session',
+            'user_id'           => $user_data_info[0]->user_info_id,
+            'user_username'     => $user_data_info[0]->user_username,
+            'user_password'     => $user_data_info[0]->user_password,
+            'user_role'         => $user_data_info[0]->user_role,
+            'user_referral_id'  => $user_data_info[0]->user_referral_id,
+            'user_upline_id'    => $user_data_info[0]->user_upline_id,
+            'user_position'     => $user_data_info[0]->user_position
         ];
 
         $fields_string = http_build_query($fields);
 
         $ch = curl_init();
 
-        curl_setopt($ch, CURLOPT_URL, $url);
-        curl_setopt($ch, CURLOPT_POST, count($fields));
-        curl_setopt($ch, CURLOPT_POSTFIELDS, $fields_string);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true); 
+        curl_setopt( $ch, CURLOPT_URL, $url );
+        curl_setopt( $ch, CURLOPT_POST, count( $fields ) );
+        curl_setopt( $ch, CURLOPT_POSTFIELDS, $fields_string );
+        curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true ); 
 
         // Result
-        echo curl_exec($ch);
+        echo curl_exec( $ch );
 
     } else {
 

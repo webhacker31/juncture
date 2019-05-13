@@ -1,7 +1,7 @@
 <?php
 
 /*
- Template Name: Binary Page
+ Template Name: Earnings Page
  */
 
 include_once './wp-content/themes/twentynineteen-child/Objects/UserData.php';
@@ -14,7 +14,7 @@ wp_head();
 
 if ( $user_role[0]->user_role == 'regular' ) {
 
-	include_once( 'users/regular_binary.php' );
+	include_once( 'users/regular_earnings.php' );
 
 } else {
 
@@ -26,4 +26,4 @@ if ( $user_role[0]->user_role == 'regular' ) {
 wp_footer(); ?>
 
 <script type="text/javascript">var $user_id = "<?php echo $user_id; ?>"</script>
-<script src="/juncture/wp-content/themes/twentynineteen-child/js/binary.js" type="text/javascript"></script>
+<script src="/juncture/wp-content/themes/twentynineteen-child/js/earning_datatable.js" type="text/javascript"></script>

@@ -1,3 +1,12 @@
+<?php
+
+if ( isset( $_GET[ 'user_id' ] ) ) {
+
+    $add_url_param = '&user_id=' . $_GET[ 'user_id' ];
+
+}
+
+?>
 <nav class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar">
     <div class="container">
         <a class="navbar-brand" href="https://mdbootstrap.com/docs/jquery/" target="_blank">
@@ -10,14 +19,26 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item <?php echo ($_GET['page'] == 'home') ? 'active' : '';?>">
-                    <a class="nav-link" href="http://localhost/juncture/?page=home">Home</a>
+                    <a class="nav-link" href="http://localhost/juncture/?page=home<?php echo ($add_url_param) ? $add_url_param : '' ?>">Home</a>
                 </li>
                 <li class="nav-item <?php echo ($_GET['page'] == 'aboutus') ? 'active' : '';?>">
                     <a class="nav-link" href="#">About Juncture</a>
                 </li>
-                <li class="nav-item <?php echo ($_GET['page'] == 'login') ? 'active' : '';?>">
-                    <a class="nav-link" href="http://localhost/juncture/login/?page=login">Login</a>
-                </li>
+
+                <?php if ( isset( $_GET[ 'user_id' ] ) ) : ?>
+
+                    <li class="nav-item <?php echo ( $_GET[ 'page' ] == 'login' ) ? 'active' : '';?>">
+                        <span id="_logout" class="nav-link" style="cursor: pointer" data-user-id="<?php echo $_GET[ 'user_id' ] ?>">Logout</span>
+                    </li>
+
+                <?php else : ?>
+
+                    <li class="nav-item <?php echo ($_GET['page'] == 'login') ? 'active' : '';?>">
+                        <a class="nav-link" href="http://localhost/juncture/login/?page=login">Login</a>
+                    </li>
+
+                <?php endif; ?>
+
             </ul>
             <ul class="navbar-nav nav-flex-icons">
                 <li class="nav-item">

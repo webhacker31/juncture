@@ -19,11 +19,35 @@ class User_Data {
 
     }
 
+    public function get_user_info_by_id( $user_id ) {
+
+        $get_user_info_by_id = $this->wpdb->get_results( "SELECT * FROM j_users_info WHERE user_info_id='{$user_id}'" );
+
+        return $get_user_info_by_id;
+
+    }
+
+    public function get_user_info_by_credentials( $username, $password ) {
+
+        $get_user_info_by_credentials = $this->wpdb->get_results( "SELECT * FROM j_users_info WHERE user_info_id='{$username}' OR user_username='{$username}' AND user_password='{$password}'" );
+
+        return $get_user_info_by_credentials;
+
+    }
+
     public function get_users_transactions() {
 
         $get_user_transaction = $this->wpdb->get_results( "SELECT * FROM j_users_transactions" );
 
         return $get_user_transaction;
+
+    }
+
+    public function get_user_transaction_by_id( $user_id ) {
+
+        $get_user_transaction_by_id = $this->wpdb->get_results( "SELECT * FROM j_users_transactions WHERE user_info_id='{$user_id}'" );
+
+        return $get_user_transaction_by_id;
 
     }
 
@@ -35,21 +59,27 @@ class User_Data {
 
     }
 
-    public function get_user_info_by_id( $user_id ) {
+    public function get_user_withdrawal_status_by_id( $user_id ) {
 
-        $get_user_info_by_id = $this->wpdb->get_results( "SELECT * FROM j_users_info WHERE user_info_id = '{$user_id}'" );
+        $get_user_withdrawal_status_by_id = $this->wpdb->get_results( "SELECT * FROM j_users_withdrawal_status WHERE user_info_id='{$user_id}'" );
 
-        return $get_user_info_by_id;
+        return $get_user_withdrawal_status_by_id;
+
+    }
+
+    public function get_user_earnings( $user_id ) {
+
+        $get_user_earnings = $this->wpdb->get_results( "SELECT * FROM j_users_earnings WHERE user_info_id='{$user_id}'" );
+
+        return $get_user_earnings;
 
     }
 
     public function get_user_downline_by_id( $user_id ) {
 
-        $user_queue = [];
+        $get_user_downline_by_id = $this->wpdb->get_results( "SELECT user_dl_left_id, user_dl_right_id FROM j_users_info WHERE user_info_id='{$user_id}'" );
 
-        $get_user_downlines = $this->wpdb->get_results( "SELECT user_upline_id FROM j_users_info WHERE user_info_id = '{$user_id}'" );
-
-        return $get_user_downlines;
+        return $get_user_downline_by_id;
 
     }
 

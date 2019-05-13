@@ -102,6 +102,9 @@ body {
   color: #FFF;
 }
 
+#binary .binary_downlines .downline_user {
+  font-size: 24px;
+}
 #binary .binary_downlines .downline_user._user-empty {
   color: #d2d2d2;
 }

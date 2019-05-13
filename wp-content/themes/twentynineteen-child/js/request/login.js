@@ -19,11 +19,11 @@ $(document).ready(function ($) {
 
             $('#login #login_msg').remove();
 
-            if (report['status'] == 'success') {
+            if ( report[ 'status' ] == 'success' ) {
 
-                window.location.href = '/juncture/dashboard/?user_id=' + report[ 'user_id' ] + '&user_role=' + report[ 'user_role' ];
+                window.location.href = '/juncture/dashboard/?user_id=' + report[ 'user_id' ];
 
-            } else if (report['status'] == 'failed') {
+            } else if ( report[ 'status' ] == 'failed' ) {
 
                 $( '#login' ).prepend( '<div id="login_msg" class="alert alert-danger" role="alert">Oops! Login Fails. Please try again.<small style="display: block; font-size: 12px">' + report['message'] + '</small></div>' );
 

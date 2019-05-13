@@ -1,14 +1,16 @@
 <?php
 
 /*
- Template Name: Admin Users Page
+ Template Name: Users Page
  */
 
 include_once './wp-content/themes/twentynineteen-child/Objects/UserData.php';
 
-wp_head();
+$user_id = $_GET[ 'user_id' ];
 
-$user_role = $User_Data->get_user_info_by_id( get_transient( 'user_id' ) );
+$user_role = $User_Data->get_user_info_by_id( get_transient( 'user_id_' . $user_id ) );
+
+wp_head();
 
 if ( $user_role[0]->user_role == 'admin' ) {
 

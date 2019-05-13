@@ -6,7 +6,7 @@ $( document ).ready( function( $ ) {
         type: "readonly"
     },
     {
-        data: "user_id",
+        data: "user_info_id",
         title: "User ID"
     },
     {
@@ -18,17 +18,16 @@ $( document ).ready( function( $ ) {
         title: "Transaction Date"
     }];
 
-    var myTable;
+    var adminDataTable,
+        regularDataTable;
 
-    // local URL's are not allowed
-    var url_ws_mock_get = '/juncture/wp-content/themes/twentynineteen-child/request/admin_transactions.php';
-    // var url_ws_mock_ok = 'https://raw.githubusercontent.com/luca-vercelli/DataTable-AltEditor/master/example/03_ajax_objects/mock_svc_ok.json';
+    var request_admin_transaction_url = '/juncture/wp-content/themes/twentynineteen-child/request/admin_transactions.php',
+        request_regular_transaction_url = '/juncture/wp-content/themes/twentynineteen-child/request/regular_transactions.php';
 
-    myTable = $('#_user-table-list').DataTable({
+    adminDataTable = $('#_user-admin-table-list').DataTable({
             "sPaginationType": "full_numbers",
             ajax: {
-                url : url_ws_mock_get,
-                // our data is an array of objects, in the root node instead of /data node, so we need 'dataSrc' parameter
+                url : request_admin_transaction_url,
                 dataSrc : ''
             },
             columns: columnDefs,
@@ -36,4 +35,18 @@ $( document ).ready( function( $ ) {
             responsive: true
     });
 
-} );
+    regularDataTable = $('#_user-regular-table-list').DataTable({
+        "sPaginationType": "full_numbers",
+        ajax: {
+            url : request_regular_transaction_url,
+            dataSrc : '',
+            data : {
+                user_id : $user_id
+            }
+        },
+        columns: columnDefs,
+        select: 'single',
+        responsive: true
+    });
+
+});

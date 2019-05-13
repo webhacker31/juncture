@@ -1,4 +1,4 @@
-<div id="__admin">
+<div id="__regular">
     <header>
         <nav class="navbar fixed-top navbar-expand-lg navbar-light white scrolling-navbar">
             <div class="container-fluid">
@@ -45,8 +45,10 @@
             <div class="list-group list-group-flush">
                 <a href="#" class="list-group-item list-group-item-action waves-effect">
                     <i class="fas fa-chart-pie mr-3"></i>Dashboard</a>
-                <a href="http://localhost/juncture/dashboard/users/?user_id=<?php echo $_GET[ 'user_id' ] ?>" class="list-group-item list-group-item-action waves-effect">
-                    <i class="fas fa-user mr-3"></i>Users</a>
+                <a href="http://localhost/juncture/dashboard/binary/?user_id=<?php echo $_GET[ 'user_id' ] ?>" class="list-group-item list-group-item-action waves-effect">
+                    <i class="fas fa-user mr-3"></i>Binary</a>
+                <a href="http://localhost/juncture/dashboard/earnings/?user_id=<?php echo $_GET[ 'user_id' ] ?>" class="list-group-item list-group-item-action waves-effect">
+                    <i class="fas fa-wallet mr-3"></i>Earnings</a>
                 <a href="http://localhost/juncture/dashboard/transaction/?user_id=<?php echo $_GET[ 'user_id' ] ?>" class="list-group-item active waves-effect">
                     <i class="fas fa-table mr-3"></i>Transactions</a>
                 <a href="http://localhost/juncture/dashboard/withdrawal/?user_id=<?php echo $_GET[ 'user_id' ] ?>" class="list-group-item list-group-item-action waves-effect">
@@ -57,7 +59,7 @@
 
     <main class="pt-5 mx-lg-5">
         <div class="mt-5">
-            <table id="_user-admin-table-list" class="dataTable table table-striped mt-5" cellpadding="0" cellspacing="0" border="0"></table>
+            <table id="_user-regular-table-list" class="dataTable table table-striped mt-5" cellpadding="0" cellspacing="0" border="0"></table>
         </div>
     </main>
 </div>
