@@ -59,66 +59,39 @@
 
     <main class="pt-5 mx-lg-5">
         <div id="binary" class="mt-5"></div>
-        <!-- <div id="binary" class="mt-5">
-            <div class="binary_head text-center mb-3 py-3">
-                <i class="fas fa-male"></i>
-            </div>
-            <div class="binary_downlines">
-                <div class="container-fluid">
+        <div id="earnings-table" class="mt-5">
+            <table id="_user-regular-table-list" class="dataTable table table-striped mt-5" cellpadding="0" cellspacing="0" border="0"></table>
+            <div class="mt-5 w-50">
+                <div class="container">
                     <div class="row">
-                        <div class="col-6">
-                            <div class="d-flex flex-row-reverse justify-content-around mb-3">
-                                <i class="downline_user _user-left fas fa-male" data-toggle="tooltip" data-placement="top" title="0000001"></i>
+                        <div class="col">
+                            <div class="header-earning border-bottom font-weight-bold pb-1 mb-1">
+                                Earning Type
                             </div>
-                            <div class="d-flex flex-row-reverse justify-content-around mb-3">
-                                <i class="downline_user _user-left fas fa-male" data-toggle="tooltip" data-placement="top" title="0000002"></i>
-                                <i class="downline_user _user-left fas fa-male" data-toggle="tooltip" data-placement="top" title="0000003"></i>
-                            </div>
-                            <div class="d-flex flex-row-reverse justify-content-around mb-3">
-                                <i class="downline_user _user-left fas fa-male"></i>
-                                <i class="downline_user _user-left _user-empty fas fa-male"></i>
-                                <i class="downline_user _user-left fas fa-male"></i>
-                                <i class="downline_user _user-left _user-empty fas fa-male"></i>
-                            </div>
-                            <div class="d-flex flex-row-reverse justify-content-around mb-3">
-                                <i class="downline_user _user-left fas fa-male"></i>
-                                <i class="downline_user _user-left _user-empty fas fa-male"></i>
-                                <i class="downline_user _user-left fas fa-male"></i>
-                                <i class="downline_user _user-left _user-empty fas fa-male"></i>
-                                <i class="downline_user _user-left fas fa-male"></i>
-                                <i class="downline_user _user-left _user-empty fas fa-male"></i>
-                                <i class="downline_user _user-left fas fa-male"></i>
-                                <i class="downline_user _user-left _user-empty fas fa-male"></i>
+                            <div class="earning-type">
+                                <p>Pairing</p>
                             </div>
                         </div>
-                        <div class="col-6">
-                            <div class="d-flex flex-row mb-3">
-                                <i class="downline_user _user-right fas fa-male"></i>
+                        <div class="col">
+                            <div class="header-earning border-bottom font-weight-bold pb-1 mb-1">
+                                Amount
                             </div>
-                            <div class="d-flex flex-row mb-3">
-                                <i class="downline_user _user-right fas fa-male"></i>
-                                <i class="downline_user _user-right fas fa-male"></i>
+                            <div class="earning-amount">
+                                <p>1000</p>
                             </div>
-                            <div class="d-flex flex-row mb-3">
-                                <i class="downline_user _user-right fas fa-male"></i>
-                                <i class="downline_user _user-right fas fa-male"></i>
-                                <i class="downline_user _user-right _user-empty fas fa-male"></i>
-                                <i class="downline_user _user-right _user-empty fas fa-male"></i>
-                            </div>
-                            <div class="d-flex flex-row mb-3">
-                                <i class="downline_user _user-right fas fa-male"></i>
-                                <i class="downline_user _user-right fas fa-male"></i>
-                                <i class="downline_user _user-right _user-empty fas fa-male"></i>
-                                <i class="downline_user _user-right _user-empty fas fa-male"></i>
-                                <i class="downline_user _user-right fas fa-male"></i>
-                                <i class="downline_user _user-right fas fa-male"></i>
-                                <i class="downline_user _user-right _user-empty fas fa-male"></i>
-                                <i class="downline_user _user-right _user-empty fas fa-male"></i>
+                            <div class="total-earnings mt-3">
+                                <p class="border-bottom font-weight-bold pb-1 mb-1">Total Earnings</p>
+                                <div class="earnings">
+                                    <p>1000</p>
+                                </div>
                             </div>
                         </div>
                     </div>
+                    <div class="row justify-content-end">
+                        <button class="btn btn-primary">Request Withdraw</button>
+                    </div>
                 </div>
             </div>
-        </div> -->
+        </div>
     </main>
 </div>

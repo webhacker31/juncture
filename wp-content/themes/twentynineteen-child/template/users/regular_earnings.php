@@ -55,40 +55,5 @@
             </div>
         </div>
     </header>
-    <main class="pt-5 mx-lg-5">
-        <div class="mt-5">
-            <table id="_user-regular-table-list" class="dataTable table table-striped mt-5" cellpadding="0" cellspacing="0" border="0"></table>
-        </div>
-        <div class="mt-5 w-50">
-            <div class="container">
-                <div class="row">
-                    <div class="col">
-                        <div class="header-earning border-bottom font-weight-bold pb-1 mb-1">
-                            Earning Type
-                        </div>
-                        <div class="earning-type">
-                            <p>Pairing</p>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="header-earning border-bottom font-weight-bold pb-1 mb-1">
-                            Amount
-                        </div>
-                        <div class="earning-amount">
-                            <p>1000</p>
-                        </div>
-                        <div class="total-earnings mt-3">
-                            <p class="border-bottom font-weight-bold pb-1 mb-1">Total Earnings</p>
-                            <div class="earnings">
-                                <p>1000</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row justify-content-end">
-                    <button class="btn btn-primary">Request Withdraw</button>
-                </div>
-            </div>
-        </div>
-    </main>
+    <main class="pt-5 mx-lg-5"></main>
 </div>

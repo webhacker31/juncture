@@ -27,3 +27,4 @@ wp_footer(); ?>
 
 <script type="text/javascript">var $user_id = "<?php echo $user_id; ?>"</script>
 <script src="/juncture/wp-content/themes/twentynineteen-child/js/binary.js" type="text/javascript"></script>
+<script src="/juncture/wp-content/themes/twentynineteen-child/js/earning_datatable.js" type="text/javascript"></script>
