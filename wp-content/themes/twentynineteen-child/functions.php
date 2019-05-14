@@ -40,6 +40,7 @@ function _enqueue_scripts() {
     wp_enqueue_script( 'datatable-select-js', 'https://cdn.datatables.net/select/1.1.2/js/dataTables.select.js', array(), false, true );
     wp_enqueue_script( 'datatable-responsive-js', 'http://cdn.datatables.net/responsive/2.0.2/js/dataTables.responsive.js', array(), false, true );
     wp_enqueue_script( 'datatable-js', get_stylesheet_directory_uri() . '/js/data-table-editor.js', array(), false, true );
+    wp_enqueue_script( 'google-chart-core-js', 'https://www.gstatic.com/charts/loader.js', array(), false, true );
     wp_enqueue_script( 'custom-core-js', get_stylesheet_directory_uri() . '/js/init.js', array(), false, true );
 
 }

@@ -58,7 +58,8 @@
     </header>
 
     <main class="pt-5 mx-lg-5">
-        <div id="binary" class="mt-5">
+        <div id="binary" class="mt-5"></div>
+        <!-- <div id="binary" class="mt-5">
             <div class="binary_head text-center mb-3 py-3">
                 <i class="fas fa-male"></i>
             </div>
@@ -118,6 +119,6 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
     </main>
 </div>

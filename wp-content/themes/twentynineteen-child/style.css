@@ -102,6 +102,9 @@ body {
   color: #FFF;
 }
 
+#binary table {
+  border-collapse: separate !important;
+}
 #binary .binary_downlines .downline_user {
   font-size: 24px;
 }
