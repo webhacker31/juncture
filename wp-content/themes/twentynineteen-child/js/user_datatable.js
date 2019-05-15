@@ -19,59 +19,67 @@ $( document ).ready( function( $ ) {
     },
     {
         data: "user_referral_id",
-        title: "Referral ID."
+        title: "Referral ID"
+    },
+    {
+        data: "user_upline_id",
+        title: "Upline ID"
+    },
+    {
+        data: "user_authentication_code",
+        title: "Authentication Code",
+        type: "readonly"
     }];
 
     var myTable;
 
-    // local URL's are not allowed
-    var url_ws_mock_get = '/juncture/wp-content/themes/twentynineteen-child/request/admin_users.php';
-    // var url_ws_mock_ok = 'https://raw.githubusercontent.com/luca-vercelli/DataTable-AltEditor/master/example/03_ajax_objects/mock_svc_ok.json';
+    var request_user_info = '/juncture/wp-content/themes/twentynineteen-child/request/admin_users.php';
+    var request_add = '/juncture/wp-content/themes/twentynineteen-child/request/add_user.php';
 
     myTable = $('#_user-table-list').DataTable({
             "sPaginationType": "full_numbers",
             ajax: {
-                url : url_ws_mock_get,
-                // our data is an array of objects, in the root node instead of /data node, so we need 'dataSrc' parameter
+                url : request_user_info,
                 dataSrc : ''
             },
             columns: columnDefs,
-            dom: 'Bfrtip',        // Needs button container
+            dom: 'Bfrtip',
             select: 'single',
             responsive: true,
-            altEditor: true,     // Enable altEditor
+            altEditor: true,
             buttons: [{
                 text: 'Add',
-                name: 'add'        // do not change name
+                name: 'add'
             },
             {
-                extend: 'selected', // Bind to Selected row
+                extend: 'selected',
                 text: 'Edit',
-                name: 'edit'        // do not change name
+                name: 'edit'
             },
             {
-                extend: 'selected', // Bind to Selected row
+                extend: 'selected',
                 text: 'Delete',
-                name: 'delete'      // do not change name
+                name: 'delete'
             },
             {
                 text: 'Refresh',
-                name: 'refresh'      // do not change name
+                name: 'refresh'
             }],
             onAddRow: function(datatable, rowdata, success, error) {
                 $.ajax({
-                    // a tipycal url would be / with type='PUT'
-                    url: url_ws_mock_ok,
-                    type: 'GET',
+                    url: request_add,
+                    type: 'POST',
                     data: rowdata,
                     success: success,
-                    error: error
+                    error: error,
+                    done: function ( response ) {
+                        console.log( response )
+                    }
                 });
             },
             onDeleteRow: function(datatable, rowdata, success, error) {
                 $.ajax({
-                    // a tipycal url would be /{id} with type='DELETE'
-                    url: url_ws_mock_ok,
+                    url: request_add,
                     type: 'GET',
                     data: rowdata,
                     success: success,
@@ -80,8 +88,7 @@ $( document ).ready( function( $ ) {
             },
             onEditRow: function(datatable, rowdata, success, error) {
                 $.ajax({
-                    // a tipycal url would be /{id} with type='POST'
-                    url: url_ws_mock_ok,
+                    url: request_add,
                     type: 'GET',
                     data: rowdata,
                     success: success,
