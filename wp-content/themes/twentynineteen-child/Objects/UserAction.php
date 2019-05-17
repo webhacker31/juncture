@@ -53,7 +53,9 @@ class User_Action {
                  * 
                  */
                 if ( !$is_username_exist ) {
+
                     $this->wpdb->query( "INSERT INTO j_users (user_id) VALUES (NULL)" );
+
                     $users_last_id = $this->wpdb->get_var( "SELECT user_id FROM j_users ORDER BY user_id DESC LIMIT 1" );
 
                     $add_user = $this->wpdb->insert(
@@ -69,37 +71,24 @@ class User_Action {
                                                         )
                                                     );
 
-                    // return $add_user;
-
-                    /**
-                     * If insertion success
-                     * 
-                     */
-                    if ($user_insert_data) {
-                        $status = [
-                            'status' => 'success',
-                            'message' => 'User successfully registered.'
-                        ];
-                    } else {
-                        $status = [
-                            'status' => 'failed',
-                            'message' => 'Registration Failed.'
-                        ];
-                    }
+                    return [
+                        'status' => 'success',
+                        'message' => 'User successfully registered.'
+                    ];
                 } else {
-                    $status = [
+                    return [
                         'status' => 'failed',
                         'message' => 'Username already exist.'
                     ];
                 }
             } else {
-                $status = [
+                return [
                     'status' => 'failed',
                     'message' => "Upline ID doesn't exist."
                 ];
             }
         } else {
-            $status = [
+            return [
                 'status' => 'failed',
                 'message' => "Referral ID doesn't exist."
             ];
