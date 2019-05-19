@@ -33,8 +33,10 @@ $( document ).ready( function( $ ) {
 
     var myTable;
 
-    var request_user_info = '/juncture/wp-content/themes/twentynineteen-child/request/admin_users.php';
-    var request_add = '/juncture/wp-content/themes/twentynineteen-child/request/add_user.php';
+    var request_user_info = '/juncture/wp-content/themes/twentynineteen-child/request/admin_users.php',
+        request_add = '/juncture/wp-content/themes/twentynineteen-child/request/add_user.php',
+        request_delete = '/juncture/wp-content/themes/twentynineteen-child/request/delete_user.php'
+        request_update = '/juncture/wp-content/themes/twentynineteen-child/request/update_user.php';
 
     myTable = $('#_user-table-list').DataTable({
             "sPaginationType": "full_numbers",
@@ -71,15 +73,12 @@ $( document ).ready( function( $ ) {
                     type: 'POST',
                     data: rowdata,
                     success: success,
-                    error: error,
-                    done: function ( response ) {
-                        console.log( response )
-                    }
+                    error: error
                 });
             },
             onDeleteRow: function(datatable, rowdata, success, error) {
                 $.ajax({
-                    url: request_add,
+                    url: request_delete,
                     type: 'GET',
                     data: rowdata,
                     success: success,
@@ -88,7 +87,7 @@ $( document ).ready( function( $ ) {
             },
             onEditRow: function(datatable, rowdata, success, error) {
                 $.ajax({
-                    url: request_add,
+                    url: request_update,
                     type: 'GET',
                     data: rowdata,
                     success: success,

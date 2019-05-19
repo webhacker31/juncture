@@ -48,8 +48,7 @@
                 <a href="http://localhost/juncture/dashboard/users/?user_id=<?php echo $_GET[ 'user_id' ] ?>" class="list-group-item list-group-item-action waves-effect">
                     <i class="fas fa-user mr-3"></i>Users</a>
                 <a href="http://localhost/juncture/dashboard/transaction/?user_id=<?php echo $_GET[ 'user_id' ] ?>" class="list-group-item active waves-effect">
-                    <i class="fas fa-table mr-3"></i>Transactions
-                    -`          /a>
+                    <i class="fas fa-table mr-3"></i>Transactions</a>
                 <a href="http://localhost/juncture/dashboard/withdrawal/?user_id=<?php echo $_GET[ 'user_id' ] ?>" class="list-group-item list-group-item-action waves-effect">
                     <i class="fas fa-coins mr-3"></i>Withdrawals</a>
             </div>
