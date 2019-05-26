@@ -10,23 +10,25 @@ $user_id = $_GET[ 'user_id' ];
 
 $user_role = $User_Data->get_user_info_by_id( get_transient( 'user_id_' . $user_id ) );
 
-wp_head();
+if ( strtoupper( $user_role[0]->user_role ) == 'ADMIN' ) {
 
-if ( $user_role[0]->user_role == 'admin' ) {
+	wp_head();
 
 	include_once( 'users/admin.php' );
 
-} else if ( $user_role[0]->user_role == 'regular' ) {
+	wp_footer();
+
+} else if ( strtoupper( $user_role[0]->user_role ) == 'REGULAR' ) {
+
+	wp_head();
 
 	include_once( 'users/regular.php' );
+
+	wp_footer();
 
 } else {
 
 	header( 'Location: http://localhost/juncture/' );
 	die();
 
-}
-
-wp_footer();
-
-?>
+} ?>

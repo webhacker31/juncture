@@ -160,6 +160,55 @@ class User_Action {
 
     }
 
+    public function add_withdrawal_request( $user_id, $pairing_data ) {
+
+        $tax = 10;
+        $processing_fee = 50;
+        $travel_incentive = 100;
+        $pairing_bonus_amount = 500;
+
+        $total_withdrawal_amount = count( $pairing_data ) * ( $pairing_bonus_amount - ( ( ( $tax / 100 ) * 100 ) + $travel_incentive + $processing_fee) );
+        $min_withdrawal_amount = 500;
+
+        if ( $total_withdrawal_amount > $min_withdrawal_amount ) {
+
+            $this->wpdb->insert(
+                'j_users_withdrawal_status',
+                array(
+                    'user_info_id'          => $user_id,
+                    'withdrawal_amount'     => $total_withdrawal_amount,
+                    'withdrawal_status'     => 'Pending'
+                    )
+                );
+
+            $withdrawal_last_id = $this->wpdb->get_var( "SELECT withdrawal_id FROM j_users_withdrawal_status ORDER BY withdrawal_id DESC LIMIT 1" );
+
+            foreach ( $pairing_data as $user_ids ) {
+
+                $this->wpdb->insert(
+                    'j_users_earnings',
+                    array(
+                        'withdrawal_id'     => $withdrawal_last_id,
+                        'user_info_id'      => $user_id,
+                        'earning_pair_left' => $user_ids[ 0 ],
+                        'earning_pair_right' => $user_ids[ 1 ],
+                        'earning_type'      => 'Pairing',
+                        'earning_amount'     => '500'
+                        )
+                    );
+
+            }
+
+        } else {
+
+            return [
+                'status' => 'Failed',
+                'message' => 'Withdrawal amount not reached with the minimum withdrawal amount of 500.'
+            ];
+
+        }
+    }
+
 }
 
 $User_Action = new User_Action;

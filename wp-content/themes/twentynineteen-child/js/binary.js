@@ -34,4 +34,67 @@ $( document ).ready( function() {
 
     }
 
+    var columnDefs = [{
+        data: "earning_type",
+        title: "Earning Type"
+    },
+    {
+        data: "earning_pair_left",
+        title: "Pair Left"
+    },
+    {
+        data: "earning_pair_right",
+        title: "Pair Right"
+    },
+    {
+        data: "earning_amount",
+        title: "Earning Amount"
+    }];
+
+    var regularDataTable;
+
+    var request_regular_earning_url = '/juncture/wp-content/themes/twentynineteen-child/request/regular_pairing.php';
+
+    regularDataTable = $('#_user-regular-table-list').DataTable({
+        "sPaginationType": "full_numbers",
+        ajax: {
+            url : request_regular_earning_url,
+            dataSrc : '',
+            data : {
+                user_id : $user_id
+            }
+        },
+        columns: columnDefs,
+        select: 'single',
+        responsive: true
+    });
+
+    $( '#earnings-table ._request-withdrawal-btn' ).on( 'click', function() {
+
+        $.ajax({
+            url: request_regular_earning_url,
+            data : {
+                user_id : $user_id,
+                purpose : 'request_withdrawal'
+            },
+            success: function( response ) {
+
+                $.ajax({
+                    url: '/juncture/wp-content/themes/twentynineteen-child/request/add_withdrawal_request.php',
+                    data: {
+                        user_id : $user_id,
+                        pairing_data: response
+                    },
+                    success: function( response ) {
+
+                        // console.log( response );
+
+                    }
+                });
+
+            }
+        })
+
+    });
+
 });
