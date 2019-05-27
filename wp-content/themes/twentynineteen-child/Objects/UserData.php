@@ -47,6 +47,12 @@ class User_Data {
 
         $get_user_transaction = $this->wpdb->get_results( "SELECT * FROM j_users_transactions" );
 
+        foreach ( $get_user_transaction as &$data ) {
+
+            $data->user_info_id = $data->user_info_id . ' - ' . strtoupper( $this->get_username_by_id( $data->user_info_id ) );
+
+        }
+
         return $get_user_transaction;
 
     }
@@ -78,6 +84,13 @@ class User_Data {
     public function get_user_earnings( $user_id ) {
 
         $get_user_earnings = $this->wpdb->get_results( "SELECT * FROM j_users_earnings WHERE user_info_id='{$user_id}'" );
+        
+        foreach ( $get_user_earnings as &$data ) {
+
+            $data->earning_pair_left = $data->earning_pair_left . ' - ' . strtoupper( $this->get_username_by_id( $data->earning_pair_left ) );
+            $data->earning_pair_right = $data->earning_pair_right . ' - ' . strtoupper( $this->get_username_by_id( $data->earning_pair_right ) );
+
+        }
 
         return $get_user_earnings;
 

@@ -6,12 +6,16 @@ $( document ).ready( function( $ ) {
         type: "readonly"
     },
     {
-        data: "user_info_id",
-        title: "User ID"
-    },
-    {
         data: "earning_type",
         title: "Earning Type"
+    },
+    {
+        data: "earning_pair_left",
+        title: "Pairing Left"
+    },
+    {
+        data: "earning_pair_right",
+        title: "Pairing Right"
     },
     {
         data: "earning_amount",

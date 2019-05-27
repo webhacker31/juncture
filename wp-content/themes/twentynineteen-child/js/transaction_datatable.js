@@ -6,8 +6,16 @@ $( document ).ready( function( $ ) {
         type: "readonly"
     },
     {
+        data: "withdrawal_id",
+        title: "Withdrawal ID"
+    },
+    {
         data: "user_info_id",
         title: "User ID"
+    },
+    {
+        data: "transaction_amount",
+        title: "Transaction Amount"
     },
     {
         data: "transaction_type",

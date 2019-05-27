@@ -7,19 +7,24 @@ $( document ).ready( function( $ ) {
     },
     {
         data: "user_info_id",
-        title: "User ID"
+        title: "User ID",
+        type: "readonly"
     },
     {
         data: "withdrawal_amount",
-        title: "Withdrawal Amount"
+        title: "Withdrawal Amount",
+        type: "readonly"
     },
     {
         data: "withdrawal_time",
-        title: "Withdrawal Time"
+        title: "Withdrawal Time",
+        type: "readonly"
     },
     {
         data: "withdrawal_status",
-        title: "Withdrawal Status"
+        title: "Withdrawal Status",
+        type: 'select',
+        options: ['Approve', 'Reject']
     }];
 
     var adminDataTable,
@@ -28,7 +33,7 @@ $( document ).ready( function( $ ) {
     var request_admin_withdrawal_url = '/juncture/wp-content/themes/twentynineteen-child/request/admin_withdrawals.php',
         request_regular_withdrawal_url = '/juncture/wp-content/themes/twentynineteen-child/request/regular_withdrawals.php';
 
-    // var url_ws_mock_ok = 'https://raw.githubusercontent.com/luca-vercelli/DataTable-AltEditor/master/example/03_ajax_objects/mock_svc_ok.json';
+    var request_update_withdrawal = request_update_withdrawal = '/juncture/wp-content/themes/twentynineteen-child/request/update_withdrawal.php';
 
     adminDataTable = $('#_user-admin-table-list').DataTable({
             "sPaginationType": "full_numbers",
@@ -43,17 +48,12 @@ $( document ).ready( function( $ ) {
             altEditor: true,
             buttons: [{
                 extend: 'selected',
-                text: 'Approve',
-                name: 'edit'
-            },
-            {
-                extend: 'selected',
-                text: 'Reject',
+                text: 'Update',
                 name: 'edit'
             }],
             onEditRow: function(datatable, rowdata, success, error) {
                 $.ajax({
-                    url: url_ws_mock_ok,
+                    url: request_update_withdrawal,
                     type: 'GET',
                     data: rowdata,
                     success: success,

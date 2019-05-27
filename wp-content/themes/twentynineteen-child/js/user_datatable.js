@@ -35,7 +35,7 @@ $( document ).ready( function( $ ) {
 
     var request_user_info = '/juncture/wp-content/themes/twentynineteen-child/request/admin_users.php',
         request_add = '/juncture/wp-content/themes/twentynineteen-child/request/add_user.php',
-        request_delete = '/juncture/wp-content/themes/twentynineteen-child/request/delete_user.php'
+        request_delete = '/juncture/wp-content/themes/twentynineteen-child/request/delete_user.php',
         request_update = '/juncture/wp-content/themes/twentynineteen-child/request/update_user.php';
 
     myTable = $('#_user-table-list').DataTable({

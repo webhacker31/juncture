@@ -214,6 +214,52 @@ class User_Action {
         }
     }
 
+    public function add_transaction_data( $withdrawal_id, $user_id, $amount, $type ) {
+
+        var_dump( $withdrawal_id );
+        var_dump( $user_id );
+        var_dump( $amount );
+        var_dump( $type );
+
+        $this->wpdb->insert(
+            'j_users_transactions',
+            array(
+                'withdrawal_id'         => $withdrawal_id,
+                'user_info_id'          => $user_id,
+                'transaction_amount'    => $amount,
+                'transaction_type'      => strtoupper( $type )
+                )
+            );
+
+    }
+
+    public function update_withdrawal_status( $withdrawal_status_info ) {
+
+        $this->wpdb->update( 
+            'j_users_withdrawal_status', 
+            array( 
+                'withdrawal_status'     => ( $withdrawal_status_info[ 'withdrawal_status' ] == "APPROVE" ) ? "APPROVED" : "REJECTED",
+            ), 
+            array( 'withdrawal_id' => $withdrawal_status_info[ 'withdrawal_id' ] )
+        );
+
+        $last_updated_withdrawal_status = $this->wpdb->get_results( 'SELECT * FROM j_users_withdrawal_status WHERE withdrawal_id=' . $withdrawal_status_info[ 'withdrawal_id' ] . '' );
+
+        return [
+            'withdrawal_id'     => $last_updated_withdrawal_status[0]->withdrawal_id,
+            'user_info_id'      => $last_updated_withdrawal_status[0]->user_info_id,
+            'withdrawal_amount' => $last_updated_withdrawal_status[0]->withdrawal_amount,
+            'withdrawal_time'   => $last_updated_withdrawal_status[0]->withdrawal_time,
+            'withdrawal_status' => $last_updated_withdrawal_status[0]->withdrawal_status
+        ];
+
+        // if ( $withdrawal_status_info[ 'withdrawal_status' ] == "APPROVE" ) {
+
+            $this->add_transaction_data( $last_updated_withdrawal_status[0]->withdrawal_id, $last_updated_withdrawal_status[0]->user_info_id, $last_updated_withdrawal_status[0]->withdrawal_amount, 'Withdrawal' );
+
+        // }
+    }
+
 }
 
 $User_Action = new User_Action;

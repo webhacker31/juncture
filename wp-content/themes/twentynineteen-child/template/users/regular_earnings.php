@@ -55,5 +55,9 @@
             </div>
         </div>
     </header>
-    <main class="pt-5 mx-lg-5"></main>
+    <main class="pt-5 mx-lg-5">
+        <div class="mt-5">
+            <table id="_user-regular-table-list" class="dataTable table table-striped mt-5" cellpadding="0" cellspacing="0" border="0"></table>
+        </div>
+    </main>
 </div>
