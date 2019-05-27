@@ -13,8 +13,6 @@ $( document ).ready( function() {
             }
         }).done( function( response ) {
 
-            console.log( JSON.parse( response ) );
-
             var data = new google.visualization.DataTable();
     
             data.addColumn('string', 'Name');
@@ -83,7 +81,7 @@ $( document ).ready( function() {
                     url: '/juncture/wp-content/themes/twentynineteen-child/request/add_withdrawal_request.php',
                     data: {
                         user_id : $user_id,
-                        pairing_data: response
+                        pairing_data: JSON.parse( response )
                     },
                     success: function( response ) {
 

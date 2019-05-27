@@ -199,6 +199,11 @@ class User_Action {
 
             }
 
+            return [
+                'status' => 'Success',
+                'message' => 'Withdrawal Request has now been processed.'
+            ];
+
         } else {
 
             return [

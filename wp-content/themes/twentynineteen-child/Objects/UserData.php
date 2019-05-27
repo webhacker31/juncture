@@ -217,7 +217,7 @@ class User_Data {
 
                 if ( $pairing_group[ $index ] != "Available" && $pairing_group[ count( $pairing_group ) - ( $index + 1 ) ] != "Available") {
 
-                    $is_pairing_exist = $this->wpdb->get_var( 'SELECT COUNT(*) FROM j_users_earnings WHERE earning_user_left_id="' . $pairing_group[ $index ] . '" OR earning_user_right_id="' . $pairing_group[ $index ] . '"' );
+                    $is_pairing_exist = $this->wpdb->get_var( 'SELECT COUNT(*) FROM j_users_earnings WHERE earning_pair_left="' . $pairing_group[ $index ] . '" OR earning_pair_right="' . $pairing_group[ $index ] . '"' );
 
                     if ( !$is_pairing_exist ) {
 
