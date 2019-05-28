@@ -11,48 +11,63 @@ class User_Action {
 
     }
 
+    public function generateRandomString( $length = 10 ) {
+
+        $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $charactersLength = strlen( $characters );
+        $randomString = '';
+
+        for ( $i = 0; $i < $length; $i++ ) {
+            $randomString .= $characters[ rand( 0, $charactersLength - 1 ) ];
+        }
+
+        return $randomString;
+
+    }
+
+    public function is_referral_id_exist( $user_referral_id ) {
+
+        $is_referral_id_exist = $this->wpdb->get_var( "SELECT COUNT(*) FROM j_users WHERE user_id='{$user_referral_id}'" );
+
+        return $is_referral_id_exist;
+
+    }
+
+    public function is_upline_id_exist( $user_upline_id ) {
+
+        $is_upline_id_exist = $this->wpdb->get_var( "SELECT COUNT(*) FROM j_users WHERE user_id='{$user_upline_id}'" );
+
+        return $is_upline_id_exist;
+
+    }
+
+    public function username_limit_check( $user_username ) {
+
+        $is_username_exist = $this->wpdb->get_var( "SELECT COUNT(*) FROM j_users_info WHERE user_username='{$user_username}'" );
+
+        return $is_username_exist;
+
+    }
+
     public function add_user( $user_data ) {
 
-        function generateRandomString( $length = 10 ) {
+        $return_failed_msg = [
+            'user_info_id' => '',
+            'user_username' => '',
+            'user_password' => '',
+            'user_role' => '',
+            'user_referral_id' => '',
+            'user_upline_id' => '',
+            'user_authentication_code' => '',
+            'status' => 'failed',
+            'message' => ""
+        ];
 
-            $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-            $charactersLength = strlen( $characters );
-            $randomString = '';
+        if ( $this->username_limit_check( $user_data[ "user_username" ] ) >= 7 ) {
 
-            for ( $i = 0; $i < $length; $i++ ) {
-                $randomString .= $characters[ rand( 0, $charactersLength - 1 ) ];
-            }
+            if ( $this->is_referral_id_exist( $user_data[ "user_referral_id" ] ) ) {
 
-            return $randomString;
-
-        }
-        
-        $is_referral_id_exist = $this->wpdb->get_var( "SELECT COUNT(*) FROM j_users WHERE user_id='{$user_data[ "user_referral_id" ]}'" );
-
-        /**
-         * Check if referral id exist
-         * if not then throw error message
-         * 
-         */
-        if ( $is_referral_id_exist ) {
-
-            $is_upline_id_exist = $this->wpdb->get_var( "SELECT COUNT(*) FROM j_users WHERE user_id='{$user_data[ "user_upline_id" ]}'" );
-
-            /**
-             * Check if upline id exist
-             * if not then throw error message
-             * 
-             */
-            if ( $is_upline_id_exist ) {
-
-                $is_username_exist = $this->wpdb->get_var( "SELECT COUNT(*) FROM j_users_info WHERE user_username='{$user_data[ "user_username" ]}'" );
-
-                /**
-                 * Check if username exist
-                 * if exist then throw error message
-                 * 
-                 */
-                if ( !$is_username_exist ) {
+                if ( $this>is_upline_id_exist( $user_data[ "user_upline_id" ] ) ) {
 
                     $this->wpdb->query( "INSERT INTO j_users (user_id) VALUES (NULL)" );
 
@@ -67,7 +82,7 @@ class User_Action {
                                             'user_role'                 => $user_data[ 'user_role' ],
                                             'user_referral_id'          => $user_data[ 'user_referral_id' ],
                                             'user_upline_id'            => $user_data[ 'user_upline_id' ],
-                                            'user_authentication_code'  => generateRandomString()
+                                            'user_authentication_code'  => $this->generateRandomString()
                                             )
                                         );
 
@@ -84,45 +99,30 @@ class User_Action {
                         'status' => 'success',
                         'message' => 'User successfully registered.'
                     ];
+
                 } else {
-                    return [
-                        'user_info_id' => '',
-                        'user_username' => '',
-                        'user_password' => '',
-                        'user_role' => '',
-                        'user_referral_id' => '',
-                        'user_upline_id' => '',
-                        'user_authentication_code' => '',
-                        'status' => 'failed',
-                        'message' => 'Username already exist.'
-                    ];
+
+                    $return_failed_msg['message'] = "Upline ID doesn't exist.";
+        
+                    return $return_failed_msg;
+
                 }
             } else {
-                return [
-                    'user_info_id' => '',
-                    'user_username' => '',
-                    'user_password' => '',
-                    'user_role' => '',
-                    'user_referral_id' => '',
-                    'user_upline_id' => '',
-                    'user_authentication_code' => '',
-                    'status' => 'failed',
-                    'message' => "Upline ID doesn't exist."
-                ];
+
+                $return_failed_msg['message'] = "Referral ID doesn't exist.";
+    
+                return $return_failed_msg;
+
             }
+
         } else {
-            return [
-                'user_info_id' => '',
-                'user_username' => '',
-                'user_password' => '',
-                'user_role' => '',
-                'user_referral_id' => '',
-                'user_upline_id' => '',
-                'user_authentication_code' => '',
-                'status' => 'failed',
-                'message' => "Referral ID doesn't exist."
-            ];
+
+            $return_failed_msg['message'] = 'Username exceeds the limit.';
+
+            return $return_failed_msg;
+
         }
+
     }
 
     public function delete_user( $user_id ) {
@@ -216,11 +216,6 @@ class User_Action {
 
     public function add_transaction_data( $withdrawal_id, $user_id, $amount, $type ) {
 
-        var_dump( $withdrawal_id );
-        var_dump( $user_id );
-        var_dump( $amount );
-        var_dump( $type );
-
         $this->wpdb->insert(
             'j_users_transactions',
             array(
@@ -245,6 +240,12 @@ class User_Action {
 
         $last_updated_withdrawal_status = $this->wpdb->get_results( 'SELECT * FROM j_users_withdrawal_status WHERE withdrawal_id=' . $withdrawal_status_info[ 'withdrawal_id' ] . '' );
 
+        if ( $withdrawal_status_info[ 'withdrawal_status' ] == "APPROVE" ) {
+
+            $this->add_transaction_data( $last_updated_withdrawal_status[0]->withdrawal_id, $last_updated_withdrawal_status[0]->user_info_id, $last_updated_withdrawal_status[0]->withdrawal_amount, 'Withdrawal' );
+
+        }
+
         return [
             'withdrawal_id'     => $last_updated_withdrawal_status[0]->withdrawal_id,
             'user_info_id'      => $last_updated_withdrawal_status[0]->user_info_id,
@@ -252,12 +253,6 @@ class User_Action {
             'withdrawal_time'   => $last_updated_withdrawal_status[0]->withdrawal_time,
             'withdrawal_status' => $last_updated_withdrawal_status[0]->withdrawal_status
         ];
-
-        // if ( $withdrawal_status_info[ 'withdrawal_status' ] == "APPROVE" ) {
-
-            $this->add_transaction_data( $last_updated_withdrawal_status[0]->withdrawal_id, $last_updated_withdrawal_status[0]->user_info_id, $last_updated_withdrawal_status[0]->withdrawal_amount, 'Withdrawal' );
-
-        // }
     }
 
 }
