@@ -5,7 +5,6 @@ jQuery(document).ready(function ($) {
         var username    = $('#register .register-form input[name="username"]').val(),
             password    = $('#register .register-form input[name="password"]').val(),
             role        = $('#register .register-form select[name="role"]').val(),
-            referralID  = $('#register .register-form input[name="referral_id"]').val(),
             uplineID      = $('#register .register-form input[name="upline_id"]').val(),
             position    = $('#register .register-form select[name="position"]').val();
 
@@ -16,7 +15,6 @@ jQuery(document).ready(function ($) {
                 username : username,
                 password : password,
                 role : role,
-                referral_id : referralID,
                 upline_id : uplineID,
                 position : position
             },

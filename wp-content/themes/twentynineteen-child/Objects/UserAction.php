@@ -25,14 +25,6 @@ class User_Action {
 
     }
 
-    public function is_referral_id_exist( $user_referral_id ) {
-
-        $is_referral_id_exist = $this->wpdb->get_var( "SELECT COUNT(*) FROM j_users WHERE user_id='{$user_referral_id}'" );
-
-        return $is_referral_id_exist;
-
-    }
-
     public function is_upline_id_exist( $user_upline_id ) {
 
         $is_upline_id_exist = $this->wpdb->get_var( "SELECT COUNT(*) FROM j_users WHERE user_id='{$user_upline_id}'" );
@@ -56,60 +48,48 @@ class User_Action {
             'user_username' => '',
             'user_password' => '',
             'user_role' => '',
-            'user_referral_id' => '',
             'user_upline_id' => '',
             'user_authentication_code' => '',
             'status' => 'failed',
             'message' => ""
         ];
 
-        if ( $this->username_limit_check( $user_data[ "user_username" ] ) >= 7 ) {
+        if ( $this->username_limit_check( $user_data[ "user_username" ] ) <= 7 ) {
 
-            if ( $this->is_referral_id_exist( $user_data[ "user_referral_id" ] ) ) {
+            if ( $this->is_upline_id_exist( $user_data[ "user_upline_id" ] ) ) {
 
-                if ( $this>is_upline_id_exist( $user_data[ "user_upline_id" ] ) ) {
+                $this->wpdb->query( "INSERT INTO j_users (user_id) VALUES (NULL)" );
 
-                    $this->wpdb->query( "INSERT INTO j_users (user_id) VALUES (NULL)" );
+                $user_last_id = $this->wpdb->get_var( "SELECT user_id FROM j_users ORDER BY user_id DESC LIMIT 1" );
 
-                    $user_last_id = $this->wpdb->get_var( "SELECT user_id FROM j_users ORDER BY user_id DESC LIMIT 1" );
+                $this->wpdb->insert(
+                                    'j_users_info',
+                                    array(
+                                        'user_info_id'              => $user_last_id,
+                                        'user_username'             => $user_data[ 'user_username' ],
+                                        'user_password'             => $user_data[ 'user_password' ],
+                                        'user_role'                 => $user_data[ 'user_role' ],
+                                        'user_upline_id'            => $user_data[ 'user_upline_id' ],
+                                        'user_authentication_code'  => $this->generateRandomString()
+                                        )
+                                    );
 
-                    $this->wpdb->insert(
-                                        'j_users_info',
-                                        array(
-                                            'user_info_id'              => $user_last_id,
-                                            'user_username'             => $user_data[ 'user_username' ],
-                                            'user_password'             => $user_data[ 'user_password' ],
-                                            'user_role'                 => $user_data[ 'user_role' ],
-                                            'user_referral_id'          => $user_data[ 'user_referral_id' ],
-                                            'user_upline_id'            => $user_data[ 'user_upline_id' ],
-                                            'user_authentication_code'  => $this->generateRandomString()
-                                            )
-                                        );
+                $last_inserted_user = $this->wpdb->get_results( "SELECT * FROM j_users_info WHERE user_info_id='{$user_last_id}'" );
 
-                    $last_inserted_user = $this->wpdb->get_results( "SELECT * FROM j_users_info WHERE user_info_id='{$user_last_id}'" );
+                return [
+                    'user_info_id' => $last_inserted_user[0]->user_info_id,
+                    'user_username' => $last_inserted_user[0]->user_username,
+                    'user_password' => $last_inserted_user[0]->user_password,
+                    'user_role' => $last_inserted_user[0]->user_role,
+                    'user_upline_id' => $last_inserted_user[0]->user_upline_id,
+                    'user_authentication_code' => $last_inserted_user[0]->user_authentication_code,
+                    'status' => 'success',
+                    'message' => 'User successfully registered.'
+                ];
 
-                    return [
-                        'user_info_id' => $last_inserted_user[0]->user_info_id,
-                        'user_username' => $last_inserted_user[0]->user_username,
-                        'user_password' => $last_inserted_user[0]->user_password,
-                        'user_role' => $last_inserted_user[0]->user_role,
-                        'user_referral_id' => $last_inserted_user[0]->user_referral_id,
-                        'user_upline_id' => $last_inserted_user[0]->user_upline_id,
-                        'user_authentication_code' => $last_inserted_user[0]->user_authentication_code,
-                        'status' => 'success',
-                        'message' => 'User successfully registered.'
-                    ];
-
-                } else {
-
-                    $return_failed_msg['message'] = "Upline ID doesn't exist.";
-        
-                    return $return_failed_msg;
-
-                }
             } else {
 
-                $return_failed_msg['message'] = "Referral ID doesn't exist.";
+                $return_failed_msg['message'] = "Upline ID doesn't exist.";
     
                 return $return_failed_msg;
 
@@ -140,7 +120,6 @@ class User_Action {
                 'user_username'     => $user_data[ 'user_username' ],
                 'user_password'     => $user_data[ 'user_password' ],
                 'user_role'         => $user_data[ 'user_role' ],
-                'user_referral_id'  => $user_data[ 'user_referral_id' ],
                 'user_upline_id'    => $user_data[ 'user_upline_id' ],
             ), 
             array( 'user_info_id' => $user_data[ 'user_info_id' ] )
@@ -153,7 +132,6 @@ class User_Action {
             'user_username' => $last_updated_user[0]->user_username,
             'user_password' => $last_updated_user[0]->user_password,
             'user_role' => $last_updated_user[0]->user_role,
-            'user_referral_id' => $last_updated_user[0]->user_referral_id,
             'user_upline_id' => $last_updated_user[0]->user_upline_id,
             'user_authentication_code' => $last_updated_user[0]->user_authentication_code,
         ];

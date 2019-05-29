@@ -28,7 +28,6 @@ if ( isset( $_POST[ 'username' ] ) && isset( $_POST[ 'password' ] ) ) {
             'user_username'     => $user_data_info[0]->user_username,
             'user_password'     => $user_data_info[0]->user_password,
             'user_role'         => $user_data_info[0]->user_role,
-            'user_referral_id'  => $user_data_info[0]->user_referral_id,
             'user_upline_id'    => $user_data_info[0]->user_upline_id,
             'user_position'     => $user_data_info[0]->user_position
         ];

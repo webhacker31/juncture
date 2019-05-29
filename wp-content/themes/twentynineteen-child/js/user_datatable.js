@@ -15,11 +15,9 @@ $( document ).ready( function( $ ) {
     },
     {
         data: "user_role",
-        title: "Role"
-    },
-    {
-        data: "user_referral_id",
-        title: "Referral ID"
+        title: "Role",
+        type: "select",
+        options: ["Admin", "Regular"]
     },
     {
         data: "user_upline_id",

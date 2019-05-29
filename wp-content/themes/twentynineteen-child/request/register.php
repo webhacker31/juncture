@@ -13,7 +13,6 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
     $username       = $_POST['username'];
     $password       = $_POST['password'];
     $user_role      = $_POST['role'];
-    $referral_id    = $_POST['referral_id'];
     $upline_id      = $_POST['upline_id'];
     $position       = $_POST['position'];
 
@@ -59,12 +58,10 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
                         'user_username' => $username,
                         'user_password' => $password,
                         'user_role' => $user_role,
-                        'user_referral_id' => $referral_id,
                         'user_upline_id' => $upline_id,
                         'user_position' => $position                    
                     ),
                     array(
-                        '%s',
                         '%s',
                         '%s',
                         '%s',

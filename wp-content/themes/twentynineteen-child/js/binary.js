@@ -1,5 +1,7 @@
 $( document ).ready( function() {
 
+    if ( $peek_user_binary_by_id != '' ) $user_id = $peek_user_binary_by_id;
+
     google.charts.load('current', {packages:["orgchart"]});
     google.charts.setOnLoadCallback(drawChart);
 
@@ -27,6 +29,16 @@ $( document ).ready( function() {
             chart.draw(data, {allowHtml:true});
 
             $( '#binary .google-visualization-orgchart-table tr td[title="Available"]' ).html( 'Available' ).css( 'opacity', '.3' );
+
+            $( '.google-visualization-orgchart-node.google-visualization-orgchart-node-medium' ).on( 'click', function() {
+
+                if ( $( this ).attr( 'title' ) != "Available" ) {
+
+                    window.location.href = window.location.href.substring(0, window.location.href.indexOf('?')) + '?user_id=' + $user_id + '&peek_user_binary=' + $( this ).html();
+
+                }
+                
+            });
 
         });
 

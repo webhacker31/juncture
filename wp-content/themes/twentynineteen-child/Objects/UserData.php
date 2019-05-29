@@ -232,10 +232,6 @@ class User_Data {
 
                     $is_pairing_exist = $this->wpdb->get_var( 'SELECT COUNT(*) FROM j_users_earnings WHERE user_info_id="' . $user_id . '" AND earning_pair_left="' . $pairing_group[ $index ] . '" OR user_info_id="' . $user_id . '" AND earning_pair_right="' . $pairing_group[ $index ] . '"' );
 
-                    var_dump( $user_id );
-                    var_dump( $pairing_group[ $index ] );
-                    var_dump( $is_pairing_exist );
-
                     if ( !$is_pairing_exist ) {
 
                         array_push( $pairing_success, array( $pairing_group[ $index ], $pairing_group[ count( $pairing_group ) - ( $index + 1 ) ] ) );
@@ -254,15 +250,15 @@ class User_Data {
 
         }
 
-        // if ( $purpose == 'request_withdrawal' ) {
+        if ( $purpose == 'request_withdrawal' ) {
 
-        //     return $pairing_success;
+            return $pairing_success;
 
-        // } else {
+        } else {
 
-        //     return $this->get_user_pairing_obj_format( $pairing_success );
+            return $this->get_user_pairing_obj_format( $pairing_success );
 
-        // }
+        }
 
     }
 
