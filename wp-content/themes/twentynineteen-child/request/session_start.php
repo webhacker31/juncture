@@ -4,7 +4,7 @@ require_once '../../../../wp-load.php';
 
 $status = [];
 
-if ( $_POST[ 'request_type' ] === 'session' ) {
+if ( $_POST[ 'request_type' ] == 'session' ) {
 
     delete_transient( 'user_id_' . $_POST[ 'user_id' ] ); // Just making sure ;)
 
@@ -26,6 +26,15 @@ if ( $_POST[ 'request_type' ] === 'session' ) {
         ];
 
     }
+
+    echo json_encode( $status );
+
+} else {
+
+    $status = [
+        'status' => 'failed',
+        'message' => 'Session failed to set.'
+    ];
 
     echo json_encode( $status );
 

@@ -9,16 +9,21 @@
 require_once ( '../../../../wp-load.php' );
 require_once ( '../Objects/UserData.php' );
 
-if ( isset( $_POST[ 'username' ] ) && isset( $_POST[ 'password' ] ) ) {
+// if ( isset( $_POST[ 'username' ] ) && isset( $_POST[ 'password' ] ) ) {
 
-    $username = $_POST[ 'username' ];
-    $password = $_POST[ 'password' ];
+    // $username = $_POST[ 'username' ];
+    // $password = $_POST[ 'password' ];
+
+    $username = 'asdasdasd';
+    $password = 'asdasdasdasd';
 
     $status = [];
 
     $user_data_info = $User_Data->get_user_info_by_credentials( $username, $password );
 
-    if ( $user_data_info !== NULL ) {
+    var_dump( $user_data_info );
+
+    if ( $user_data_info != NULL ) {
 
         $url = 'http://localhost/juncture/wp-content/themes/twentynineteen-child/request/session_start.php';
 
@@ -32,7 +37,7 @@ if ( isset( $_POST[ 'username' ] ) && isset( $_POST[ 'password' ] ) ) {
             'user_position'     => $user_data_info[0]->user_position
         ];
 
-        $fields_string = http_build_query($fields);
+        $fields_string = http_build_query( $fields );
 
         $ch = curl_init();
 
@@ -53,9 +58,9 @@ if ( isset( $_POST[ 'username' ] ) && isset( $_POST[ 'password' ] ) ) {
 
     }
 
-} else { // If direct access
+// } else { // If direct access
 
-    header('Location: /juncture/page-error/?error=direct_access');
-    die();
+//     header('Location: /juncture/page-error/?error=direct_access');
+//     die();
 
-}
+// }

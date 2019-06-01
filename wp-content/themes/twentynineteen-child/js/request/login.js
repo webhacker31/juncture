@@ -17,17 +17,19 @@ $(document).ready(function ($) {
 
         regrequest.done(function ( report ) {
 
-            $('#login #login_msg').remove();
+            console.log( report );
 
-            if ( report[ 'status' ] == 'success' ) {
+            // $('#login #login_msg').remove();
 
-                window.location.href = '/juncture/dashboard/?user_id=' + report[ 'user_id' ];
+            // if ( report[ 'status' ] == 'success' ) {
 
-            } else if ( report[ 'status' ] == 'failed' ) {
+            //     window.location.href = '/juncture/dashboard/?user_id=' + report[ 'user_id' ];
 
-                $( '#login' ).prepend( '<div id="login_msg" class="alert alert-danger" role="alert">Oops! Login Fails. Please try again.<small style="display: block; font-size: 12px">' + report['message'] + '</small></div>' );
+            // } else if ( report[ 'status' ] == 'failed' ) {
 
-            }
+            //     $( '#login' ).prepend( '<div id="login_msg" class="alert alert-danger" role="alert">Oops! Login Fails. Please try again.<small style="display: block; font-size: 12px">' + report['message'] + '</small></div>' );
+
+            // }
 
         });
 

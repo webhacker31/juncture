@@ -37,7 +37,7 @@ class User_Data {
 
     public function get_user_info_by_credentials( $username, $password ) {
 
-        $get_user_info_by_credentials = $this->wpdb->get_results( "SELECT * FROM j_users_info WHERE user_info_id='{$username}' OR user_username='{$username}' AND user_password='{$password}'" );
+        $get_user_info_by_credentials = $this->wpdb->get_results( "SELECT * FROM j_users_info WHERE user_info_id='{$username}' AND user_password='{$password}' OR user_username='{$username}' AND user_password='{$password}'" );
 
         return $get_user_info_by_credentials;
 

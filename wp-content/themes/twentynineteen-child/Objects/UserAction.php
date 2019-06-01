@@ -32,12 +32,70 @@ class User_Action {
         return $is_upline_id_exist;
 
     }
+    
+    public function is_position_available_to_upline( $user_upline_id, $user_position ) {
+
+        $is_position_available_to_upline = $this->wpdb->get_var( "SELECT {$user_position} FROM j_users WHERE user_id='{$user_upline_id}'" );
+
+        if ( $is_position_available_to_upline == '' ) {
+
+            return true;
+
+        } else {
+
+            return false;
+
+        }
+
+    }
 
     public function username_limit_check( $user_username ) {
 
         $is_username_exist = $this->wpdb->get_var( "SELECT COUNT(*) FROM j_users_info WHERE user_username='{$user_username}'" );
 
         return $is_username_exist;
+
+    }
+
+    public function user_position_converter( $position, $revert = false ) {
+        
+        $position = $position;
+
+        switch( $revert ) {
+
+            case true:
+                switch( $position ) {
+
+                    case "user_dl_left_id":
+                        $position = "LEFT";
+                        break;
+                    
+                    case "user_dl_right_id":
+                        $position = "RIGHT";
+                        break;
+        
+                }
+
+                break;
+            
+            case false:
+                switch( $position ) {
+            
+                    case "LEFT":
+                        $position = "user_dl_left_id";
+                        break;
+                    
+                    case "RIGHT":
+                        $position = "user_dl_right_id";
+                        break;
+        
+                }
+
+                break;
+
+        }
+
+        return $position;
 
     }
 
@@ -49,6 +107,7 @@ class User_Action {
             'user_password' => '',
             'user_role' => '',
             'user_upline_id' => '',
+            'user_position' => '',
             'user_authentication_code' => '',
             'status' => 'failed',
             'message' => ""
@@ -58,34 +117,54 @@ class User_Action {
 
             if ( $this->is_upline_id_exist( $user_data[ "user_upline_id" ] ) ) {
 
-                $this->wpdb->query( "INSERT INTO j_users (user_id) VALUES (NULL)" );
+                if ( $this->is_position_available_to_upline( $user_data[ 'user_upline_id' ], $this->user_position_converter( $user_data[ 'user_position' ] ) ) ) {
 
-                $user_last_id = $this->wpdb->get_var( "SELECT user_id FROM j_users ORDER BY user_id DESC LIMIT 1" );
+                    $this->wpdb->query( "INSERT INTO j_users (user_id) VALUES (NULL)" );
 
-                $this->wpdb->insert(
-                                    'j_users_info',
-                                    array(
-                                        'user_info_id'              => $user_last_id,
-                                        'user_username'             => $user_data[ 'user_username' ],
-                                        'user_password'             => $user_data[ 'user_password' ],
-                                        'user_role'                 => $user_data[ 'user_role' ],
-                                        'user_upline_id'            => $user_data[ 'user_upline_id' ],
-                                        'user_authentication_code'  => $this->generateRandomString()
-                                        )
-                                    );
+                    $user_last_id = $this->wpdb->get_var( "SELECT user_id FROM j_users ORDER BY user_id DESC LIMIT 1" );
 
-                $last_inserted_user = $this->wpdb->get_results( "SELECT * FROM j_users_info WHERE user_info_id='{$user_last_id}'" );
+                    $this->wpdb->insert(
+                        'j_users_info',
+                        array(
+                            'user_info_id'              => $user_last_id,
+                            'user_username'             => $user_data[ 'user_username' ],
+                            'user_password'             => $user_data[ 'user_password' ],
+                            'user_role'                 => $user_data[ 'user_role' ],
+                            'user_upline_id'            => $user_data[ 'user_upline_id' ],
+                            'user_position'             => $this->user_position_converter( $user_data[ 'user_position' ], true ),
+                            'user_authentication_code'  => $this->generateRandomString()
+                            )
+                    );
 
-                return [
-                    'user_info_id' => $last_inserted_user[0]->user_info_id,
-                    'user_username' => $last_inserted_user[0]->user_username,
-                    'user_password' => $last_inserted_user[0]->user_password,
-                    'user_role' => $last_inserted_user[0]->user_role,
-                    'user_upline_id' => $last_inserted_user[0]->user_upline_id,
-                    'user_authentication_code' => $last_inserted_user[0]->user_authentication_code,
-                    'status' => 'success',
-                    'message' => 'User successfully registered.'
-                ];
+                    $this->wpdb->update( 
+                        'j_users_info', 
+                        array( 
+                            $this->user_position_converter( $user_data[ 'user_position' ] ) => $user_last_id
+                        ), 
+                        array( 'user_info_id' => $user_data[ 'user_upline_id' ] )
+                    );
+
+                    $last_inserted_user = $this->wpdb->get_results( "SELECT * FROM j_users_info WHERE user_info_id='{$user_last_id}'" );
+
+                    return [
+                        'user_info_id' => $last_inserted_user[0]->user_info_id,
+                        'user_username' => $last_inserted_user[0]->user_username,
+                        'user_password' => $last_inserted_user[0]->user_password,
+                        'user_role' => $last_inserted_user[0]->user_role,
+                        'user_upline_id' => $last_inserted_user[0]->user_upline_id,
+                        'user_position' => $last_inserted_user[0]->user_position,
+                        'user_authentication_code' => $last_inserted_user[0]->user_authentication_code,
+                        'status' => 'success',
+                        'message' => 'User successfully registered.'
+                    ];
+
+                } else {
+
+                    $return_failed_msg['message'] = "Position is not available.";
+        
+                    return $return_failed_msg;
+
+                }
 
             } else {
 
@@ -120,7 +199,7 @@ class User_Action {
                 'user_username'     => $user_data[ 'user_username' ],
                 'user_password'     => $user_data[ 'user_password' ],
                 'user_role'         => $user_data[ 'user_role' ],
-                'user_upline_id'    => $user_data[ 'user_upline_id' ],
+                'user_upline_id'    => $user_data[ 'user_upline_id' ]
             ), 
             array( 'user_info_id' => $user_data[ 'user_info_id' ] )
         );

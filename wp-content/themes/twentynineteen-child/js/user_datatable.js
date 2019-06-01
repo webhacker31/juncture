@@ -24,6 +24,12 @@ $( document ).ready( function( $ ) {
         title: "Upline ID"
     },
     {
+        data: "user_position",
+        title: "Position",
+        type: "select",
+        options: ["Left", "Right"]
+    },
+    {
         data: "user_authentication_code",
         title: "Authentication Code",
         type: "readonly"
