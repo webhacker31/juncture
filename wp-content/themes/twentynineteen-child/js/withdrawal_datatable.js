@@ -30,10 +30,10 @@ $( document ).ready( function( $ ) {
     var adminDataTable,
         regularDataTable;
 
-    var request_admin_withdrawal_url = '/juncture/wp-content/themes/twentynineteen-child/request/admin_withdrawals.php',
-        request_regular_withdrawal_url = '/juncture/wp-content/themes/twentynineteen-child/request/regular_withdrawals.php';
+    var request_admin_withdrawal_url = $home_url + '/request/admin-withdrawals/',
+        request_regular_withdrawal_url = $home_url + '/request/regular-withdrawals/';
 
-    var request_update_withdrawal = request_update_withdrawal = '/juncture/wp-content/themes/twentynineteen-child/request/update_withdrawal.php';
+    var request_update_withdrawal = request_update_withdrawal = $home_url + '/request/update-withdrawal/';
 
     adminDataTable = $('#_user-admin-table-list').DataTable({
             "sPaginationType": "full_numbers",

@@ -37,10 +37,10 @@ $( document ).ready( function( $ ) {
 
     var myTable;
 
-    var request_user_info = '/juncture/wp-content/themes/twentynineteen-child/request/admin_users.php',
-        request_add = '/juncture/wp-content/themes/twentynineteen-child/request/add_user.php',
-        request_delete = '/juncture/wp-content/themes/twentynineteen-child/request/delete_user.php',
-        request_update = '/juncture/wp-content/themes/twentynineteen-child/request/update_user.php';
+    var request_user_info = $home_url + '/request/admin-users/',
+        request_add = $home_url + '/request/admin-add-user/',
+        request_delete = $home_url + '/request/delete-user/',
+        request_update = $home_url + '/request/update-user/';
 
     myTable = $('#_user-table-list').DataTable({
             "sPaginationType": "full_numbers",

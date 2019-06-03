@@ -1,12 +1,12 @@
 $(document).ready(function ($) {
 
-    $( '#login .login_form .form_login-submit' ).on('click', function () {
+    $( '#login .login_form .form_login-submit' ).on( 'click', function () {
 
         var username    = $( '#login .login_form input[name="username"]' ).val(),
             password    = $( '#login .login_form input[name="password"]' ).val();
 
         var regrequest = $.ajax({
-            url: "/juncture/wp-content/themes/twentynineteen-child/request/login.php",
+            url: $home_url + "/request/login/",
             method: "POST",
             data: {
                 username : username,
@@ -17,19 +17,19 @@ $(document).ready(function ($) {
 
         regrequest.done(function ( report ) {
 
-            console.log( report );
+            $('#login #login_msg').remove();
+            
+            switch( report[ 'status' ] ) {
 
-            // $('#login #login_msg').remove();
+                case 'Success':
+                    window.location.href = $home_url + '/dashboard/?user_id=' + report[ 'user_id' ];
+                    break;
 
-            // if ( report[ 'status' ] == 'success' ) {
+                case 'Failed':
+                    $( '#login' ).prepend( '<div id="login_msg" class="alert alert-danger" role="alert">Oops! Login Fails. Please try again.<small style="display: block; font-size: 12px">' + report['message'] + '</small></div>' );
+                    break;
 
-            //     window.location.href = '/juncture/dashboard/?user_id=' + report[ 'user_id' ];
-
-            // } else if ( report[ 'status' ] == 'failed' ) {
-
-            //     $( '#login' ).prepend( '<div id="login_msg" class="alert alert-danger" role="alert">Oops! Login Fails. Please try again.<small style="display: block; font-size: 12px">' + report['message'] + '</small></div>' );
-
-            // }
+            }
 
         });
 

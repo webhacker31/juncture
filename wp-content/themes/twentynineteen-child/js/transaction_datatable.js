@@ -29,8 +29,8 @@ $( document ).ready( function( $ ) {
     var adminDataTable,
         regularDataTable;
 
-    var request_admin_transaction_url = '/juncture/wp-content/themes/twentynineteen-child/request/admin_transactions.php',
-        request_regular_transaction_url = '/juncture/wp-content/themes/twentynineteen-child/request/regular_transactions.php';
+    var request_admin_transaction_url = $home_url + '/request/admin-transactions/',
+        request_regular_transaction_url = $home_url + '/request/regular-transactions/';
 
     adminDataTable = $('#_user-admin-table-list').DataTable({
             "sPaginationType": "full_numbers",

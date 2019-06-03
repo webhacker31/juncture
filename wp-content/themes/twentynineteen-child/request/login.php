@@ -9,23 +9,18 @@
 require_once ( '../../../../wp-load.php' );
 require_once ( '../Objects/UserData.php' );
 
-// if ( isset( $_POST[ 'username' ] ) && isset( $_POST[ 'password' ] ) ) {
+if ( isset( $_POST[ 'username' ] ) && isset( $_POST[ 'password' ] ) ) {
 
-    // $username = $_POST[ 'username' ];
-    // $password = $_POST[ 'password' ];
-
-    $username = 'asdasdasd';
-    $password = 'asdasdasdasd';
+    $username = $_POST[ 'username' ];
+    $password = $_POST[ 'password' ];
 
     $status = [];
 
     $user_data_info = $User_Data->get_user_info_by_credentials( $username, $password );
 
-    var_dump( $user_data_info );
-
     if ( $user_data_info != NULL ) {
 
-        $url = 'http://localhost/juncture/wp-content/themes/twentynineteen-child/request/session_start.php';
+        $url = esc_url( home_url( '/' ) ) . 'wp-content/themes/twentynineteen-child/request/session_start.php';
 
         $fields = [
             'request_type'      => 'session',
@@ -58,9 +53,9 @@ require_once ( '../Objects/UserData.php' );
 
     }
 
-// } else { // If direct access
+} else { // If direct access
 
-//     header('Location: /juncture/page-error/?error=direct_access');
-//     die();
+    header('Location: ' . esc_url( home_url( '/' ) ) . 'page-error/?error=direct_access');
+    die();
 
-// }
+}

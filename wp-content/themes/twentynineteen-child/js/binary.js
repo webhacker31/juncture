@@ -7,9 +7,11 @@ $( document ).ready( function() {
 
     function drawChart() {
 
+        console.log( $home_url );
+
         $.ajax({
             method: 'POST',
-            url: '/juncture/wp-content/themes/twentynineteen-child/request/user_downline.php',
+            url: $home_url + '/request/user-downline/',
             data: {
                 user_id : $user_id
             }
@@ -23,9 +25,8 @@ $( document ).ready( function() {
 
             data.addRows( JSON.parse( response ) );
 
-            // Create the chart.
             var chart = new google.visualization.OrgChart(document.getElementById('binary'));
-            // Draw the chart, setting the allowHtml option to true for the tooltips.
+
             chart.draw(data, {allowHtml:true});
 
             $( '#binary .google-visualization-orgchart-table tr td[title="Available"]' ).html( 'Available' ).css( 'opacity', '.3' );
@@ -63,7 +64,7 @@ $( document ).ready( function() {
 
     var regularDataTable;
 
-    var request_regular_earning_url = '/juncture/wp-content/themes/twentynineteen-child/request/regular_pairing.php';
+    var request_regular_earning_url = $home_url + '/request/regular-pairing/';
 
     regularDataTable = $('#_user-regular-table-list').DataTable({
         "sPaginationType": "full_numbers",
@@ -90,14 +91,26 @@ $( document ).ready( function() {
             success: function( response ) {
 
                 $.ajax({
-                    url: '/juncture/wp-content/themes/twentynineteen-child/request/add_withdrawal_request.php',
+                    url:  $home_url + '/request/admin-add-withdrawal/',
                     data: {
                         user_id : $user_id,
                         pairing_data: JSON.parse( response )
                     },
-                    success: function( response ) {
+                    success: function( withdrawal_response ) {
 
-                        // console.log( response );
+                        var withdrawal_status = JSON.parse( withdrawal_response );
+
+                        switch( withdrawal_status[ 'status' ] ) {
+
+                            case 'Success':
+                                $('#success-withdrawal-modal').modal('show')
+                                break;
+
+                            case 'Failed':
+                                $('#failed-withdrawal-modal').modal('show')
+                                break;
+
+                        }
 
                     }
                 });

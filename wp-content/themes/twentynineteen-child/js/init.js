@@ -4,10 +4,8 @@ $( document ).ready( function() {
 
     $( '#_logout' ).on( 'click', function() {
 
-        console.log( 'Out' );
-
         var logout_request = $.ajax({
-            url: "/juncture/wp-content/themes/twentynineteen-child/request/logout.php",
+            url:  $home_url + "/request/logout",
             method: "POST",
             data: {
                 user_id : $( this ).data( 'user-id' )
@@ -19,7 +17,7 @@ $( document ).ready( function() {
 
             if ( report[ 'status' ] == 'success' ) {
 
-                window.location.href = '/juncture/';
+                window.location.href = $home_url;
 
             }
 

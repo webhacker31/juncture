@@ -28,7 +28,7 @@ $( document ).ready( function( $ ) {
 
     var regularDataTable;
 
-    var request_regular_earning_url = '/juncture/wp-content/themes/twentynineteen-child/request/regular_earnings.php';
+    var request_regular_earning_url =  $home_url + '/request/regular-earnings/';
 
     regularDataTable = $('#_user-regular-table-list').DataTable({
         "sPaginationType": "full_numbers",

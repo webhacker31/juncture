@@ -219,6 +219,15 @@ class User_Action {
 
     public function add_withdrawal_request( $user_id, $pairing_data ) {
 
+        if ( empty( $pairing_data ) ) {
+
+            return [
+                'status' => 'Failed',
+                'message' => 'Withdrawal cannot be process.'
+            ];
+
+        }
+
         $tax = 10;
         $processing_fee = 50;
         $travel_incentive = 100;

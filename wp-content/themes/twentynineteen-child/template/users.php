@@ -4,7 +4,7 @@
  Template Name: Users Page
  */
 
-include_once './wp-content/themes/twentynineteen-child/Objects/UserData.php';
+include_once( './wp-content/themes/twentynineteen-child/Objects/UserData.php' );
 
 $user_id = $_GET[ 'user_id' ];
 
@@ -20,9 +20,10 @@ if ( strtoupper( $user_role[0]->user_role ) == 'ADMIN' ) {
 
 } else {
 
-	header( 'Location: http://localhost/juncture/' );
+	header( 'Location: ' . esc_url( home_url( '/' ) ) );
 	die();
 
 } ?>
 
-<script src="/juncture/wp-content/themes/twentynineteen-child/js/user_datatable.js" type="text/javascript"></script>
+<script type="text/javascript">var $user_id = "<?php echo $user_id; ?>"; var $home_url = "<?php echo esc_url( home_url() ); ?>";</script>
+<script src="<?php echo esc_url( home_url() ) ?>/wp-content/themes/twentynineteen-child/js/user_datatable.js" type="text/javascript"></script>

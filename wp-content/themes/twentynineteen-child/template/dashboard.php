@@ -4,7 +4,7 @@
  Template Name: Dashboard
  */
 
-include_once './wp-content/themes/twentynineteen-child/Objects/UserData.php';
+include_once( './wp-content/themes/twentynineteen-child/Objects/UserData.php' );
 
 $user_id = $_GET[ 'user_id' ];
 
@@ -28,7 +28,7 @@ if ( strtoupper( $user_role[0]->user_role ) == 'ADMIN' ) {
 
 } else {
 
-	header( 'Location: http://localhost/juncture/' );
+	header( 'Location: ' . esc_url( home_url( '/' ) ) );
 	die();
 
 } ?>

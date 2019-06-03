@@ -28,4 +28,5 @@ include_once( '_navbar.php' );
 
 <?php wp_footer(); ?>
 
-<script src="/juncture/wp-content/themes/twentynineteen-child/js/request/login.js" type="text/javascript"></script>
+<script type="text/javascript"> var $home_url = "<?php echo esc_url( home_url() ) ?>";</script>
+<script src="<?php echo esc_url( home_url() ) ?>/wp-content/themes/twentynineteen-child/js/request/login.js" type="text/javascript"></script>

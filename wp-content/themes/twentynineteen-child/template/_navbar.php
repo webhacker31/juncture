@@ -9,7 +9,7 @@ if ( isset( $_GET[ 'user_id' ] ) ) {
 ?>
 <nav class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar">
     <div class="container">
-        <a class="navbar-brand" href="https://mdbootstrap.com/docs/jquery/" target="_blank">
+        <a class="navbar-brand" href="<?php echo esc_url( home_url( '/' ) ) . ($add_url_param) ? $add_url_param : ''; ?>" target="_blank">
             <strong>Juncture</strong>
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -18,12 +18,12 @@ if ( isset( $_GET[ 'user_id' ] ) ) {
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item <?php echo ($_GET['page'] == 'home') ? 'active' : '';?>">
-                    <a class="nav-link" href="http://localhost/juncture/?page=home<?php echo ($add_url_param) ? $add_url_param : '' ?>">Home</a>
-                </li>
-                <li class="nav-item <?php echo ($_GET['page'] == 'aboutus') ? 'active' : '';?>">
-                    <a class="nav-link" href="#">About Juncture</a>
-                </li>
+                <!-- <li class="nav-item <?php // echo ($_GET['page'] == 'home') ? 'active' : '';?>">
+                    <a class="nav-link" href="<?php // echo esc_url( home_url( '/' ) ) . '?page=home' . ($add_url_param) ? $add_url_param : ''; ?>">Home</a>
+                </li> -->
+                <!-- <li class="nav-item <?php // echo ($_GET['page'] == 'aboutus') ? 'active' : '';?>">
+                    <a class="nav-link" href="<?php // echo get_permalink( get_page_by_path( 'about' ) ) . '?page=about' . ($add_url_param) ? $add_url_param : ''; ?>">About Juncture</a>
+                </li> -->
 
                 <?php if ( isset( $_GET[ 'user_id' ] ) ) : ?>
 
@@ -34,23 +34,11 @@ if ( isset( $_GET[ 'user_id' ] ) ) {
                 <?php else : ?>
 
                     <li class="nav-item <?php echo ($_GET['page'] == 'login') ? 'active' : '';?>">
-                        <a class="nav-link" href="http://localhost/juncture/login/?page=login">Login</a>
+                        <a class="nav-link" href="<?php echo get_permalink( get_page_by_path( 'login' ) ); ?>?page=login">Login</a>
                     </li>
 
                 <?php endif; ?>
 
-            </ul>
-            <ul class="navbar-nav nav-flex-icons">
-                <li class="nav-item">
-                    <a href="https://www.facebook.com/mdbootstrap" class="nav-link" target="_blank">
-                        <i class="fab fa-facebook-f"></i>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="https://twitter.com/MDBootstrap" class="nav-link" target="_blank">
-                        <i class="fab fa-twitter"></i>
-                    </a>
-                </li>
             </ul>
         </div>
     </div>
