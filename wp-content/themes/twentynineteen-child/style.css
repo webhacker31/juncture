@@ -82,20 +82,11 @@ body {
 }
 
 #login {
-  background: url(asset/images/bg-3.jpg) no-repeat center;
+  background: url(asset/images/juncture-logo.jpg) no-repeat center;
   background-size: cover;
 }
-#login:before {
-  content: "";
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  background: rgba(0, 0, 0, 0.3);
-}
 #login .login_box {
-  background-color: rgba(255, 255, 255, 0.3);
+  background-color: rgba(0, 0, 0, 0.8);
 }
 #login .login_box .login_form .md-form label,
 #login .login_box .login_form .form-control {
