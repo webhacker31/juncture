@@ -51,6 +51,10 @@ body {
   background-color: #1C2331;
 }
 
+form[name=altEditor-form] .errorLabel {
+  color: #DC3545;
+}
+
 .carousel {
   height: 100%;
 }

@@ -7,21 +7,33 @@ $( document ).ready( function( $ ) {
     },
     {
         data: "user_username",
-        title: "Username"
+        title: "Username",
+        type: "text",
+        pattern: "^(([a-z]|[A-Z]|[0-9])){1,}[ ]$",
+        errorMsg: "This field should not be empty."
+
     },
     {
         data: "user_password",
-        title: "Password"
+        title: "Password",
+        type: "text",
+        pattern: "^(([a-z]|[A-Z]|[0-9])){1,}[ ]$",
+        errorMsg: "This field should not be empty."
+
     },
     {
         data: "user_role",
         title: "Role",
         type: "select",
-        options: ["Admin", "Regular"]
+        options: ["Distributor"]
     },
     {
         data: "user_upline_id",
-        title: "Upline ID"
+        title: "Upline ID",
+        type: "text",
+        pattern: "^(([a-z]|[A-Z]|[0-9])){1,}[ ]$",
+        errorMsg: "This field should not be empty."
+
     },
     {
         data: "user_position",
@@ -72,13 +84,16 @@ $( document ).ready( function( $ ) {
                 name: 'refresh'
             }],
             onAddRow: function(datatable, rowdata, success, error) {
-                $.ajax({
-                    url: request_add,
-                    type: 'POST',
-                    data: rowdata,
-                    success: success,
-                    error: error
-                });
+
+                console.log( rowdata );
+
+                // $.ajax({
+                //     url: request_add,
+                //     type: 'POST',
+                //     data: rowdata,
+                //     success: success,
+                //     error: error
+                // });
             },
             onDeleteRow: function(datatable, rowdata, success, error) {
                 $.ajax({
