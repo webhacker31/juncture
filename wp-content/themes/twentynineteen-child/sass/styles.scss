@@ -88,8 +88,12 @@ form[name=altEditor-form] .errorLabel {
 
 #binary {
 
-    table {
+    table.google-visualization-orgchart-table {
         border-collapse: separate !important;
+
+        tr:nth-child(1n+21) {
+            display: none;
+        }
     }
 
     .binary_downlines {

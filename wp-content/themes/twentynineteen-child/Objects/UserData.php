@@ -195,6 +195,7 @@ class User_Data {
         $pairing_check = array();
         $pairing_success = array();
         $data_counter = 2;
+        $prev_data_counter = 0;
         $available_counter = 0;
 
         $user_geneology_data = $this->get_user_geneology_by_id( $user_id );
@@ -217,7 +218,9 @@ class User_Data {
 
                 unset( $temp_pairing_stack );
                 $temp_pairing_stack = array();
-                $data_counter = $data_counter + ( ( $data_counter - ( $available_counter * 2 ) ) * 2 );
+                $data_counter_holder = $data_counter;
+                $data_counter = $data_counter + ( ( ( $data_counter - $prev_data_counter ) * 2 ) - ( $available_counter * 2 ) );
+                $prev_data_counter = $data_counter_holder;
                 $available_counter = 0;
 
             }

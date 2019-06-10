@@ -9,7 +9,7 @@ $( document ).ready( function( $ ) {
         data: "user_username",
         title: "Username",
         type: "text",
-        pattern: "^(([a-z]|[A-Z]|[0-9])){1,}[ ]$",
+        pattern: "^(([a-z]|[A-Z]|[0-9]|[ ])){1,}$",
         errorMsg: "This field should not be empty."
 
     },
@@ -17,7 +17,7 @@ $( document ).ready( function( $ ) {
         data: "user_password",
         title: "Password",
         type: "text",
-        pattern: "^(([a-z]|[A-Z]|[0-9])){1,}[ ]$",
+        pattern: "^(([a-z]|[A-Z]|[0-9]|[ ])){1,}$",
         errorMsg: "This field should not be empty."
 
     },
@@ -31,7 +31,7 @@ $( document ).ready( function( $ ) {
         data: "user_upline_id",
         title: "Upline ID",
         type: "text",
-        pattern: "^(([a-z]|[A-Z]|[0-9])){1,}[ ]$",
+        pattern: "^(([a-z]|[A-Z]|[0-9]|[ ])){1,}$",
         errorMsg: "This field should not be empty."
 
     },
@@ -51,7 +51,7 @@ $( document ).ready( function( $ ) {
 
     var request_user_info = $home_url + '/request/admin-users/',
         request_add = $home_url + '/request/admin-add-user/',
-        request_delete = $home_url + '/request/delete-user/',
+        request_delete = $home_url + '/request/admin-delete-user/',
         request_update = $home_url + '/request/update-user/';
 
     myTable = $('#_user-table-list').DataTable({
@@ -85,15 +85,13 @@ $( document ).ready( function( $ ) {
             }],
             onAddRow: function(datatable, rowdata, success, error) {
 
-                console.log( rowdata );
-
-                // $.ajax({
-                //     url: request_add,
-                //     type: 'POST',
-                //     data: rowdata,
-                //     success: success,
-                //     error: error
-                // });
+                $.ajax({
+                    url: request_add,
+                    type: 'POST',
+                    data: rowdata,
+                    success: success,
+                    error: error
+                });
             },
             onDeleteRow: function(datatable, rowdata, success, error) {
                 $.ajax({

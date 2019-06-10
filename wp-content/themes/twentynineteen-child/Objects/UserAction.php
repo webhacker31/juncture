@@ -35,7 +35,7 @@ class User_Action {
     
     public function is_position_available_to_upline( $user_upline_id, $user_position ) {
 
-        $is_position_available_to_upline = $this->wpdb->get_var( "SELECT {$user_position} FROM j_users WHERE user_id='{$user_upline_id}'" );
+        $is_position_available_to_upline = $this->wpdb->get_var( "SELECT {$user_position} FROM j_users_info WHERE user_info_id='{$user_upline_id}'" );
 
         if ( $is_position_available_to_upline == '' ) {
 
@@ -184,10 +184,42 @@ class User_Action {
 
     }
 
+    public function is_user_has_downline( $user_id ) {
+
+        $is_user_has_downline = $this->wpdb->get_var( "SELECT user_dl_left_id, user_dl_right_id FROM j_users_info WHERE user_info_id='{$user_id}'" );
+
+        if ( $is_user_has_downline == '' ) {
+
+            return true;
+
+        } else {
+
+            return false;
+
+        }
+
+    }
+
     public function delete_user( $user_id ) {
 
-        $this->wpdb->delete( 'j_users', array( 'user_id' => $user_id ) );
-        $this->wpdb->delete( 'j_users_info', array( 'user_info_id' => $user_id ) );
+        if( $this->is_user_has_downline( $user_id ) ) {
+
+            $this->wpdb->delete( 'j_users', array( 'user_id' => $user_id ) );
+            $this->wpdb->delete( 'j_users_info', array( 'user_info_id' => $user_id ) );
+
+            return [
+                'status' => 'Success',
+                'message' => 'User data deleted.'
+            ];
+
+        } else {
+
+            return [
+                'status' => 'Failed',
+                'message' => 'Deletion of user cannot be process.'
+            ];
+
+        }
 
     }
 
@@ -212,6 +244,7 @@ class User_Action {
             'user_password' => $last_updated_user[0]->user_password,
             'user_role' => $last_updated_user[0]->user_role,
             'user_upline_id' => $last_updated_user[0]->user_upline_id,
+            'user_position' => $last_updated_user[0]->user_position,
             'user_authentication_code' => $last_updated_user[0]->user_authentication_code,
         ];
 

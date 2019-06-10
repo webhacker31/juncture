@@ -97,8 +97,11 @@ form[name=altEditor-form] .errorLabel {
   color: #FFF;
 }
 
-#binary table {
+#binary table.google-visualization-orgchart-table {
   border-collapse: separate !important;
+}
+#binary table.google-visualization-orgchart-table tr:nth-child(1n+21) {
+  display: none;
 }
 #binary .binary_downlines .downline_user {
   font-size: 24px;

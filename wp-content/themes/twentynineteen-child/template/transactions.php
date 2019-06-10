@@ -18,7 +18,7 @@ if ( strtoupper( $user_role[0]->user_role ) == 'ADMIN' ) {
 
 	wp_footer();
 
-} else if ( strtoupper( $user_role[0]->user_role ) == 'REGULAR' ) {
+} else if ( strtoupper( $user_role[0]->user_role ) == 'DISTRIBUTOR' ) {
 
 	wp_head();
 

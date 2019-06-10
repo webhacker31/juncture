@@ -11,7 +11,7 @@ $peek_user_binary_by_id = ( isset( $_GET[ 'peek_user_binary' ] ) ) ? $_GET[ 'pee
 
 $user_role = $User_Data->get_user_info_by_id( get_transient( 'user_id_' . $user_id ) );
 
-if ( strtoupper( $user_role[0]->user_role ) == 'REGULAR' ) {
+if ( strtoupper( $user_role[0]->user_role ) == 'DISTRIBUTOR' ) {
 
 	wp_head();
 
