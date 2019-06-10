@@ -45,6 +45,6 @@
     </header>
 
     <main class="pt-5 mx-lg-5">
-        <h1 class="mt-5">Hello <?php echo $user_username; ?>!</h1>
+        <h1 class="mt-5">Hello <?php echo $user_username; ?> !</h1>
     </main>
 </div>
