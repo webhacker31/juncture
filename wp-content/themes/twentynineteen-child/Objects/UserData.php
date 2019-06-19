@@ -200,21 +200,23 @@ class User_Data {
 
         $user_geneology_data = $this->get_user_geneology_by_id( $user_id );
 
-        for ( $index = 1; $index < count( $user_geneology_data ); ) {
+        for( $index = 1; $index < count( $user_geneology_data ); ) {
 
-            if ( $index <= $data_counter ) {
+            if( $index <= $data_counter ) {
 
                 array_push( $temp_pairing_stack, $user_geneology_data[ $index ][2] );
 
-                if ( $user_geneology_data[ $index ][2] == "Available" ) $available_counter++;
+                if( $user_geneology_data[ $index ][2] == "Available" ) $available_counter++;
 
                 $index++;
 
             }
             
-            if ( $index > $data_counter ) {
+            if( $index > $data_counter ) {
 
                 array_push( $pairing_check, $temp_pairing_stack );
+
+                // var_dump( $data_counter );
 
                 unset( $temp_pairing_stack );
                 $temp_pairing_stack = array();
@@ -227,23 +229,36 @@ class User_Data {
 
         }
 
-        foreach ( $pairing_check as $pairing_group ) {
+        // var_dump( json_encode( $pairing_check ) );
 
-            for ( $index = 0; $index < count( $pairing_group ); $index++ ) {
+        foreach( $pairing_check as $pairing_group ) {
 
-                if ( $pairing_group[ $index ] != "Available" && $pairing_group[ count( $pairing_group ) - ( $index + 1 ) ] != "Available") {
+            var_dump( json_encode( $pairing_group ) );
+
+            $pairing_group_count = count( $pairing_group );
+
+            for( $index = $pairing_group_count; $index <= $pairing_group_count; --$index ) {
+
+                $half_count = $pairing_group_count / 2;
+                $available_counter = 0;
+
+            }
+
+            for( $index = 0; $index < $pairing_group_count; $index++ ) {
+
+                if( $pairing_group[ $index ] != "Available" && $pairing_group[ $pairing_group_count - ( $index + 1 ) ] != "Available") {
 
                     $is_pairing_exist = $this->wpdb->get_var( 'SELECT COUNT(*) FROM j_users_earnings WHERE user_info_id="' . $user_id . '" AND earning_pair_left="' . $pairing_group[ $index ] . '" OR user_info_id="' . $user_id . '" AND earning_pair_right="' . $pairing_group[ $index ] . '"' );
 
-                    if ( !$is_pairing_exist ) {
+                    if( ! $is_pairing_exist ) {
 
-                        array_push( $pairing_success, array( $pairing_group[ $index ], $pairing_group[ count( $pairing_group ) - ( $index + 1 ) ] ) );
+                        array_push( $pairing_success, array( $pairing_group[ $index ], $pairing_group[ $pairing_group_count - ( $index + 1 ) ] ) );
 
                     }
 
                 }
 
-                if ( $index + 1 == count( $pairing_group ) / 2 ) {
+                if( $index + 1 == $pairing_group_count / 2 ) {
 
                     break;
 
@@ -253,13 +268,13 @@ class User_Data {
 
         }
 
-        if ( $purpose == 'request_withdrawal' ) {
+        if( $purpose == 'request_withdrawal' ) {
 
-            return $pairing_success;
+            // return $pairing_success;
 
         } else {
 
-            return $this->get_user_pairing_obj_format( $pairing_success );
+            // eturn $this->get_user_pairing_obj_format( $pairing_success );
 
         }
 
