@@ -216,8 +216,6 @@ class User_Data {
 
                 array_push( $pairing_check, $temp_pairing_stack );
 
-                // var_dump( $data_counter );
-
                 unset( $temp_pairing_stack );
                 $temp_pairing_stack = array();
                 $data_counter_holder = $data_counter;
@@ -229,20 +227,19 @@ class User_Data {
 
         }
 
-        // var_dump( json_encode( $pairing_check ) );
-
         foreach( $pairing_check as $pairing_group ) {
 
-            var_dump( json_encode( $pairing_group ) );
-
             $pairing_group_count = count( $pairing_group );
+            $pairing_group_half_count = $pairing_group_count / 2;
+            $available_counter = 0;
 
-            for( $index = $pairing_group_count; $index <= $pairing_group_count; --$index ) {
+            for( $index = $pairing_group_count; $index > $pairing_group_half_count; $index-- ) {
 
-                $half_count = $pairing_group_count / 2;
-                $available_counter = 0;
+                if( $pairing_group[ $index - 1 ] == 'Available' ) $available_counter++;
 
             }
+
+            if( $available_counter == $pairing_group_half_count ) break;
 
             for( $index = 0; $index < $pairing_group_count; $index++ ) {
 
@@ -270,11 +267,11 @@ class User_Data {
 
         if( $purpose == 'request_withdrawal' ) {
 
-            // return $pairing_success;
+            return $pairing_success;
 
         } else {
 
-            // eturn $this->get_user_pairing_obj_format( $pairing_success );
+            return $this->get_user_pairing_obj_format( $pairing_success );
 
         }
 
