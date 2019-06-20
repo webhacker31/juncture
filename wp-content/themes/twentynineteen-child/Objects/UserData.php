@@ -137,9 +137,11 @@ class User_Data {
         array_push( $users_to_check, ( $main_user_downline[0]->user_dl_left_id == "" ) ? "Available" : $main_user_downline[0]->user_dl_left_id );
         array_push( $users_to_check, ( $main_user_downline[0]->user_dl_right_id == "" ) ? "Available" : $main_user_downline[0]->user_dl_right_id );
 
-        for ( $index = 0; $index < count( $users_to_check ); $index++ ) { 
+        for( $index = 0; $index < count( $users_to_check ); $index++ ) {
 
-            if ( $users_to_check[ $index ] != "Available" ) {
+            if( count( $user_downlines ) >= 21 ) break;
+
+            if( $users_to_check[ $index ] != "Available" ) {
 
                 $the_users_downline = $this->get_user_downline_by_id( $users_to_check[ $index ] );
 
