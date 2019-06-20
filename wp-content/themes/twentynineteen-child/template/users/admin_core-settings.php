@@ -39,8 +39,8 @@
                     <i class="fas fa-table mr-3"></i>Transactions</a>
                 <a href="<?php echo esc_url( home_url() ) ?>/dashboard/withdrawal/?user_id=<?php echo $_GET[ 'user_id' ] ?>" class="list-group-item list-group-item-action waves-effect">
                     <i class="fas fa-coins mr-3"></i>Withdrawals</a>
-                <!-- <a href="<?php // echo esc_url( home_url() ) ?>/dashboard/settings/?user_id=<?php // echo $_GET[ 'user_id' ] ?>" class="list-group-item active waves-effect"> -->
-                    <!-- <i class="fas fa-coins mr-3"></i>Main Settings</a> -->
+                <a href="<?php echo esc_url( home_url() ) ?>/dashboard/main-settings/?user_id=<?php echo $_GET[ 'user_id' ] ?>" class="list-group-item list-group-item-action waves-effect">
+                    <i class="fas fa-coins mr-3"></i>Main Settings</a>
             </div>
         </div>
         <div class="_sidebar-overlay"></div>
@@ -48,7 +48,7 @@
 
     <main class="pt-5 mx-lg-5">
         <div id="main_settings" class="mt-5">
-            <div class="card z-depth-0 bordered mb-5">
+            <!-- <div class="card z-depth-0 bordered mb-5">
                 <div class="card-header">
                     <h5 class="font-weight-bold mb-0">Logo</h5>
                 </div>
@@ -63,26 +63,26 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
             <div class="card z-depth-0 bordered mb-5">
                 <div class="card-header">
                     <h5 class="font-weight-bold mb-0">Fees</h5>
                 </div>
                 <div class="card-body">
                     <div class="md-form">
-                        <input type="number" min="0" id="_pairing-bunos" class="form-control">
+                        <input type="number" min="0" id="_pairing-bonus" class="form-control _set-input-field" data-set-name="pairing_bonus">
                         <label for="_pairing-bunos">Pairing Bonus</label>
                     </div>
                     <div class="md-form">
-                        <input type="number" min="0" id="_tax-fee" class="form-control">
+                        <input type="number" min="0" id="_tax-fee" class="form-control _set-input-field" data-set-name="tax_fee">
                         <label for="_tax-fee">Tax Fee</label>
                     </div>
                     <div class="md-form">
-                        <input type="number" min="0" id="_processing-fee" class="form-control">
+                        <input type="number" min="0" id="_processing-fee" class="form-control _set-input-field" data-set-name="processing_fee">
                         <label for="_processing-fee">Processing Fee</label>
                     </div>
                     <div class="md-form">
-                        <input type="number" min="0" id="_travel-incentive" class="form-control">
+                        <input type="number" min="0" id="_travel-incentive" class="form-control _set-input-field" data-set-name="travel_incentive">
                         <label for="_travel-incentive">Travel Incentive</label>
                     </div>
                 </div>

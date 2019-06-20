@@ -300,6 +300,14 @@ class User_Data {
 
     }
 
+    public function get_main_settings() {
+
+        $get_main_settings = $this->wpdb->get_results( "SELECT * FROM j_main_settings" );
+
+        return $get_main_settings;
+
+    }
+
 }
 
 $User_Data = new User_Data;

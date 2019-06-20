@@ -261,10 +261,10 @@ class User_Action {
 
         }
 
-        $tax = 10;
-        $processing_fee = 50;
-        $travel_incentive = 100;
-        $pairing_bonus_amount = 500;
+        $tax = $this->wpdb->get_var( "SELECT set_value FROM j_main_settings WHERE set_name='tax_fee'" );
+        $processing_fee = $this->wpdb->get_var( "SELECT set_value FROM j_main_settings WHERE set_name='processing_fee'" );
+        $travel_incentive = $this->wpdb->get_var( "SELECT set_value FROM j_main_settings WHERE set_name='travel_incentive'" );
+        $pairing_bonus_amount = $this->wpdb->get_var( "SELECT set_value FROM j_main_settings WHERE set_name='pairing_bonus'" );
 
         $total_withdrawal_amount = count( $pairing_data ) * ( $pairing_bonus_amount - ( ( ( $tax / 100 ) * 100 ) + $travel_incentive + $processing_fee) );
         $min_withdrawal_amount = 500;
@@ -352,6 +352,23 @@ class User_Action {
             'withdrawal_time'   => $last_updated_withdrawal_status[0]->withdrawal_time,
             'withdrawal_status' => $last_updated_withdrawal_status[0]->withdrawal_status
         ];
+
+    }
+
+    public function update_main_settings( $settings_data ) {
+
+        for( $index = 1; $index <= count( $settings_data ); $index++ ) {
+
+            $this->wpdb->update( 
+                'j_main_settings', 
+                array( 'set_value' => $settings_data[ $index - 1 ][ 'set_value' ] ), 
+                array( 'set_name' => $settings_data[ $index - 1 ][ 'set_name' ] )
+            );
+
+            if( $index == count( $settings_data ) ) return [ 'status' => 'Success', 'message' => 'Setting Updated' ];
+
+        }
+
     }
 
 }

@@ -39,8 +39,8 @@
                     <i class="fas fa-table mr-3"></i>Transactions</a>
                 <a href="<?php echo esc_url( home_url() ) ?>/dashboard/withdrawal/?user_id=<?php echo $_GET[ 'user_id' ] ?>" class="list-group-item active waves-effect">
                     <i class="fas fa-coins mr-3"></i>Withdrawals</a>
-                <!-- <a href="<?php // echo esc_url( home_url() ) ?>/dashboard/settings/?user_id=<?php // echo $_GET[ 'user_id' ] ?>" class="list-group-item list-group-item-action waves-effect">
-                    <i class="fas fa-coins mr-3"></i>Main Settings</a> -->
+                <a href="<?php echo esc_url( home_url() ) ?>/dashboard/main-settings/?user_id=<?php echo $_GET[ 'user_id' ] ?>" class="list-group-item list-group-item-action waves-effect">
+                    <i class="fas fa-coins mr-3"></i>Main Settings</a>
             </div>
         </div>
         <div class="_sidebar-overlay"></div>
