@@ -5,7 +5,7 @@
  */
 
 require_once( './wp-load.php' );
-require_once( './wp-content/themes/twentynineteen-child/Objects/UserData.php' );
+require_once( './wp-content/themes/twentynineteen-child/obj/UserData.php' );
 
 if ( isset( $_POST[ 'username' ] ) && isset( $_POST[ 'password' ] ) ) {
 
