@@ -2,6 +2,7 @@
     <header>
         <nav class="navbar fixed-top navbar-expand-lg navbar-light white scrolling-navbar">
             <div class="container-fluid">
+                <a href="#" class="_sidebar-mobile-toggler btn btn-primary p-3"><i class="fas fa-bars"></i></a>
                 <a class="navbar-brand waves-effect" href="<?php echo esc_url( home_url() ) ?>/?page=home&user_id=<?php echo $_GET[ 'user_id' ]; ?>" target="_blank">
                     <strong class="blue-text">Juncture</strong>
                 </a>
@@ -25,7 +26,7 @@
                 </div>
             </div>
         </nav>
-        <div class="sidebar-fixed position-fixed">
+        <div class="_sidebar-mobile sidebar-fixed position-fixed">
             <a class="logo-wrapper waves-effect">
                 <img src="<?php echo esc_url( home_url() ) ?>/wp-content/themes/twentynineteen-child/asset/images/juncture-logo.jpg" class="img-fluid" alt="">
             </a>
@@ -38,8 +39,11 @@
                     <i class="fas fa-table mr-3"></i>Transactions</a>
                 <a href="<?php echo esc_url( home_url() ) ?>/dashboard/withdrawal/?user_id=<?php echo $_GET[ 'user_id' ] ?>" class="list-group-item list-group-item-action waves-effect">
                     <i class="fas fa-coins mr-3"></i>Withdrawals</a>
+                <a href="<?php echo esc_url( home_url() ) ?>/dashboard/main-settings/?user_id=<?php echo $_GET[ 'user_id' ] ?>" class="list-group-item list-group-item-action waves-effect">
+                    <i class="fas fa-coins mr-3"></i>Main Settings</a>
             </div>
         </div>
+        <div class="_sidebar-overlay"></div>
     </header>
 
     <main class="pt-5 mx-lg-5">

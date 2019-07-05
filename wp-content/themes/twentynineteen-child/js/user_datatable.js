@@ -7,21 +7,33 @@ $( document ).ready( function( $ ) {
     },
     {
         data: "user_username",
-        title: "Username"
+        title: "Username",
+        type: "text",
+        pattern: "^(([a-z]|[A-Z]|[0-9]|[ ])){1,}$",
+        errorMsg: "This field should not be empty."
+
     },
     {
         data: "user_password",
-        title: "Password"
+        title: "Password",
+        type: "text",
+        pattern: "^(([a-z]|[A-Z]|[0-9]|[ ])){1,}$",
+        errorMsg: "This field should not be empty."
+
     },
     {
         data: "user_role",
         title: "Role",
         type: "select",
-        options: ["Admin", "Regular"]
+        options: ["Distributor"]
     },
     {
         data: "user_upline_id",
-        title: "Upline ID"
+        title: "Upline ID",
+        type: "text",
+        pattern: "^(([a-z]|[A-Z]|[0-9]|[ ])){1,}$",
+        errorMsg: "This field should not be empty."
+
     },
     {
         data: "user_position",
@@ -39,7 +51,7 @@ $( document ).ready( function( $ ) {
 
     var request_user_info = $home_url + '/request/admin-users/',
         request_add = $home_url + '/request/admin-add-user/',
-        request_delete = $home_url + '/request/delete-user/',
+        request_delete = $home_url + '/request/admin-delete-user/',
         request_update = $home_url + '/request/update-user/';
 
     myTable = $('#_user-table-list').DataTable({
@@ -72,6 +84,7 @@ $( document ).ready( function( $ ) {
                 name: 'refresh'
             }],
             onAddRow: function(datatable, rowdata, success, error) {
+
                 $.ajax({
                     url: request_add,
                     type: 'POST',

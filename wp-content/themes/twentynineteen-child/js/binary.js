@@ -7,8 +7,6 @@ $( document ).ready( function() {
 
     function drawChart() {
 
-        console.log( $home_url );
-
         $.ajax({
             method: 'POST',
             url: $home_url + '/request/user-downline/',

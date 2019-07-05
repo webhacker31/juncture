@@ -51,6 +51,10 @@ body {
   background-color: #1C2331;
 }
 
+form[name=altEditor-form] .errorLabel {
+  color: #DC3545;
+}
+
 .carousel {
   height: 100%;
 }
@@ -82,27 +86,18 @@ body {
 }
 
 #login {
-  background: url(asset/images/bg-3.jpg) no-repeat center;
+  background: url(asset/images/juncture-logo.jpg) no-repeat center;
   background-size: cover;
 }
-#login:before {
-  content: "";
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  background: rgba(0, 0, 0, 0.3);
-}
 #login .login_box {
-  background-color: rgba(255, 255, 255, 0.3);
+  background-color: rgba(0, 0, 0, 0.8);
 }
 #login .login_box .login_form .md-form label,
 #login .login_box .login_form .form-control {
   color: #FFF;
 }
 
-#binary table {
+#binary table.google-visualization-orgchart-table {
   border-collapse: separate !important;
 }
 #binary .binary_downlines .downline_user {
@@ -142,6 +137,41 @@ body {
 
 .sidebar-fixed .logo-wrapper img {
   max-height: 50px;
+}
+
+._sidebar-mobile {
+  left: 0;
+  -webkit-transition: left 0.5s ease-in-out;
+  -o-transition: left 0.5s ease-in-out;
+  transition: left 0.5s ease-in-out;
+}
+
+._sidebar-mobile-toggler {
+  display: none !important;
+}
+
+._sidebar-overlay {
+  opacity: 0;
+  visibility: hidden;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 1040;
+  -webkit-transition: opacity 0.5s ease-in-out;
+  -o-transition: opacity 0.5s ease-in-out;
+  transition: opacity 0.5s ease-in-out;
+}
+
+@media (max-width: 1199.98px) {
+  ._sidebar-mobile-toggler {
+    display: inline-block !important;
+  }
+
+  ._sidebar-mobile {
+    display: block;
+    left: -270px;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */
