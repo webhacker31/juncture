@@ -25,4 +25,14 @@ $( document ).ready( function() {
 
     });
 
+    $(' ._sidebar-mobile-toggler ').on('click', function() {
+        $(' ._sidebar-mobile ').css('left', '0');
+        $(' ._sidebar-overlay ').css({'opacity' : '1', 'visibility' : 'visible'});
+    });
+
+    $(' ._sidebar-overlay ').on('click', function() {
+        $(' ._sidebar-mobile ').css('left', '-270');
+        $(' ._sidebar-overlay ').css({'opacity' : '0', 'visibility' : 'hidden'});
+    })
+
 });

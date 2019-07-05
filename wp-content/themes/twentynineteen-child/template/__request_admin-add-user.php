@@ -5,7 +5,7 @@
  */
 
 require_once( './wp-load.php' );
-require_once( './wp-content/themes/twentynineteen-child/Objects/UserAction.php' );
+require_once( './wp-content/themes/twentynineteen-child/obj/UserAction.php' );
 
 $user_data_info = [
     'user_username'     => preg_replace( '/\s+/', '', strtoupper( $_POST[ 'user_username' ] ) ),

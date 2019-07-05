@@ -5,7 +5,7 @@
  */
 
 require_once( './wp-load.php' );
-require_once( './wp-content/themes/twentynineteen-child/Objects/UserAction.php' );
+require_once( './wp-content/themes/twentynineteen-child/obj/UserAction.php' );
 
 $withdrawal_status_info = [
     'withdrawal_id'     => $_GET[ 'withdrawal_id' ],

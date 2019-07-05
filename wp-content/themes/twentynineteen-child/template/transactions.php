@@ -4,7 +4,7 @@
  Template Name: Transaction Page
  */
 
-include_once( './wp-content/themes/twentynineteen-child/Objects/UserData.php' );
+include_once( './wp-content/themes/twentynineteen-child/obj/UserData.php' );
 
 $user_id = $_GET[ 'user_id' ];
 
@@ -18,7 +18,7 @@ if ( strtoupper( $user_role[0]->user_role ) == 'ADMIN' ) {
 
 	wp_footer();
 
-} else if ( strtoupper( $user_role[0]->user_role ) == 'REGULAR' ) {
+} else if ( strtoupper( $user_role[0]->user_role ) == 'DISTRIBUTOR' ) {
 
 	wp_head();
 

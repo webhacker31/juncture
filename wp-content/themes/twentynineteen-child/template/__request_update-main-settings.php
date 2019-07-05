@@ -1,10 +1,10 @@
 <?php
 
 /*
- Template Name: Request - Admin Delete User
+ Template Name: Request - Update Main Settings
  */
 
 require_once( './wp-load.php' );
 require_once( './wp-content/themes/twentynineteen-child/obj/UserAction.php' );
 
-echo json_encode( $User_Action->delete_user( $_GET[ 'user_info_id' ] ) );
+echo json_encode( $User_Action->update_main_settings( $_POST[ 'data' ] ) );

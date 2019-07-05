@@ -88,7 +88,7 @@ form[name=altEditor-form] .errorLabel {
 
 #binary {
 
-    table {
+    table.google-visualization-orgchart-table {
         border-collapse: separate !important;
     }
 
@@ -139,4 +139,43 @@ form[name=altEditor-form] .errorLabel {
 
 .sidebar-fixed .logo-wrapper img {
     max-height: 50px;
+}
+
+._sidebar-mobile {
+    left: 0;
+
+    -webkit-transition: left .5s ease-in-out;
+    -o-transition: left .5s ease-in-out;
+    transition: left .5s ease-in-out;
+}
+
+._sidebar-mobile-toggler {
+    display: none !important;
+}
+
+._sidebar-overlay {
+    opacity: 0;
+    visibility: hidden;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 1040;
+
+    -webkit-transition: opacity .5s ease-in-out;
+    -o-transition: opacity .5s ease-in-out;
+    transition: opacity .5s ease-in-out;
+}
+
+@media (max-width: 1199.98px) {
+
+    ._sidebar-mobile-toggler {
+        display: inline-block !important;
+    }
+
+    ._sidebar-mobile {
+        display: block;
+        left: -270px;
+    }
+
 }
