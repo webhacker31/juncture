@@ -191,49 +191,74 @@ class User_Data {
 
     }
 
-    public function get_user_left_right_dl_by_id( $user_id ) {
+    public function is_user_pairing_exist( $user_id, $pairing_id ) {
+
+        $is_user_pairing_exist = $this->wpdb->get_var( 'SELECT COUNT(*) FROM j_users_earnings WHERE user_info_id="' . $user_id . '" AND earning_pair_left="' . $pairing_id . '" OR user_info_id="' . $user_id . '" AND earning_pair_right="' . $pairing_id . '"' );
+
+        return $is_user_pairing_exist;
 
     }
 
     public function get_user_pairing_by_id( $user_id, $purpose = '' ) {
 
-        // return $this->get_user_info_by_id( $user_id )[ 0 ]->user_position;
-
+        $pairing_success = array();
         $user_left_right_downlines = array();
 
-        $user_geneology_data = $this->get_user_geneology_by_id( $user_id );
+        $user_direct_downline = $this->get_user_downline_by_id( $user_id );
 
-        // var_dump( $user_geneology_data );
+        foreach( $user_direct_downline[ 0 ] as $position => $user_id ) {
 
-        for( $index = 1; $index < count( $user_geneology_data ); $index++ ) {
-    
-            if( $user_geneology_data[ $index ][ 2 ] != "Available" ) {
-    
-                $user_info = $this->get_user_info_by_id( $user_geneology_data[ $index ][ 2 ] );
+            if( $user_id != '' ) {
 
-                // var_dump( $user_info[ 0 ]->user_position );
+                $downline_position = ( $position == 'user_dl_left_id' ) ? 'left' : 'right' ;
 
-                if( $user_info[ 0 ]->is_paired ) { // True or False
+                if( ! array_key_exists( $downline_position, $user_left_right_downlines ) ) {
 
-                    if( ! array_key_exists( strtolower( $user_info[ 0 ]->user_position ), $user_left_right_downlines ) ) {
+                    $user_left_right_downlines[ $downline_position ] = array();
 
-                        $user_left_right_downlines[ strtolower( $user_info[ 0 ]->user_position ) ] = array();
+                }
+
+                array_push( $user_left_right_downlines[ $downline_position ], $user_id );
+
+                $user_geneology_data = $this->get_user_geneology_by_id( $user_id );
+
+                for( $index = 1; $index < count( $user_geneology_data ); $index++ ) {
+
+                    if( $user_geneology_data[ $index ][ 2 ] != "Available" ) {
+
+                        $user_info = $this->get_user_info_by_id( $user_geneology_data[ $index ][ 2 ] );
+
+                        if( ! $this->is_user_pairing_exist( $user_id, $user_geneology_data[ $index ][ 2 ] ) ) {
+
+                            array_push( $user_left_right_downlines[ $downline_position ], $user_info[ 0 ]->user_info_id );
+
+                        }
 
                     }
-
-                    array_push( $user_left_right_downlines[ strtolower( $user_info[ 0 ]->user_position ) ], $user_info[ 0 ]->user_info_id );
-
-                    // $user_left_right_downlines[ strtolower( $user_info[ 0 ]->user_position ) ] = $user_info[ 0 ]->user_info_id;
 
                 }
 
             }
-    
+
         }
 
-        var_dump( $user_left_right_downlines );
+        for( $index = 0; $index < count( $user_left_right_downlines[ 'left' ] ); $index++ ) {
 
-        // return $user_left_right_downlines;
+            if( $user_left_right_downlines[ 'right' ][ $index ] == null ) break;
+
+            array_push( $pairing_success, array( $user_left_right_downlines[ 'left' ][ $index ], $user_left_right_downlines[ 'right' ][ $index ] ) );
+
+        }
+
+        if( $purpose == 'request_withdrawal' ) {
+
+            return $pairing_success;
+
+        } else {
+
+            return $this->get_user_pairing_obj_format( $pairing_success );
+
+        }
 
     }
 
