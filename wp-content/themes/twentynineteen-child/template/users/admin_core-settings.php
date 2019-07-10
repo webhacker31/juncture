@@ -2,6 +2,7 @@
     <header>
         <nav class="navbar fixed-top navbar-expand-lg navbar-light white scrolling-navbar">
             <div class="container-fluid">
+                <a href="#" class="_sidebar-mobile-toggler btn btn-primary p-3"><i class="fas fa-bars"></i></a>
                 <a class="navbar-brand waves-effect" href="<?php echo esc_url( home_url() ) ?>/?page=home&user_id=<?php echo $_GET[ 'user_id' ]; ?>" target="_blank">
                     <strong class="blue-text">Juncture</strong>
                 </a>
@@ -25,7 +26,7 @@
 
             </div>
         </nav>
-        <div class="sidebar-fixed position-fixed">
+        <div class="_sidebar-mobile sidebar-fixed position-fixed">
             <a class="logo-wrapper waves-effect">
                 <img src="<?php echo esc_url( home_url() ) ?>/wp-content/themes/twentynineteen-child/asset/images/juncture-logo.jpg" class="img-fluid" alt="">
             </a>
@@ -38,15 +39,21 @@
                     <i class="fas fa-table mr-3"></i>Transactions</a>
                 <a href="<?php echo esc_url( home_url() ) ?>/dashboard/withdrawal/?user_id=<?php echo $_GET[ 'user_id' ] ?>" class="list-group-item list-group-item-action waves-effect">
                     <i class="fas fa-coins mr-3"></i>Withdrawals</a>
+<<<<<<< HEAD
                 <!-- <a href="<?php // echo esc_url( home_url() ) ?>/dashboard/settings/?user_id=<?php // echo $_GET[ 'user_id' ] ?>" class="list-group-item active waves-effect"> -->
                     <!-- <i class="fas fa-coins mr-3"></i>Main Settings</a> -->
+=======
+                <a href="<?php echo esc_url( home_url() ) ?>/dashboard/main-settings/?user_id=<?php echo $_GET[ 'user_id' ] ?>" class="list-group-item list-group-item-action waves-effect">
+                    <i class="fas fa-coins mr-3"></i>Main Settings</a>
+>>>>>>> 8925b33f02b9af985513b9669dfde45d7a926fe6
             </div>
         </div>
+        <div class="_sidebar-overlay"></div>
     </header>
 
     <main class="pt-5 mx-lg-5">
         <div id="main_settings" class="mt-5">
-            <div class="card z-depth-0 bordered mb-5">
+            <!-- <div class="card z-depth-0 bordered mb-5">
                 <div class="card-header">
                     <h5 class="font-weight-bold mb-0">Logo</h5>
                 </div>
@@ -61,26 +68,26 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
             <div class="card z-depth-0 bordered mb-5">
                 <div class="card-header">
                     <h5 class="font-weight-bold mb-0">Fees</h5>
                 </div>
                 <div class="card-body">
                     <div class="md-form">
-                        <input type="number" min="0" id="_pairing-bunos" class="form-control">
+                        <input type="number" min="0" id="_pairing-bonus" class="form-control _set-input-field" data-set-name="pairing_bonus">
                         <label for="_pairing-bunos">Pairing Bonus</label>
                     </div>
                     <div class="md-form">
-                        <input type="number" min="0" id="_tax-fee" class="form-control">
+                        <input type="number" min="0" id="_tax-fee" class="form-control _set-input-field" data-set-name="tax_fee">
                         <label for="_tax-fee">Tax Fee</label>
                     </div>
                     <div class="md-form">
-                        <input type="number" min="0" id="_processing-fee" class="form-control">
+                        <input type="number" min="0" id="_processing-fee" class="form-control _set-input-field" data-set-name="processing_fee">
                         <label for="_processing-fee">Processing Fee</label>
                     </div>
                     <div class="md-form">
-                        <input type="number" min="0" id="_travel-incentive" class="form-control">
+                        <input type="number" min="0" id="_travel-incentive" class="form-control _set-input-field" data-set-name="travel_incentive">
                         <label for="_travel-incentive">Travel Incentive</label>
                     </div>
                 </div>

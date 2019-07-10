@@ -4,7 +4,7 @@
  Template Name: Binary Page
  */
 
-include_once( './wp-content/themes/twentynineteen-child/Objects/UserData.php' );
+include_once( './wp-content/themes/twentynineteen-child/obj/UserData.php' );
 
 $user_id = $_GET[ 'user_id' ];
 $peek_user_binary_by_id = ( isset( $_GET[ 'peek_user_binary' ] ) ) ? $_GET[ 'peek_user_binary' ] : '';

@@ -7,7 +7,7 @@
  */
 
 require_once ( '../../../../wp-load.php' );
-require_once ( '../Objects/UserData.php' );
+require_once ( '../obj/UserData.php' );
 
 if ( isset( $_POST[ 'username' ] ) && isset( $_POST[ 'password' ] ) ) {
 

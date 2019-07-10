@@ -1,7 +1,7 @@
 <?php
 
 require_once( '../../../../wp-load.php' );
-include_once( '../Objects/UserAction.php' );
+include_once( '../obj/UserAction.php' );
 
 $user_data_info = [
     'user_info_id'     => $_GET[ 'user_info_id' ],

@@ -1,7 +1,7 @@
 <?php
 
 require_once( '../../../../wp-load.php' );
-include_once( '../Objects/UserAction.php' );
+include_once( '../obj/UserAction.php' );
 
 $withdrawal_status_info = [
     'withdrawal_id'     => $_GET[ 'withdrawal_id' ],

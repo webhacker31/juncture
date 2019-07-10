@@ -116,6 +116,53 @@ form[name=altEditor-form] .errorLabel {
   margin-right: 20px;
 }
 
+#coming_soon {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  height: 100vh;
+  background: url(asset/images/juncture-logo.jpg) no-repeat center;
+  background-size: cover;
+}
+#coming_soon:before {
+  content: "";
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+#coming_soon ._content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  padding: 80px;
+  background-color: white;
+  z-index: 1;
+  border-radius: 30px;
+}
+#coming_soon ._content ._under-maintenance-img {
+  display: block;
+  margin-bottom: 30px;
+}
+
 .sidebar-fixed {
   height: 100vh;
   width: 270px;
@@ -140,6 +187,41 @@ form[name=altEditor-form] .errorLabel {
 
 .sidebar-fixed .logo-wrapper img {
   max-height: 50px;
+}
+
+._sidebar-mobile {
+  left: 0;
+  -webkit-transition: left 0.5s ease-in-out;
+  -o-transition: left 0.5s ease-in-out;
+  transition: left 0.5s ease-in-out;
+}
+
+._sidebar-mobile-toggler {
+  display: none !important;
+}
+
+._sidebar-overlay {
+  opacity: 0;
+  visibility: hidden;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 1040;
+  -webkit-transition: opacity 0.5s ease-in-out;
+  -o-transition: opacity 0.5s ease-in-out;
+  transition: opacity 0.5s ease-in-out;
+}
+
+@media (max-width: 1199.98px) {
+  ._sidebar-mobile-toggler {
+    display: inline-block !important;
+  }
+
+  ._sidebar-mobile {
+    display: block;
+    left: -270px;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */
