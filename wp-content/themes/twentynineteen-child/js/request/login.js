@@ -1,5 +1,18 @@
 $(document).ready(function ($) {
 
+    // Login when pressing Enter Key
+
+    $( '#login .login_form input' ).keyup( function (e) {
+        var key = e.which;
+        if (key == 13) {
+            $( '.form_login-submit').click();
+            return false;
+        }
+
+    });
+    
+    // Login using submit button 
+
     $( '#login .login_form .form_login-submit' ).on( 'click', function () {
 
         var username    = $( '#login .login_form input[name="username"]' ).val(),
