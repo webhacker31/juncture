@@ -62,15 +62,35 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <span class="first-name">First name:</span>
-                    <span class="last-name">Last name:</span>
-                    <span class="middle-name">Middle name:</span>
-                    <span class="mobile-number">Mobile No.:</span>
-                    <span class="address">Address</span>
-                    <span class="birthdate">Date of Birth:</span>
-                    <span class="email">Email:</span>
-                    <span class="civil-status">Civil Status:</span>
-                    <p>First name: <span class="first-name"></span></p>
+                    <p class="font-weight-bold">Username: <span class="username font-weight-normal"></span></p>
+                    <p class="font-weight-bold">Password: <span class="password font-weight-normal"></span></p>
+                    <p class="font-weight-bold">User ID: <span class="user-id font-weight-normal"></span></p>
+                    <p class="font-weight-bold">Role: <span class="role font-weight-normal"></span></p>
+                    <p class="font-weight-bold">First name: <span class="first-name font-weight-normal"></span></p>
+                    <p class="font-weight-bold">Last name: <span class="last-name font-weight-normal"></span></p>
+                    <p class="font-weight-bold">Middle name: <span class="middle-name font-weight-normal"></span></p>
+                    <p class="font-weight-bold">Mobile No.: <span class="mobile-number font-weight-normal"></span></p>
+                    <p class="font-weight-bold">Address: <span class="address font-weight-normal"></span></p>
+                    <p class="font-weight-bold">Date of Birth: <span class="birthdate font-weight-normal"></span></p>
+                    <p class="font-weight-bold">Email: <span class="email font-weight-normal"></span></p>
+                    <p class="font-weight-bold">Civil Status: <span class="civil-status font-weight-normal"></span></p>
+
+                    <!-- <table class="table table-borderless">
+                        <tbody>
+                            <tr>
+                                <td class="font-weight-bold p-1">Username:</td>
+                                <td class="username p-1"></td>
+                                <td class="font-weight-bold p-1">Password:</td>
+                                <td class="password p-1"></td>
+                            </tr>
+                            <tr>
+                                <td class="font-weight-bold p-1">User ID:</td>
+                                <td class="user-id p-1"></td>
+                                <td class="font-weight-bold p-1">Role:</td>
+                                <td class="role p-1"></td>
+                            </tr>
+                        </tbody>
+                    </table> -->
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

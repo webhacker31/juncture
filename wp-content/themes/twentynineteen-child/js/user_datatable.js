@@ -141,7 +141,7 @@ $( document ).ready( function( $ ) {
 
         $.ajax({
             method: 'GET',
-            url: $home_url + '/request/user-info/',
+            url: $home_url + '/request/admin-view-profile/',
             data: {
                 user_id: user_id
             },
@@ -149,40 +149,10 @@ $( document ).ready( function( $ ) {
 
                 var user_info = JSON.parse( response );
 
-                // console.log( user_info.length );
-
-                console.log( user_info[ 0 ][ 'user_username' ] );
-
-                $( '.first-name' ).text( user_info[ 0 ][ 'user_username' ] );
-
-                // for( var index = 0; index < user_info.length; index++ ) {
-                // }
-
-                // [
-                //     value,
-                //     value,
-                //     value
-                // ]
-                
-                // [
-                //     name => value,
-                //     name => value
-                // ]
-
-                // [
-                //     {
-                //         name : value
-                //     },
-                //     {
-                //         name : value
-                //     }
-                // ]
-
-                // [
-                //     [
-
-                //     ]
-                // ]
+                $( '#modalUserInfo .username' ).text( user_info[ 0 ][ 'user_username' ] );
+                $( '#modalUserInfo .password' ).text( user_info[ 0 ][ 'user_password' ] );
+                $( '#modalUserInfo .user-id' ).text( user_info[ 0 ][ 'user_info_id' ] );
+                $( '#modalUserInfo .role' ).text( user_info[ 0 ][ 'user_role' ] );
 
             }
         })
