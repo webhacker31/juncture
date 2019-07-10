@@ -51,4 +51,31 @@
             <table id="_user-table-list" class="dataTable table table-striped mt-5" cellpadding="0" cellspacing="0" border="0"></table>
         </div>
     </main>
+
+    <div class="modal fade" id="modalUserInfo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="myModalLabel">User Profile</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <span class="first-name">First name:</span>
+                    <span class="last-name">Last name:</span>
+                    <span class="middle-name">Middle name:</span>
+                    <span class="mobile-number">Mobile No.:</span>
+                    <span class="address">Address</span>
+                    <span class="birthdate">Date of Birth:</span>
+                    <span class="email">Email:</span>
+                    <span class="civil-status">Civil Status:</span>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
 </div>

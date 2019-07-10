@@ -66,6 +66,12 @@ $( document ).ready( function( $ ) {
             responsive: true,
             altEditor: true,
             buttons: [{
+                extend: 'selected',
+                text: 'View Profile',
+                name: 'view',
+                className: 'view-profile'
+            },
+            {
                 text: 'Add',
                 name: 'add'
             },
@@ -83,6 +89,16 @@ $( document ).ready( function( $ ) {
                 text: 'Refresh',
                 name: 'refresh'
             }],
+            onViewRow: function(datatable, rowdata, success, error) {
+
+                $.ajax({
+                    url: request_view,
+                    type: 'POST',
+                    data: rowdata,
+                    success: success,
+                    error: error
+                });
+            },
             onAddRow: function(datatable, rowdata, success, error) {
 
                 $.ajax({
@@ -111,6 +127,30 @@ $( document ).ready( function( $ ) {
                     error: error
                 });
             }
+    });
+
+    $( '.view-profile' ).attr( 'data-toggle', 'modal' );
+    $( '.view-profile' ).attr( 'data-target', '#modalUserInfo' );
+
+    $( '.view-profile' ).on( 'click', function () {
+
+        var user_id = $( 'table#_user-table-list tr.selected td:first-child' ).html();
+        
+        $('#modalUserInfo').modal();
+
+        $.ajax({
+            method: 'GET',
+            url: $home_url + 'request/user-info/',
+            data: {
+                user_id: user_id
+            },
+            success: function( response ) {
+
+                console.log( JSON.parse( response ) );
+
+            }
+        })
+        
     });
 
 } );
