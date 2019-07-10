@@ -1,7 +1,7 @@
 <?php
 
 /*
- Template Name: Request - Admin Users
+ Template Name: Request - Admin View User
  */
 
 require_once( './wp-load.php' );

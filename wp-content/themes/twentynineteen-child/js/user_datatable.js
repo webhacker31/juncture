@@ -50,6 +50,7 @@ $( document ).ready( function( $ ) {
     var myTable;
 
     var request_user_info = $home_url + '/request/admin-users/',
+        request_add = $home_url + '/request/admin-view-user/',
         request_add = $home_url + '/request/admin-add-user/',
         request_delete = $home_url + '/request/admin-delete-user/',
         request_update = $home_url + '/request/update-user/';
@@ -140,13 +141,48 @@ $( document ).ready( function( $ ) {
 
         $.ajax({
             method: 'GET',
-            url: $home_url + 'request/user-info/',
+            url: $home_url + '/request/user-info/',
             data: {
                 user_id: user_id
             },
             success: function( response ) {
 
-                console.log( JSON.parse( response ) );
+                var user_info = JSON.parse( response );
+
+                // console.log( user_info.length );
+
+                console.log( user_info[ 0 ][ 'user_username' ] );
+
+                $( '.first-name' ).text( user_info[ 0 ][ 'user_username' ] );
+
+                // for( var index = 0; index < user_info.length; index++ ) {
+                // }
+
+                // [
+                //     value,
+                //     value,
+                //     value
+                // ]
+                
+                // [
+                //     name => value,
+                //     name => value
+                // ]
+
+                // [
+                //     {
+                //         name : value
+                //     },
+                //     {
+                //         name : value
+                //     }
+                // ]
+
+                // [
+                //     [
+
+                //     ]
+                // ]
 
             }
         })

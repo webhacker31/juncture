@@ -70,6 +70,7 @@
                     <span class="birthdate">Date of Birth:</span>
                     <span class="email">Email:</span>
                     <span class="civil-status">Civil Status:</span>
+                    <p>First name: <span class="first-name"></span></p>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

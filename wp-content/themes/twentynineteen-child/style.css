@@ -113,6 +113,10 @@ form[name=altEditor-form] .errorLabel {
   margin-right: 20px;
 }
 
+#_user-table-list_wrapper .dt-buttons .dt-button:first-child {
+  margin-right: 30px;
+}
+
 .sidebar-fixed {
   height: 100vh;
   width: 270px;
