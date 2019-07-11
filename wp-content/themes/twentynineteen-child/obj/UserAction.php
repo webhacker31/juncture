@@ -99,7 +99,7 @@ class User_Action {
 
     }
 
-    public function is_
+    // public function is_
 
     public function add_user( $user_data ) {
 

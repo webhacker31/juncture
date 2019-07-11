@@ -199,12 +199,12 @@ class User_Data {
 
     }
 
-    public function get_user_pairing_by_id( $user_id, $purpose = '' ) {
+    public function get_user_pairing_by_id( $main_user_id, $purpose = '' ) {
 
         $pairing_success = array();
         $user_left_right_downlines = array();
 
-        $user_direct_downline = $this->get_user_downline_by_id( $user_id );
+        $user_direct_downline = $this->get_user_downline_by_id( $main_user_id );
 
         foreach( $user_direct_downline[ 0 ] as $position => $user_id ) {
 
@@ -220,6 +220,12 @@ class User_Data {
 
                 array_push( $user_left_right_downlines[ $downline_position ], $user_id );
 
+                if( ! $this->is_user_pairing_exist( $main_user_id, $user_id ) ) {
+
+                    array_push( $user_left_right_downlines[ $downline_position ], $user_id );
+
+                }
+
                 $user_geneology_data = $this->get_user_geneology_by_id( $user_id );
 
                 for( $index = 1; $index < count( $user_geneology_data ); $index++ ) {
@@ -228,7 +234,7 @@ class User_Data {
 
                         $user_info = $this->get_user_info_by_id( $user_geneology_data[ $index ][ 2 ] );
 
-                        if( ! $this->is_user_pairing_exist( $user_id, $user_geneology_data[ $index ][ 2 ] ) ) {
+                        if( ! $this->is_user_pairing_exist( $main_user_id, $user_geneology_data[ $index ][ 2 ] ) ) {
 
                             array_push( $user_left_right_downlines[ $downline_position ], $user_info[ 0 ]->user_info_id );
 
@@ -250,15 +256,15 @@ class User_Data {
 
         }
 
-        if( $purpose == 'request_withdrawal' ) {
+        // if( $purpose == 'request_withdrawal' ) {
 
-            return $pairing_success;
+        //     return $pairing_success;
 
-        } else {
+        // } else {
 
-            return $this->get_user_pairing_obj_format( $pairing_success );
+        //     return $this->get_user_pairing_obj_format( $pairing_success );
 
-        }
+        // }
 
     }
 
