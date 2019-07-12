@@ -191,79 +191,64 @@ class User_Data {
 
     }
 
-    public function get_user_pairing_by_id( $user_id, $purpose = '' ) {
+    public function is_user_pairing_exist( $user_id, $pairing_id ) {
 
-        $temp_pairing_stack = array();
-        $pairing_check = array();
+        $is_user_pairing_exist = $this->wpdb->get_var( 'SELECT COUNT(*) FROM j_users_earnings WHERE user_info_id="' . $user_id . '" AND earning_pair_left="' . $pairing_id . '" OR user_info_id="' . $user_id . '" AND earning_pair_right="' . $pairing_id . '"' );
+
+        return $is_user_pairing_exist;
+
+    }
+
+    public function get_user_pairing_by_id( $main_user_id, $purpose = '' ) {
+
         $pairing_success = array();
-        $data_counter = 2;
-        $prev_data_counter = 0;
-        $available_counter = 0;
+        $user_left_right_downlines = array();
 
-        $user_geneology_data = $this->get_user_geneology_by_id( $user_id );
+        $user_direct_downline = $this->get_user_downline_by_id( $main_user_id );
 
-        for( $index = 1; $index < count( $user_geneology_data ); ) {
+        foreach( $user_direct_downline[ 0 ] as $position => $user_id ) {
 
-            if( $index <= $data_counter ) {
+            if( $user_id != '' ) {
 
-                array_push( $temp_pairing_stack, $user_geneology_data[ $index ][2] );
+                $downline_position = ( $position == 'user_dl_left_id' ) ? 'left' : 'right' ;
 
-                if( $user_geneology_data[ $index ][2] == "Available" ) $available_counter++;
+                if( ! array_key_exists( $downline_position, $user_left_right_downlines ) ) {
 
-                $index++;
+                    $user_left_right_downlines[ $downline_position ] = array();
 
-            }
-            
-            if( $index > $data_counter ) {
+                }
 
-                array_push( $pairing_check, $temp_pairing_stack );
+                if( ! $this->is_user_pairing_exist( $main_user_id, $user_id ) ) {
 
-                unset( $temp_pairing_stack );
-                $temp_pairing_stack = array();
-                $data_counter_holder = $data_counter;
-                $data_counter = $data_counter + ( ( ( $data_counter - $prev_data_counter ) * 2 ) - ( $available_counter * 2 ) );
-                $prev_data_counter = $data_counter_holder;
-                $available_counter = 0;
+                    array_push( $user_left_right_downlines[ $downline_position ], $user_id );
 
-            }
+                }
 
-        }
+                $user_geneology_data = $this->get_user_geneology_by_id( $user_id );
 
-        foreach( $pairing_check as $pairing_group ) {
+                for( $index = 1; $index < count( $user_geneology_data ); $index++ ) {
 
-            $pairing_group_count = count( $pairing_group );
-            $pairing_group_half_count = $pairing_group_count / 2;
-            $available_counter = 0;
+                    if( $user_geneology_data[ $index ][ 2 ] != "Available" ) {
 
-            for( $index = $pairing_group_count; $index > $pairing_group_half_count; $index-- ) {
+                        $user_info = $this->get_user_info_by_id( $user_geneology_data[ $index ][ 2 ] );
 
-                if( $pairing_group[ $index - 1 ] == 'Available' ) $available_counter++;
+                        if( ! $this->is_user_pairing_exist( $main_user_id, $user_geneology_data[ $index ][ 2 ] ) ) {
 
-            }
+                            array_push( $user_left_right_downlines[ $downline_position ], $user_info[ 0 ]->user_info_id );
 
-            if( $available_counter == $pairing_group_half_count ) break;
-
-            for( $index = 0; $index < $pairing_group_count; $index++ ) {
-
-                if( $pairing_group[ $index ] != "Available" && $pairing_group[ $pairing_group_count - ( $index + 1 ) ] != "Available") {
-
-                    $is_pairing_exist = $this->wpdb->get_var( 'SELECT COUNT(*) FROM j_users_earnings WHERE user_info_id="' . $user_id . '" AND earning_pair_left="' . $pairing_group[ $index ] . '" OR user_info_id="' . $user_id . '" AND earning_pair_right="' . $pairing_group[ $index ] . '"' );
-
-                    if( ! $is_pairing_exist ) {
-
-                        array_push( $pairing_success, array( $pairing_group[ $index ], $pairing_group[ $pairing_group_count - ( $index + 1 ) ] ) );
+                        }
 
                     }
 
                 }
 
-                if( $index + 1 == $pairing_group_count / 2 ) {
-
-                    break;
-
-                }
-
             }
+
+        for( $index = 0; $index < count( $user_left_right_downlines[ 'left' ] ); $index++ ) {
+
+            if( $user_left_right_downlines[ 'right' ][ $index ] == null ) break;
+
+            array_push( $pairing_success, array( $user_left_right_downlines[ 'left' ][ $index ], $user_left_right_downlines[ 'right' ][ $index ] ) );
 
         }
 
