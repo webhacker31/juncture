@@ -113,6 +113,15 @@ form[name=altEditor-form] .errorLabel {
   margin-right: 20px;
 }
 
+#_user-table-list_wrapper .dt-buttons .dt-button:first-child {
+  margin-right: 30px;
+}
+
+#modalUserInfo i {
+  font-size: 145px;
+  color: darkgray;
+}
+
 #coming_soon {
   display: -webkit-box;
   display: -ms-flexbox;

@@ -115,6 +115,23 @@ form[name=altEditor-form] .errorLabel {
     }
 }
 
+#_user-table-list_wrapper {
+
+    .dt-buttons {
+
+        .dt-button:first-child {
+            margin-right: 30px;
+        }
+    }
+}
+
+#modalUserInfo {
+
+    i {
+        font-size: 145px;
+        color: rgb(169, 169, 169);
+    }
+}
 #coming_soon {
     display: -webkit-box;
     display: -ms-flexbox;
