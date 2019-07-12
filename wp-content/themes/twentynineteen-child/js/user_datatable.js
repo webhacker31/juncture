@@ -82,11 +82,6 @@ $( document ).ready( function( $ ) {
                 name: 'edit'
             },
             {
-                extend: 'selected',
-                text: 'Delete',
-                name: 'delete'
-            },
-            {
                 text: 'Refresh',
                 name: 'refresh'
             }],
@@ -105,15 +100,6 @@ $( document ).ready( function( $ ) {
                 $.ajax({
                     url: request_add,
                     type: 'POST',
-                    data: rowdata,
-                    success: success,
-                    error: error
-                });
-            },
-            onDeleteRow: function(datatable, rowdata, success, error) {
-                $.ajax({
-                    url: request_delete,
-                    type: 'GET',
                     data: rowdata,
                     success: success,
                     error: error
