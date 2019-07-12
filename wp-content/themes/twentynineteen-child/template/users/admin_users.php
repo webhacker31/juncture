@@ -53,7 +53,7 @@
     </main>
 
     <div class="modal fade" id="modalUserInfo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
+        <div class="modal-dialog modal-md" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h4 class="modal-title" id="myModalLabel">User Profile</h4>
@@ -62,33 +62,42 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <div class="row">
-                        <div class="col-6 d-inline-block">
-                            <p class="font-weight-bold">Username: <span class="username font-weight-normal"></span></p>
-                        </div>
-                        <div class="col-6 d-inline-block">
-                            <p class="font-weight-bold">Password: <span class="password font-weight-normal"></span></p>
-                        </div>
-                    </div>
                     <div class="row border-bottom">
-                        <div class="col-6">
-                            <p class="font-weight-bold">User ID: <span class="user-id font-weight-normal"></span></p>
+                        <div class="col-6 text-center">
+                            <i class="rounded-circle fas fa-user-circle"></i>
                         </div>
                         <div class="col-6">
+                            <p class="font-weight-bold">Username: <span class="username font-weight-normal"></span></p>
+                            <p class="font-weight-bold">Password: <span class="password font-weight-normal"></span></p>
+                            <p class="font-weight-bold">User ID: <span class="user-id font-weight-normal"></span></p>
                             <p class="font-weight-bold">Role: <span class="role font-weight-normal"></span></p>
                         </div>
                     </div>
                     
                     <div>
-                        <h6 class="mt-3 mb-4">ADDITIONAL INFORMATION</h6>
-                        <p class="text-info font-weight-bold">First name: <span class="first-name font-weight-normal"></span></p>
-                        <p class="text-info font-weight-bold">Last name: <span class="last-name font-weight-normal"></span></p>
-                        <p class="text-info font-weight-bold">Middle name: <span class="middle-name font-weight-normal"></span></p>
-                        <p class="text-info font-weight-bold">Mobile No.: <span class="mobile-number font-weight-normal"></span></p>
-                        <p class="text-info font-weight-bold">Address: <span class="address font-weight-normal"></span></p>
-                        <p class="text-info font-weight-bold">Date of Birth: <span class="birthdate font-weight-normal"></span></p>
-                        <p class="text-info font-weight-bold">Email: <span class="email font-weight-normal"></span></p>
-                        <p class="text-info font-weight-bold">Civil Status: <span class="civil-status font-weight-normal"></span></p>
+                        <h5 class="mt-3 mb-4">ADDITIONAL INFORMATION</h5>
+                        <div class="row">
+                            <div class="col-4">
+                                <p class="font-weight-bold">First name:</p>
+                                <p class="font-weight-bold">Last name:</p>
+                                <p class="font-weight-bold">Middle name:</p>
+                                <p class="font-weight-bold">Email:</p>
+                                <p class="font-weight-bold">Address:</p>
+                                <p class="font-weight-bold">Mobile No.:</p>
+                                <p class="font-weight-bold">Date of Birth:</p>
+                                <p class="font-weight-bold">Civil Status:</p>
+                            </div>
+                            <div class="col-8">
+                                <p class="first-name"></p>
+                                <p class="last-name"></p>
+                                <p class="middle-name"></p>
+                                <p class="email"></p>
+                                <p class="address"></p>
+                                <p class="mobile-number"></p>
+                                <p class="birthdate"></p>
+                                <p class="civil-status"></p>
+                            </div>
+                        </div>
                     </div>
 
                     <!-- <table class="table table-borderless w-auto">
