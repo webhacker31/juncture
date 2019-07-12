@@ -86,7 +86,6 @@ $( document ).ready( function( $ ) {
                 name: 'refresh'
             }],
             onViewRow: function(datatable, rowdata, success, error) {
-
                 $.ajax({
                     url: request_view,
                     type: 'POST',
@@ -96,7 +95,6 @@ $( document ).ready( function( $ ) {
                 });
             },
             onAddRow: function(datatable, rowdata, success, error) {
-
                 $.ajax({
                     url: request_add,
                     type: 'POST',
