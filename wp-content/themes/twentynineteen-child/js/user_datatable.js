@@ -82,16 +82,10 @@ $( document ).ready( function( $ ) {
                 name: 'edit'
             },
             {
-                extend: 'selected',
-                text: 'Delete',
-                name: 'delete'
-            },
-            {
                 text: 'Refresh',
                 name: 'refresh'
             }],
             onViewRow: function(datatable, rowdata, success, error) {
-
                 $.ajax({
                     url: request_view,
                     type: 'POST',
@@ -101,19 +95,9 @@ $( document ).ready( function( $ ) {
                 });
             },
             onAddRow: function(datatable, rowdata, success, error) {
-
                 $.ajax({
                     url: request_add,
                     type: 'POST',
-                    data: rowdata,
-                    success: success,
-                    error: error
-                });
-            },
-            onDeleteRow: function(datatable, rowdata, success, error) {
-                $.ajax({
-                    url: request_delete,
-                    type: 'GET',
                     data: rowdata,
                     success: success,
                     error: error
