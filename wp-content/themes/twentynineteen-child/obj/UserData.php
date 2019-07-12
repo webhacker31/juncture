@@ -244,8 +244,6 @@ class User_Data {
 
             }
 
-        }
-
         for( $index = 0; $index < count( $user_left_right_downlines[ 'left' ] ); $index++ ) {
 
             if( $user_left_right_downlines[ 'right' ][ $index ] == null ) break;
