@@ -90,6 +90,24 @@ form[name=altEditor-form] .errorLabel {
 
     table.google-visualization-orgchart-table {
         border-collapse: separate !important;
+
+        .google-visualization-orgchart-node.google-visualization-orgchart-node-medium{ 
+            background: transparent;
+            border: 0;
+            box-shadow: none;
+            color: #51899a;
+
+            i.fas.fa-user {
+                width: 50px;
+                height: 50px;
+                background-color: #51899a;
+                margin: 5px auto;
+                border-radius: 50%;
+                padding: 10px;
+                color: #fff;
+                
+            }
+        } 
     }
 
     .binary_downlines {
@@ -115,6 +133,22 @@ form[name=altEditor-form] .errorLabel {
     }
 }
 
+#_user-table-list_wrapper {
+
+    .dt-buttons {
+
+        .dt-button:first-child {
+            margin-right: 30px;
+        }
+    }
+}
+
+#modalUserInfo {
+    i {
+        font-size: 145px;
+        color: rgb(169, 169, 169);
+    }
+}
 #coming_soon {
     display: -webkit-box;
     display: -ms-flexbox;

@@ -99,6 +99,8 @@ class User_Action {
 
     }
 
+    // public function is_
+
     public function add_user( $user_data ) {
 
         $return_failed_msg = [
@@ -195,29 +197,6 @@ class User_Action {
         } else {
 
             return false;
-
-        }
-
-    }
-
-    public function delete_user( $user_id ) {
-
-        if( $this->is_user_has_downline( $user_id ) ) {
-
-            $this->wpdb->delete( 'j_users', array( 'user_id' => $user_id ) );
-            $this->wpdb->delete( 'j_users_info', array( 'user_info_id' => $user_id ) );
-
-            return [
-                'status' => 'Success',
-                'message' => 'User data deleted.'
-            ];
-
-        } else {
-
-            return [
-                'status' => 'Failed',
-                'message' => 'Deletion of user cannot be process.'
-            ];
 
         }
 
