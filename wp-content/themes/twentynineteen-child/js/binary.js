@@ -26,8 +26,10 @@ $( document ).ready( function() {
             var chart = new google.visualization.OrgChart(document.getElementById('binary'));
 
             chart.draw(data, {allowHtml:true});
+            
+            var orgchart_node =  $( '.google-visualization-orgchart-node.google-visualization-orgchart-node-medium' ).prepend(  '<i class="fas fa-user fa-2x d-block"></i>' );
 
-            $( '#binary .google-visualization-orgchart-table tr td[title="Available"]' ).html( 'Available' ).css( 'opacity', '.3' );
+            $( '#binary .google-visualization-orgchart-table tr td[title="Available"]' ).html( 'Available' ).css( 'opacity', '.7' );
 
             $( '.google-visualization-orgchart-node.google-visualization-orgchart-node-medium' ).on( 'click', function() {
 
