@@ -139,7 +139,7 @@ class User_Data {
 
         for( $index = 0; $index < count( $users_to_check ); $index++ ) {
 
-            if( count( $user_downlines ) >= 21 ) break;
+            if( count( $user_downlines ) >= 14 ) break;
 
             if( $users_to_check[ $index ] != "Available" ) {
 
