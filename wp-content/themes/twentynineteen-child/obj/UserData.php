@@ -193,7 +193,7 @@ class User_Data {
 
     public function is_user_pairing_exist( $user_id, $pairing_id ) {
 
-        $is_user_pairing_exist = $this->wpdb->get_var( 'SELECT COUNT FROM j_users_earnings WHERE user_info_id="' . $user_id . '" AND earning_pair_left="' . $pairing_id . '" OR user_info_id="' . $user_id . '" AND earning_pair_right="' . $pairing_id . '"' );
+        $is_user_pairing_exist = $this->wpdb->get_var( 'SELECT COUNT(*) FROM j_users_earnings WHERE user_info_id="' . $user_id . '" AND earning_pair_left="' . $pairing_id . '" OR user_info_id="' . $user_id . '" AND earning_pair_right="' . $pairing_id . '"' );
 
         return $is_user_pairing_exist;
 
@@ -243,6 +243,8 @@ class User_Data {
                 }
 
             }
+
+        }
 
         for( $index = 0; $index < count( $user_left_right_downlines[ 'left' ] ); $index++ ) {
 
