@@ -1,7 +1,5 @@
 $( document ).ready( function() {
 
-    if ( $peek_user_binary_by_id != '' ) $user_id = $peek_user_binary_by_id;
-
     google.charts.load('current', {packages:["orgchart"]});
     google.charts.setOnLoadCallback(drawChart);
 
@@ -11,7 +9,7 @@ $( document ).ready( function() {
             method: 'POST',
             url: $home_url + '/request/user-downline/',
             data: {
-                user_id : $user_id
+                user_id : ( $peek_user_binary_by_id == '' ) ? $user_id : $peek_user_binary_by_id
             }
         }).done( function( response ) {
 
