@@ -96,6 +96,14 @@ class User_Data {
 
     }
 
+    public function get_user_main_account( $user_username ) {
+
+        $user_main_account = $this->wpdb->get_row( "SELECT * FROM j_users_info WHERE user_username='{$user_username}' LIMIT 1" );
+
+        return $user_main_account;
+
+    }
+
     public function get_user_downline_by_id( $user_id ) {
 
         $get_user_downline_by_id = $this->wpdb->get_results( "SELECT user_dl_left_id, user_dl_right_id FROM j_users_info WHERE user_info_id='{$user_id}'" );

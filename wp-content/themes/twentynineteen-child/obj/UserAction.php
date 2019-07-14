@@ -1,13 +1,17 @@
 <?php
 
+require_once( 'UserCheck.php' );
+
 class User_Action {
 
     private $wpdb;
+    private $User_Check;
 
     public function __construct() {
 
         global $wpdb;
         $this->wpdb = $wpdb;
+        $this->User_Check = new User_Check();
 
     }
 
@@ -22,38 +26,6 @@ class User_Action {
         }
 
         return $randomString;
-
-    }
-
-    public function is_upline_id_exist( $user_upline_id ) {
-
-        $is_upline_id_exist = $this->wpdb->get_var( "SELECT COUNT(*) FROM j_users WHERE user_id='{$user_upline_id}'" );
-
-        return $is_upline_id_exist;
-
-    }
-    
-    public function is_position_available_to_upline( $user_upline_id, $user_position ) {
-
-        $is_position_available_to_upline = $this->wpdb->get_var( "SELECT {$user_position} FROM j_users_info WHERE user_info_id='{$user_upline_id}'" );
-
-        if ( $is_position_available_to_upline == '' ) {
-
-            return true;
-
-        } else {
-
-            return false;
-
-        }
-
-    }
-
-    public function username_limit_check( $user_username ) {
-
-        $is_username_exist = $this->wpdb->get_var( "SELECT COUNT(*) FROM j_users_info WHERE user_username='{$user_username}'" );
-
-        return $is_username_exist;
 
     }
 
@@ -99,8 +71,6 @@ class User_Action {
 
     }
 
-    // public function is_
-
     public function add_user( $user_data ) {
 
         $return_failed_msg = [
@@ -115,74 +85,104 @@ class User_Action {
             'message' => ""
         ];
 
-        if ( $this->username_limit_check( $user_data[ "user_username" ] ) <= 7 ) {
+        /**
+         * Check if User is Cross Lining
+         * 
+         */
+        if( $this->User_Check->is_multiple_account( $user_data[ 'user_username' ] ) ) {
 
-            if ( $this->is_upline_id_exist( $user_data[ "user_upline_id" ] ) ) {
+            if( ! $this->User_Check->is_under_main_account( $user_data[ 'user_password' ], $user_data[ 'user_username' ] ) ) {
 
-                if ( $this->is_position_available_to_upline( $user_data[ 'user_upline_id' ], $this->user_position_converter( $user_data[ 'user_position' ] ) ) ) {
+                $return_failed_msg['message'] = "Cannot Add User. User is Cross Lining";
 
-                    $this->wpdb->query( "INSERT INTO j_users (user_id) VALUES (NULL)" );
-
-                    $user_last_id = $this->wpdb->get_var( "SELECT user_id FROM j_users ORDER BY user_id DESC LIMIT 1" );
-
-                    $this->wpdb->insert(
-                        'j_users_info',
-                        array(
-                            'user_info_id'              => $user_last_id,
-                            'user_username'             => $user_data[ 'user_username' ],
-                            'user_password'             => $user_data[ 'user_password' ],
-                            'user_role'                 => $user_data[ 'user_role' ],
-                            'user_upline_id'            => $user_data[ 'user_upline_id' ],
-                            'user_position'             => $this->user_position_converter( $user_data[ 'user_position' ], true ),
-                            'user_authentication_code'  => $this->generateRandomString()
-                            )
-                    );
-
-                    $this->wpdb->update( 
-                        'j_users_info', 
-                        array( 
-                            $this->user_position_converter( $user_data[ 'user_position' ] ) => $user_last_id
-                        ), 
-                        array( 'user_info_id' => $user_data[ 'user_upline_id' ] )
-                    );
-
-                    $last_inserted_user = $this->wpdb->get_results( "SELECT * FROM j_users_info WHERE user_info_id='{$user_last_id}'" );
-
-                    return [
-                        'user_info_id' => $last_inserted_user[0]->user_info_id,
-                        'user_username' => $last_inserted_user[0]->user_username,
-                        'user_password' => $last_inserted_user[0]->user_password,
-                        'user_role' => $last_inserted_user[0]->user_role,
-                        'user_upline_id' => $last_inserted_user[0]->user_upline_id,
-                        'user_position' => $last_inserted_user[0]->user_position,
-                        'user_authentication_code' => $last_inserted_user[0]->user_authentication_code,
-                        'status' => 'success',
-                        'message' => 'User successfully registered.'
-                    ];
-
-                } else {
-
-                    $return_failed_msg['message'] = "Position is not available.";
-        
-                    return $return_failed_msg;
-
-                }
-
-            } else {
-
-                $return_failed_msg['message'] = "Upline ID doesn't exist.";
-    
                 return $return_failed_msg;
+    
+                exit();
 
             }
 
-        } else {
+        }
 
-            $return_failed_msg['message'] = 'Username exceeds the limit.';
+        /**
+         * Check if User reach the account limit
+         * 
+         */
+        if( $this->User_Check->is_user_reach_account_limit( $user_data[ "user_username" ] ) ) {
+
+            $return_failed_msg['message'] = "User account exceeds the limit. Account is only up to 7 accounts.";
 
             return $return_failed_msg;
 
+            exit();
+
         }
+
+        /**
+         * Check if User Upline / Direct User exist
+         * 
+         */
+        if( ! $this->User_Check->is_upline_id_exist( $user_data[ "user_upline_id" ] ) ) {
+
+            $return_failed_msg['message'] = "Upline ID doesn't exist.";
+
+            return $return_failed_msg;
+
+            exit();
+
+        }
+
+        /**
+         * Check if Position is available to Upline / Direct User
+         * 
+         */
+        if( ! $this->User_Check->is_position_available_to_upline( $user_data[ 'user_upline_id' ], $this->user_position_converter( $user_data[ 'user_position' ] ) ) ) {
+
+            $return_failed_msg['message'] = "Position is not available.";
+
+            return $return_failed_msg;
+
+            exit();
+
+        }
+
+        $this->wpdb->query( "INSERT INTO j_users (user_id) VALUES (NULL)" );
+
+        $user_last_id = $this->wpdb->get_var( "SELECT user_id FROM j_users ORDER BY user_id DESC LIMIT 1" );
+
+        $this->wpdb->insert(
+            'j_users_info',
+            array(
+                'user_info_id' => $user_last_id,
+                'user_username' => $user_data[ 'user_username' ],
+                'user_password' => $user_data[ 'user_password' ],
+                'user_role' => $user_data[ 'user_role' ],
+                'user_upline_id' => $user_data[ 'user_upline_id' ],
+                'user_position' => $this->user_position_converter( $user_data[ 'user_position' ], true ),
+                'user_authentication_code' => $this->generateRandomString()
+                )
+        );
+
+        $this->wpdb->update( 
+            'j_users_info', 
+            array( 
+                $this->user_position_converter( $user_data[ 'user_position' ] ) => $user_last_id
+            ), 
+            array( 'user_info_id' => $user_data[ 'user_upline_id' ] )
+        );
+
+        $last_inserted_user = $this->wpdb->get_results( "SELECT * FROM j_users_info WHERE user_info_id='{$user_last_id}'" );
+
+        return [
+            'user_info_id' => $last_inserted_user[0]->user_info_id,
+            'user_username' => $last_inserted_user[0]->user_username,
+            'user_password' => $last_inserted_user[0]->user_password,
+            'user_role' => $last_inserted_user[0]->user_role,
+            'user_upline_id' => $last_inserted_user[0]->user_upline_id,
+            'user_position' => $last_inserted_user[0]->user_position,
+            'user_authentication_code' => $last_inserted_user[0]->user_authentication_code,
+            'status' => 'success',
+            'message' => "User successfully registered."
+        ];
 
     }
 
