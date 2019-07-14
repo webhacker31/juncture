@@ -27,7 +27,7 @@ $( document ).ready( function() {
 
             chart.draw(data, {allowHtml:true});
             
-            var orgchart_node =  $( '.google-visualization-orgchart-node.google-visualization-orgchart-node-medium' ).prepend(  '<i class="fas fa-user fa-2x d-block"></i>' );
+            var orgchart_node = $( '.google-visualization-orgchart-node.google-visualization-orgchart-node-medium' ).prepend(  '<i class="fas fa-user fa-2x d-block"></i>' );
 
             $( '#binary .google-visualization-orgchart-table tr td[title="Available"]' ).html( 'Available' ).css( 'opacity', '.7' );
 
@@ -35,7 +35,7 @@ $( document ).ready( function() {
 
                 if ( $( this ).attr( 'title' ) != "Available" ) {
 
-                    window.location.href = window.location.href.substring(0, window.location.href.indexOf('?')) + '?user_id=' + $user_id + '&peek_user_binary=' + $( this ).html();
+                    window.location.href = window.location.href.substring(0, window.location.href.indexOf('?')) + '?user_id=' + $user_id + '&peek_user_binary=' + $( this ).text();
 
                 }
                 
