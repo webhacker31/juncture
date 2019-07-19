@@ -34,7 +34,7 @@
             <div class="list-group list-group-flush">
                 <a href="#" class="list-group-item list-group-item-action waves-effect">
                     <i class="fas fa-chart-pie mr-3"></i>Dashboard</a>
-                <a href="<?php echo esc_url( home_url() ) ?>/dashboard/binary/?user_id=<?php echo $_GET[ 'user_id' ] ?>" class="list-group-item active waves-effect">
+                <a href="<?php echo esc_url( home_url() ) ?>/dashboard/binary/?user_id=<?php echo $_GET[ 'user_id' ] ?>" class="list-group-item list-group-item-action waves-effect">
                     <i class="fas fa-user mr-3"></i>Binary</a>
                 <a href="<?php echo esc_url( home_url() ) ?>/dashboard/earnings/?user_id=<?php echo $_GET[ 'user_id' ] ?>" class="list-group-item list-group-item-action waves-effect">
                     <i class="fas fa-wallet mr-3"></i>Earnings</a>
@@ -42,86 +42,231 @@
                     <i class="fas fa-table mr-3"></i>Transactions</a>
                 <a href="<?php echo esc_url( home_url() ) ?>/dashboard/withdrawal/?user_id=<?php echo $_GET[ 'user_id' ] ?>" class="list-group-item list-group-item-action waves-effect">
                     <i class="fas fa-coins mr-3"></i>Withdrawals</a>
-                <a href="<?php echo esc_url( home_url() ) ?>/dashboard/profile/?user_id=<?php echo $_GET[ 'user_id' ] ?>" class="list-group-item list-group-item-action waves-effect">
-                    <i class="fas fa-coins mr-3"></i>Profile</a>
+                <a href="<?php echo esc_url( home_url() ) ?>/dashboard/profile/?user_id=<?php echo $_GET[ 'user_id' ] ?>" class="list-group-item active waves-effect">
+                    <i class="fas fa-user mr-3"></i>Profile</a>
             </div>
         </div>
         <div class="_sidebar-overlay"></div>
     </header>
 
-    <div class="row">
-        <div class="col-lg-12 mb-4">
-            <div class="card card-cascade narrower">
-                <div class="view view-cascade gradient-card-header mdb-color lighten-3">
-                    <h5 class="mb-0 font-weight-bold">Edit Account</h5>
+    <main class="pt-5 mx-lg-5">
+        <div class="container-fluid">
+
+            <!-- Section: Team v.1 -->
+            <section class="section team-section">
+
+            <!-- Grid row -->
+            <div class="row text-center">
+
+                <!-- Grid column -->
+                <div class="col-md-8 mb-4">
+
+                <!-- Card -->
+                <div class="card card-cascade cascading-admin-card user-card">
+
+                    <!-- Card Data -->
+                    <div class="admin-up d-flex justify-content-start">
+                    <i class="fas fa-users info-color py-4 mr-3 z-depth-2"></i>
+                    <div class="data">
+                        <h5 class="font-weight-bold dark-grey-text">Edit Profile - <span class="text-muted">Complete your
+                            profile</span></h5>
+                    </div>
+                    </div>
+                    <!-- Card Data -->
+
+                    <!-- Card content -->
+                    <div class="card-body card-body-cascade">
+
+                    <!-- Grid row -->
+                    <div class="row">
+
+                        <!-- Grid column -->
+                        <div class="col-lg-4">
+
+                        <div class="md-form form-sm mb-0">
+                            <input type="text" id="form12" class="form-control form-control-sm">
+                            <label for="form12" class="">Username</label>
+                        </div>
+
+                        </div>
+                        <!-- Grid column -->
+
+                        <!-- Grid column -->
+                        <div class="col-lg-4">
+
+                        <div class="md-form form-sm mb-0">
+                            <input type="text" id="form3" class="form-control form-control-sm">
+                            <label for="form3" class="">Email address</label>
+                        </div>
+
+                        </div>
+                        <!-- Grid column -->
+
+                        <!-- Grid column -->
+                        <div class="col-lg-4">
+
+                        <div class="md-form form-sm mb-0">
+                            <input type="text" id="form4" class="form-control form-control-sm" disabled="">
+                            <label for="form4" class="disabled">Company</label>
+                        </div>
+
+                        </div>
+                        <!-- Grid column -->
+
+                    </div>
+                    <!-- Grid row -->
+
+                    <!-- Grid row -->
+                    <div class="row">
+
+                        <!-- Grid column -->
+                        <div class="col-md-6">
+
+                        <div class="md-form form-sm mb-0">
+                            <input type="text" id="form5" class="form-control form-control-sm">
+                            <label for="form5" class="">First name</label>
+                        </div>
+
+                        </div>
+                        <!-- Grid column -->
+
+                        <!-- Grid column -->
+                        <div class="col-md-6">
+
+                        <div class="md-form form-sm mb-0">
+                            <input type="text" id="form5" class="form-control form-control-sm">
+                            <label for="form5" class="">Last name</label>
+                        </div>
+
+                        </div>
+                        <!-- Grid column -->
+
+                    </div>
+                    <!-- Grid row -->
+
+                    <!-- Grid row -->
+                    <div class="row">
+
+                        <!-- Grid column -->
+                        <div class="col-md-12">
+
+                        <div class="md-form form-sm mb-0">
+                            <input type="text" id="form6" class="form-control form-control-sm">
+                            <label for="form6" class="">Address</label>
+                        </div>
+
+                        </div>
+                        <!-- Grid column -->
+
+                    </div>
+                    <!-- Grid row -->
+
+                    <!-- Grid row -->
+                    <div class="row">
+
+                        <!-- Grid column -->
+                        <div class="col-lg-4 col-md-12">
+
+                        <div class="md-form form-sm mb-0">
+                            <input type="text" id="form7" class="form-control form-control-sm">
+                            <label for="form7" class="">City</label>
+                        </div>
+
+                        </div>
+                        <!-- Grid column -->
+
+                        <!-- Grid column -->
+                        <div class="col-lg-4 col-md-6">
+
+                        <div class="md-form form-sm mb-0">
+                            <input type="text" id="form8" class="form-control form-control-sm">
+                            <label for="form8" class="">Country</label>
+                        </div>
+
+                        </div>
+                        <!-- Grid column -->
+
+                        <!-- Grid column -->
+                        <div class="col-lg-4 col-md-6">
+
+                        <div class="md-form form-sm mb-0">
+                            <input type="text" id="form9" class="form-control form-control-sm">
+                            <label for="form9" class="">Postal Code</label>
+                        </div>
+
+                        </div>
+                        <!-- Grid column -->
+
+                    </div>
+                    <!-- Grid row -->
+
+                    <!-- Grid row -->
+                    <div class="row">
+
+                        <!-- Grid column -->
+                        <div class="col-md-12">
+
+                        <h4 class="text-muted text-left my-4">About me</h4>
+
+                        <!-- Basic textarea -->
+                        <div class="md-form mb-0">
+                            <textarea type="text" id="form10" class="md-textarea form-control" rows="3"></textarea>
+                            <label for="form10">Basic textarea</label>
+                        </div>
+
+                        </div>
+                        <!-- Grid column -->
+
+                    </div>
+                    <!-- Grid row -->
+
+                    </div>
+                    <!-- Card content -->
+
                 </div>
-                <div class="card-body card-body-cascade text-center">
-                    <form>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="md-form mb-0">
-                                    <input type="text" id="form1" class="form-control validate" value="Company, inc" disabled="">
-                                    <label for="form1" data-error="wrong" data-success="right" class="active">Company</label>
-                                </div>
-                            </div>
+                <!-- Card -->
 
-                            <div class="col-md-6">
-                                <div class="md-form mb-0">
-                                    <input type="text" id="form2" class="form-control validate">
-                                    <label for="form2" data-error="wrong" data-success="right">Username</label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="md-form mb-0">
-                                    <input type="text" id="form81" class="form-control validate">
-                                    <label for="form81" data-error="wrong" data-success="right">First name</label>
-                                </div>
-                            </div>
-
-                            <div class="col-md-6">
-                                <div class="md-form mb-0">
-                                    <input type="text" id="form82" class="form-control validate">
-                                    <label for="form82" data-error="wrong" data-success="right">Last name</label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="md-form mb-0">
-                                    <input type="email" id="form76" class="form-control validate">
-                                    <label for="form76">Email address</label>
-                                </div>
-                            </div>
-
-                            <div class="col-md-6">
-                                <div class="md-form mb-0">
-                                    <input type="text" id="form77" class="form-control validate">
-                                    <label for="form77" data-error="wrong" data-success="right">Website Address</label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="md-form mb-0">
-                                    <textarea type="text" id="form78" class="md-textarea form-control" rows="3"></textarea>
-                                    <label for="form78">About me</label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-12 text-center my-4">
-                                <span class="waves-input-wrapper waves-effect waves-light"><input type="submit" value="Update Account" class="btn btn-info btn-rounded"></span>
-                            </div>
-                        </div>
-                    </form>
                 </div>
+                <!-- Grid column -->
+
+                <!-- Grid column -->
+                <div class="col-md-4 mb-4">
+
+                <!-- Card -->
+                <div class="card profile-card">
+
+                    <!-- Avatar -->
+                    <div class="avatar z-depth-1-half mb-4">
+                    <img src="https://mdbootstrap.com/img/Photos/Avatars/img%20(10).jpg" class="rounded-circle" alt="First sample avatar image">
+                    </div>
+
+                    <div class="card-body pt-0 mt-0">
+
+                    <!-- Name -->
+                    <h3 class="mb-3 font-weight-bold"><strong>Anna Deynah</strong></h3>
+                    <h6 class="font-weight-bold cyan-text mb-4">Web Designer</h6>
+
+                    <p class="mt-4 text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                        tempor incididunt
+                        ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                        ullamco laboris nisi ut aliquip consequat.</p>
+
+                    <a class="btn btn-info btn-rounded waves-effect waves-light"> Follow</a>
+
+                    </div>
+
+                </div>
+                <!-- Card -->
+
+                </div>
+                <!-- Grid column -->
+
             </div>
-        </div>
-    </div>
+            <!-- Grid row -->
+
+            </section>
+            <!-- Section: Team v.1 -->
+
+            </div>
+    </main>
 </div>

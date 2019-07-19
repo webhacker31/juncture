@@ -52,7 +52,6 @@ $( document ).ready( function( $ ) {
     var request_user_info = $home_url + '/request/admin-users/',
         request_add = $home_url + '/request/admin-view-user/',
         request_add = $home_url + '/request/admin-add-user/',
-        request_delete = $home_url + '/request/admin-delete-user/',
         request_update = $home_url + '/request/update-user/';
 
     myTable = $('#_user-table-list').DataTable({
