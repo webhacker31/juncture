@@ -50,7 +50,7 @@ $(document).ready(function ($) {
             
             $( '#login #login_msg' ).remove();
 
-            $( '#login' ).prepend( '<div id="login_msg" class="alert alert-danger" role="alert">Oops! Login Fails. Please try again.<small style="display: block; font-size: 12px">' + textStatus + '</small></div>' );
+            $( '#login' ).prepend( '<div id="login_msg" class="alert alert-danger" role="alert">Oops! Login Fails. Please try again.' );
 
           });
 
