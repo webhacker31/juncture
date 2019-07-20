@@ -33,7 +33,6 @@ $( document ).ready( function( $ ) {
         type: "text",
         pattern: "^(([a-z]|[A-Z]|[0-9]|[ ])){1,}$",
         errorMsg: "This field should not be empty."
-
     },
     {
         data: "user_position",
@@ -99,8 +98,46 @@ $( document ).ready( function( $ ) {
                     url: request_add,
                     type: 'POST',
                     data: rowdata,
-                    success: success,
-                    error: error
+                    success: function( response ) {
+
+                        var add_request_response = JSON.parse( response );
+
+                        $( '._j-user-modal .modal-body .alert' ).remove();
+
+                        /**
+                         * If Add Success
+                         */
+                        if( add_request_response[ 'status' ] == 'success' ) {
+    
+                            var message = '<div class="alert alert-success" role="alert">' +
+                                '<strong>Success!</strong> ' + add_request_response[ 'message' ] +
+                                '</div>';
+
+                            $( '._j-user-modal .modal-body' ).append( message );
+    
+                            // Disabling submit button
+                            $( '._j-user-modal' ).find( "button#addRowBtn" ).prop( 'disabled', true );
+                            $( '._j-user-modal' ).find( "button#editRowBtn" ).prop( 'disabled', true );
+                            $( '._j-user-modal' ).find( "button#deleteRowBtn" ).prop( 'disabled', true );
+
+                            // Reload Datatable
+                            $( '#_user-table-list_wrapper .dt-buttons .dt-button:last-child' ).click();
+
+                        }
+
+                        /**
+                         * If Add Failed
+                         */
+                        if( add_request_response[ 'status' ] == 'failed' ) {
+
+                            var message = '<div class="alert alert-danger" role="alert">' +
+                                '<strong>Error!</strong> ' + add_request_response[ 'message' ] +
+                                '</div>';
+
+                            $( '._j-user-modal .modal-body' ).append( message );
+
+                        }
+                    }
                 });
             },
             onEditRow: function(datatable, rowdata, success, error) {
