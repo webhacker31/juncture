@@ -19,6 +19,7 @@ function _enqueue_styles() {
     wp_enqueue_style( 'datatable-buttons-css', 'https://cdn.datatables.net/buttons/1.1.2/css/buttons.dataTables.css' );
     wp_enqueue_style( 'datatable-select-css', 'https://cdn.datatables.net/select/1.1.2/css/select.dataTables.css' );
     wp_enqueue_style( 'datatable-responsive-css', 'http://cdn.datatables.net/responsive/2.0.2/css/responsive.dataTables.css' );
+    wp_enqueue_style( 'material-profile-css', 'https://mdbootstrap.com/previews/templates/admin-dashboard/css/mdb.min.css' );
 
     // Core CSS
     wp_enqueue_style( 'child-style', get_stylesheet_directory_uri() . '/style.css', array( $parent_style ), wp_get_theme()->get('Version') );
