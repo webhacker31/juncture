@@ -58,7 +58,7 @@
                             <div class="admin-up d-flex justify-content-start">
                                 <i class="fas fa-users info-color py-4 mr-3 z-depth-2"></i>
                                 <div class="data">
-                                    <h5 class="font-weight-bold dark-grey-text">Edit Profile - <span class="text-muted">Complete your profile</span></h5>
+                                    <h5 class="font-weight-bold dark-grey-text">My Profile</h5>
                                 </div>
                             </div>
                             <div class="card-body card-body-cascade">
@@ -77,7 +77,7 @@
                                     </div>
                                     <div class="col-lg-4">
                                         <div class="md-form form-sm mb-0">
-                                            <input type="text" id="form4" class="form-control form-control-sm" disabled="">
+                                            <input type="text" id="form4" class="form-control form-control-sm">
                                             <label for="form4" class="disabled">User ID</label>
                                         </div>
                                     </div>
