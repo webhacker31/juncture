@@ -20,13 +20,13 @@
 
 // ** MySQL settings ** //
 /** The name of the database for WordPress */
-define( 'DB_NAME', 'junctur1_274' );
+define( 'DB_NAME', 'juncture' );
 
 /** MySQL database username */
-define( 'DB_USER', 'junctur1_274' );
+define( 'DB_USER', 'root' );
 
 /** MySQL database password */
-define( 'DB_PASSWORD', 'B489DCAEFx1fhq6z2b3t7d0a5' );
+define( 'DB_PASSWORD', '' );
 
 /** MySQL hostname */
 define( 'DB_HOST', 'localhost' );

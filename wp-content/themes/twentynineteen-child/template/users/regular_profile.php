@@ -65,19 +65,19 @@
                                 <div class="row">
                                     <div class="col-lg-4">
                                         <div class="md-form form-sm mb-0">
-                                            <input type="text" id="form12" class="username-input form-control form-control-sm" value="">
+                                            <input type="text" id="form12" class="username-input form-control form-control-sm" value=" " disabled>
                                             <label for="form12" class="">Username</label>
                                         </div>
                                     </div>
                                     <div class="col-lg-4">
                                         <div class="md-form form-sm mb-0">
-                                            <input type="text" id="form3" class="form-control form-control-sm">
+                                            <input type="text" id="form3" class="user-pw-input form-control form-control-sm" value=" " disabled>
                                             <label for="form3" class="">Password</label>
                                         </div>
                                     </div>
                                     <div class="col-lg-4">
                                         <div class="md-form form-sm mb-0">
-                                            <input type="text" id="form4" class="form-control form-control-sm">
+                                            <input type="text" id="form4" class="user-id-input form-control form-control-sm" value=" " disabled>
                                             <label for="form4" class="disabled">User ID</label>
                                         </div>
                                     </div>
@@ -86,19 +86,19 @@
                                 <div class="row">
                                     <div class="col-md-4">
                                         <div class="md-form form-sm mb-0">
-                                            <input type="text" id="form5" class="form-control form-control-sm">
+                                            <input type="text" id="form5" class="form-control form-control-sm" value=" " disabled>
                                             <label for="form5" class="">First name</label>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="md-form form-sm mb-0">
-                                            <input type="text" id="form5" class="form-control form-control-sm">
+                                            <input type="text" id="form5" class="form-control form-control-sm" value=" " disabled>
                                             <label for="form5" class="">Middle name</label>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="md-form form-sm mb-0">
-                                            <input type="text" id="form5" class="form-control form-control-sm">
+                                            <input type="text" id="form5" class="form-control form-control-sm" value=" " disabled>
                                             <label for="form5" class="">Last name</label>
                                         </div>
                                     </div>
@@ -107,13 +107,13 @@
                                 <div class="row">
                                     <div class="col-lg-6">
                                         <div class="md-form form-sm mb-0">
-                                            <input type="text" id="form7" class="form-control form-control-sm">
+                                            <input type="text" id="form7" class="form-control form-control-sm" value=" " disabled>
                                             <label for="form7" class="">Email</label>
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="md-form form-sm mb-0">
-                                            <input type="text" id="form8" class="form-control form-control-sm">
+                                            <input type="text" id="form8" class="form-control form-control-sm" value=" " disabled>
                                             <label for="form8" class="">Mobile Number</label>
                                         </div>
                                     </div>
@@ -122,7 +122,7 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="md-form form-sm mb-0">
-                                            <input type="text" id="form6" class="form-control form-control-sm">
+                                            <input type="text" id="form6" class="form-control form-control-sm" value=" " disabled>
                                             <label for="form6" class="">Address</label>
                                         </div>
                                     </div>
@@ -131,19 +131,19 @@
                                 <div class="row">
                                     <div class="col-lg-4">
                                         <div class="md-form form-sm mb-0">
-                                            <input type="text" id="form4" class="form-control form-control-sm" disabled="">
+                                            <input type="text" id="form4" class="user-role-input form-control form-control-sm" value=" " disabled>
                                             <label for="form4" class="disabled">Role</label>
                                         </div>
                                     </div>
                                     <div class="col-lg-4">
                                         <div class="md-form form-sm mb-0">
-                                            <input type="text" id="form9" class="form-control form-control-sm">
+                                            <input type="text" id="form9" class="form-control form-control-sm" value=" " disabled>
                                             <label for="form9" class="">Date of Birth</label>
                                         </div>
                                     </div>
                                     <div class="col-lg-4">
                                         <div class="md-form form-sm mb-0">
-                                            <input type="text" id="form9" class="form-control form-control-sm">
+                                            <input type="text" id="form9" class="form-control form-control-sm" value=" " disabled>
                                             <label for="form9" class="">Civil Status</label>
                                         </div>
                                     </div>
