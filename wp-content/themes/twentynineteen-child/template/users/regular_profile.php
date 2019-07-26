@@ -50,11 +50,11 @@
     </header>
 
     <main class="pt-5 mx-lg-5">
-        <div class="container-fluid">
-            <section class="section team-section">
+        <div id="regular-profile" class="container-fluid">
+            <section class="section team-section p-0 mt-5">
                 <div class="row text-center">
                     <div class="col-md-12 mb-4">
-                        <div class="card card-cascade cascading-admin-card user-card">
+                        <div class="card card-cascade cascading-admin-card user-card mt-3">
                             <div class="admin-up d-flex justify-content-start">
                                 <i class="fas fa-users info-color py-4 mr-3 z-depth-2"></i>
                                 <div class="data">
@@ -65,19 +65,19 @@
                                 <div class="row">
                                     <div class="col-lg-4">
                                         <div class="md-form form-sm mb-0">
-                                            <input type="text" id="form12" class="username-input form-control form-control-sm" value=" " disabled>
+                                            <input type="text" id="form12" class="username-input form-control form-control-sm" readonly>
                                             <label for="form12" class="">Username</label>
                                         </div>
                                     </div>
                                     <div class="col-lg-4">
                                         <div class="md-form form-sm mb-0">
-                                            <input type="text" id="form3" class="user-pw-input form-control form-control-sm" value=" " disabled>
+                                            <input type="text" id="form3" class="user-pw-input form-control form-control-sm" readonly>
                                             <label for="form3" class="">Password</label>
                                         </div>
                                     </div>
                                     <div class="col-lg-4">
                                         <div class="md-form form-sm mb-0">
-                                            <input type="text" id="form4" class="user-id-input form-control form-control-sm" value=" " disabled>
+                                            <input type="text" id="form4" class="user-id-input form-control form-control-sm" readonly>
                                             <label for="form4" class="disabled">User ID</label>
                                         </div>
                                     </div>
@@ -86,19 +86,19 @@
                                 <div class="row">
                                     <div class="col-md-4">
                                         <div class="md-form form-sm mb-0">
-                                            <input type="text" id="form5" class="form-control form-control-sm" value=" " disabled>
+                                            <input type="text" id="form5" class="form-control form-control-sm" readonly>
                                             <label for="form5" class="">First name</label>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="md-form form-sm mb-0">
-                                            <input type="text" id="form5" class="form-control form-control-sm" value=" " disabled>
+                                            <input type="text" id="form5" class="form-control form-control-sm" readonly>
                                             <label for="form5" class="">Middle name</label>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="md-form form-sm mb-0">
-                                            <input type="text" id="form5" class="form-control form-control-sm" value=" " disabled>
+                                            <input type="text" id="form5" class="form-control form-control-sm" readonly>
                                             <label for="form5" class="">Last name</label>
                                         </div>
                                     </div>
@@ -107,13 +107,13 @@
                                 <div class="row">
                                     <div class="col-lg-6">
                                         <div class="md-form form-sm mb-0">
-                                            <input type="text" id="form7" class="form-control form-control-sm" value=" " disabled>
+                                            <input type="text" id="form7" class="form-control form-control-sm" readonly>
                                             <label for="form7" class="">Email</label>
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="md-form form-sm mb-0">
-                                            <input type="text" id="form8" class="form-control form-control-sm" value=" " disabled>
+                                            <input type="text" id="form8" class="form-control form-control-sm" readonly>
                                             <label for="form8" class="">Mobile Number</label>
                                         </div>
                                     </div>
@@ -122,7 +122,7 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="md-form form-sm mb-0">
-                                            <input type="text" id="form6" class="form-control form-control-sm" value=" " disabled>
+                                            <input type="text" id="form6" class="form-control form-control-sm" readonly>
                                             <label for="form6" class="">Address</label>
                                         </div>
                                     </div>
@@ -131,19 +131,19 @@
                                 <div class="row">
                                     <div class="col-lg-4">
                                         <div class="md-form form-sm mb-0">
-                                            <input type="text" id="form4" class="user-role-input form-control form-control-sm" value=" " disabled>
+                                            <input type="text" id="form4" class="user-role-input form-control form-control-sm" readonly>
                                             <label for="form4" class="disabled">Role</label>
                                         </div>
                                     </div>
                                     <div class="col-lg-4">
                                         <div class="md-form form-sm mb-0">
-                                            <input type="text" id="form9" class="form-control form-control-sm" value=" " disabled>
+                                            <input type="text" id="form9" class="form-control form-control-sm" readonly>
                                             <label for="form9" class="">Date of Birth</label>
                                         </div>
                                     </div>
                                     <div class="col-lg-4">
                                         <div class="md-form form-sm mb-0">
-                                            <input type="text" id="form9" class="form-control form-control-sm" value=" " disabled>
+                                            <input type="text" id="form9" class="form-control form-control-sm" readonly>
                                             <label for="form9" class="">Civil Status</label>
                                         </div>
                                     </div>
@@ -151,6 +151,10 @@
                             </div>
                         </div>
                     </div>
+                </div>
+                <div class="d-flex">
+                    <button class="_edit-btn btn btn btn-success ml-0"><i class="fas fa-pencil-alt mr-2"></i>Edit</button>
+                    <button class="_save-btn btn btn btn-primary" disabled><i class="fas fa-save mr-2"></i>Save</button>
                 </div>
             </section>
         </div>

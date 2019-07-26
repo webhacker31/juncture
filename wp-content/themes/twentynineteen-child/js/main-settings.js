@@ -43,6 +43,8 @@ $( document ).ready( function() {
 
                 var response = JSON.parse( response )
 
+                console.log(response);
+
                 if( response[ 'status' ] == 'Success' ) location.reload();
 
             }
