@@ -350,6 +350,23 @@ class User_Action {
 
     }
 
+    public function update_regular_profile( $profile_data ) {
+
+        for( $index = 1; $index <= count( $profile_data ); $index++ ) {
+
+            $this->wpdb->update( 
+                'j_users_info', 
+                array('input_value' => $profile_data[ $index - 1 ][ 'input_value' ] ),
+                array('input_name' => $profile_data[ $index - 1 ][ 'input_name' ] ),
+                array( 'user_id' => $profile_data[ $index - 1 ][ 'user_id' ] )
+            );
+
+            if( $index == count( $profile_data ) ) return [ 'status' => 'Success', 'message' => 'Profile Updated' ];
+
+        }
+
+    }
+
 }
 
 $User_Action = new User_Action;

@@ -31,6 +31,7 @@ $( document ).ready( function() {
 
             set_group_values.push( set_name_value );
 
+            console.log(set_name_value);
         });
 
         $.ajax({
@@ -45,7 +46,7 @@ $( document ).ready( function() {
 
                 console.log(response);
 
-                if( response[ 'status' ] == 'Success' ) location.reload();
+                // if( response[ 'status' ] == 'Success' ) location.reload();
 
             }
 

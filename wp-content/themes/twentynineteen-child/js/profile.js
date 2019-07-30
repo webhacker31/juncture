@@ -32,16 +32,17 @@ $( document ).ready( function() {
 
     $( '#regular-profile ._save-btn' ).on( 'click', function() {
 
-        var set_group_values = [];
+        var input_group_values = [];
 
         $( 'input' ).each( function() {
 
-            var set_name_value = {
-                'set_name' : $( this ).data( 'set-name' ),
-                'set_value' : $( this ).val()
+            var input_name_value = {
+                'user_id': user_id,
+                'input_name' : $( this ).attr( 'name' ),
+                'input_value' : $( this ).val()
             };
 
-            set_group_values.push( set_name_value );
+            input_group_values.push( input_name_value );
 
         });
 
@@ -49,7 +50,7 @@ $( document ).ready( function() {
             method: 'POST',
             url: $home_url + '/request/update-regular-profile/',
             data: {
-                data: set_group_values
+                data: input_group_values
             },
             success: function( response ) {
 
@@ -57,7 +58,7 @@ $( document ).ready( function() {
 
                 console.log(response);
 
-                if( response[ 'status' ] == 'Success' ) location.reload();
+                // if( response[ 'status' ] == 'Success' ) location.reload();
 
             }
 

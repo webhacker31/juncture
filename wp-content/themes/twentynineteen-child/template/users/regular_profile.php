@@ -65,19 +65,19 @@
                                 <div class="row">
                                     <div class="col-lg-4">
                                         <div class="md-form form-sm mb-0">
-                                            <input type="text" id="form12" class="username-input form-control form-control-sm" readonly>
+                                            <input type="text" id="form12" class="username-input form-control form-control-sm" name="user_username" readonly>
                                             <label for="form12" class="">Username</label>
                                         </div>
                                     </div>
                                     <div class="col-lg-4">
                                         <div class="md-form form-sm mb-0">
-                                            <input type="text" id="form3" class="user-pw-input form-control form-control-sm" readonly>
+                                            <input type="text" id="form3" class="user-pw-input form-control form-control-sm" name="user_password" readonly>
                                             <label for="form3" class="">Password</label>
                                         </div>
                                     </div>
                                     <div class="col-lg-4">
                                         <div class="md-form form-sm mb-0">
-                                            <input type="text" id="form4" class="user-id-input form-control form-control-sm" readonly>
+                                            <input type="text" id="form4" class="user-id-input form-control form-control-sm" name="user_info_id" readonly>
                                             <label for="form4" class="disabled">User ID</label>
                                         </div>
                                     </div>
@@ -131,7 +131,7 @@
                                 <div class="row">
                                     <div class="col-lg-4">
                                         <div class="md-form form-sm mb-0">
-                                            <input type="text" id="form4" class="user-role-input form-control form-control-sm" readonly>
+                                            <input type="text" id="form4" class="user-role-input form-control form-control-sm" name="user_role" readonly>
                                             <label for="form4" class="disabled">Role</label>
                                         </div>
                                     </div>
