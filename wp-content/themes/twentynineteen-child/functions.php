@@ -12,14 +12,14 @@ function _enqueue_styles() {
     wp_enqueue_style( $parent_style, get_template_directory_uri() . '/style.css' );
 
     // CSS Libraries
-    wp_enqueue_style( 'fontawesome-core-css', 'https://use.fontawesome.com/releases/v5.8.1/css/all.css' );
-    wp_enqueue_style( 'bootstrap-core-css', 'https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css' );
-    wp_enqueue_style( 'material-core-css', 'https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.7.6/css/mdb.min.css' );
-    wp_enqueue_style( 'datatable-core-css', 'https://cdn.datatables.net/1.10.11/css/jquery.dataTables.css' );
-    wp_enqueue_style( 'datatable-buttons-css', 'https://cdn.datatables.net/buttons/1.1.2/css/buttons.dataTables.css' );
-    wp_enqueue_style( 'datatable-select-css', 'https://cdn.datatables.net/select/1.1.2/css/select.dataTables.css' );
-    wp_enqueue_style( 'datatable-responsive-css', 'http://cdn.datatables.net/responsive/2.0.2/css/responsive.dataTables.css' );
-    wp_enqueue_style( 'material-profile-css', 'https://mdbootstrap.com/previews/templates/admin-dashboard/css/mdb.min.css' );
+    wp_enqueue_style( 'fontawesome-core-css', get_stylesheet_directory_uri() . '/asset/css/fontawesome.css' );
+    wp_enqueue_style( 'bootstrap-core-css', get_stylesheet_directory_uri() . '/asset/css/bootstrap.css' );
+    wp_enqueue_style( 'material-core-css', get_stylesheet_directory_uri() . '/asset/css/mdb.css' );
+    wp_enqueue_style( 'datatable-core-css', get_stylesheet_directory_uri() . '/asset/css/datatables.css' );
+    wp_enqueue_style( 'datatable-buttons-css', get_stylesheet_directory_uri() . '/asset/css/datatables-button.css' );
+    wp_enqueue_style( 'datatable-select-css', get_stylesheet_directory_uri() . '/asset/css/datatables-select.css' );
+    wp_enqueue_style( 'datatable-responsive-css', get_stylesheet_directory_uri() . '/asset/css/datatables-responsive.css' );
+    wp_enqueue_style( 'material-profile-css', get_stylesheet_directory_uri() . '/asset/css/mdb-profile.css' );
 
     // Core CSS
     wp_enqueue_style( 'child-style', get_stylesheet_directory_uri() . '/style.css', array( $parent_style ), wp_get_theme()->get('Version') );
