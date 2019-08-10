@@ -91,7 +91,7 @@ class User_Action {
          */
         if( $this->User_Check->is_multiple_account( $user_data[ 'user_username' ] ) ) {
 
-            if( ! $this->User_Check->is_under_main_account( $user_data[ 'user_password' ], $user_data[ 'user_username' ] ) ) {
+            if( ! $this->User_Check->is_under_main_account( $user_data[ 'user_upline_id' ], $user_data[ 'user_username' ] ) ) {
 
                 $return_failed_msg['message'] = "Cannot Add User. User is Cross Lining";
 
