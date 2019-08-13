@@ -79,7 +79,7 @@ class User_Check {
 
         $main_account_downlines = $this->User_Data->get_user_geneology_by_id( $main_account_id );
 
-        return ( array_search( $user_upline_id, array_column( $main_account_downlines, 2 ) ) ) ? true : false;
+        return ( array_search( $user_upline_id, array_column( $main_account_downlines, 2 ) ) !== false ) ? true : false;
 
     }
 
